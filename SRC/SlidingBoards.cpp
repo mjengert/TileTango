@@ -20,21 +20,30 @@ using namespace std;
 // with the number 1, in other words, the top left corner of the board
 
 void SlidingBoards::GenerateLotsOfBoards() {
-    bool isSolvable;
+    // Open the file to write the boards to
     ofstream BoardFile("../DATA/AllBoards.txt");
     if (!BoardFile) {
         cout << "Error opening file" << endl;
     }
+    // If the file is opened successfully, generate 100,000 boards
     else {
         cout << "File opened successfully" << endl;
         for (int i = 1; i <= 100000; i++) {
             GenerateBoard();
-            for (auto it = BoardList.begin(); it != BoardList.end(); it++) {
-                BoardFile << it->first << " ";
-                for (int j = 0; j < it->second.size(); j++) {
-                    BoardFile << it->second[j].first << " ";
+            // First check if the board is solvable before writing it to the file
+            if (!isSolvable()) {
+                i--;
+            }
+            // If the board is solvable, write it to the file
+            else {
+                // Format is as follows: Board number followed by the adjacent tiles
+                for (auto it = BoardList.begin(); it != BoardList.end(); it++) {
+                    BoardFile << it->first << " ";
+                    for (int j = 0; j < it->second.size(); j++) {
+                        BoardFile << it->second[j].first << " ";
+                    }
+                    BoardFile << endl;
                 }
-                BoardFile << endl;
             }
             BoardFile << endl;
         }
@@ -237,9 +246,38 @@ vector<int> SlidingBoards::GetAdjacent(int vertex) {
     return adjTiles;
 }
 
-// Checks if the board is solvable; TBC
+// Checks if the board is solvable using the inversion method
+// Used https://www.geeksforgeeks.org/check-instance-15-puzzle-solvable/# for reference
 bool SlidingBoards::isSolvable() {
-    return false;
+    // Initialize vector to hold the board and count the number of inversions
+    int inversions = 0;
+    vector <int> board;
+    for (auto it = BoardList.begin(); it != BoardList.end(); it++) {
+        board.push_back(it->first);
+    }
+    // Count the number of inversions
+    for (int i = 0; i < board.size(); i++) {
+        for (int j = i + 1; j < board.size(); j++) {
+            if (board[i] > board[j] && board[i] != 16 && board[j] != 16) {
+                inversions++;
+            }
+        }
+    }
+    // Find the position of the blank tile
+    int blankTile = 0;
+    for (int i = 0; i < board.size(); i++) {
+        if (board[i] == 16) {
+            blankTile = i;
+        }
+    }
+    // Check if the board is solvable
+    if ((blankTile % 2 == 0 && inversions % 2 == 1) || (blankTile % 2 == 1 && inversions % 2 == 0)) {
+        return true;
+    }
+    // If the board is not solvable, return false
+    else {
+        return false;
+    }
 }
 
 
