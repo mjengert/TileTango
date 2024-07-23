@@ -44,8 +44,8 @@ void SlidingBoards::GenerateLotsOfBoards() {
                     }
                     BoardFile << endl;
                 }
+                BoardFile << endl;
             }
-            BoardFile << endl;
         }
         BoardFile.close();
     }
