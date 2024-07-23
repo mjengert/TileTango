@@ -3,14 +3,18 @@ project(TileTango)
 
 set(CMAKE_CXX_STANDARD 14)
 
+include_directories(SRC)
+include_directories(DATA)
+
 add_executable(TileTango
-        main.cpp
-        SlidingBoards.h
-        IDA.h
-        BFS.h
-        SlidingBoards.cpp
-        IDA.cpp
-        BFS.cpp)
+        SRC/main.cpp
+        SRC/SlidingBoards.h
+        SRC/IDA.h
+        SRC/BFS.h
+        SRC/SlidingBoards.cpp
+        SRC/IDA.cpp
+        SRC/BFS.cpp
+)
 
 find_package(SFML 2.6 COMPONENTS system window graphics network audio REQUIRED)
 target_link_libraries(TileTango sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
