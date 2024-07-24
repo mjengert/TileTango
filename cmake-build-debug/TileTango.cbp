@@ -102,7 +102,19 @@
 		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/IDA.h">
 			<Option target="TileTango"/>
 		</Unit>
+		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoardGraph.cpp">
+			<Option target="TileTango"/>
+		</Unit>
+		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoardGraph.h">
+			<Option target="TileTango"/>
+		</Unit>
 		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoards.h">
+			<Option target="TileTango"/>
+		</Unit>
+		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoardsGen.cpp">
+			<Option target="TileTango"/>
+		</Unit>
+		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoardsGen.h">
 			<Option target="TileTango"/>
 		</Unit>
 		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/main.cpp">

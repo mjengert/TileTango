@@ -11,6 +11,10 @@ find_package(SFML 2.5.1 COMPONENTS system window graphics audio REQUIRED)
 add_executable(TileTango
         SRC/main.cpp
         SRC/SlidingBoards.h
+        SRC/SlidingBoardsGen.h
+        SRC/SlidingBoardsGen.cpp
+        SRC/SlidingBoardGraph.h
+        SRC/SlidingBoardGraph.cpp
         SRC/IDA.h
         SRC/BFS.h
         SRC/IDA.cpp

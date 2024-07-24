@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/BFS.cpp" "CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj.d"
   "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/IDA.cpp" "CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj.d"
+  "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoardGraph.cpp" "CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.obj.d"
+  "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoardsGen.cpp" "CMakeFiles/TileTango.dir/SRC/SlidingBoardsGen.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/SRC/SlidingBoardsGen.cpp.obj.d"
   "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/main.cpp" "CMakeFiles/TileTango.dir/SRC/main.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/SRC/main.cpp.obj.d"
   )
 

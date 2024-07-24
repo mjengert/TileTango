@@ -176,6 +176,54 @@ SRC/IDA.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/IDA.cpp.s
 .PHONY : SRC/IDA.cpp.s
 
+SRC/SlidingBoardGraph.obj: SRC/SlidingBoardGraph.cpp.obj
+.PHONY : SRC/SlidingBoardGraph.obj
+
+# target to build an object file
+SRC/SlidingBoardGraph.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.obj
+.PHONY : SRC/SlidingBoardGraph.cpp.obj
+
+SRC/SlidingBoardGraph.i: SRC/SlidingBoardGraph.cpp.i
+.PHONY : SRC/SlidingBoardGraph.i
+
+# target to preprocess a source file
+SRC/SlidingBoardGraph.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.i
+.PHONY : SRC/SlidingBoardGraph.cpp.i
+
+SRC/SlidingBoardGraph.s: SRC/SlidingBoardGraph.cpp.s
+.PHONY : SRC/SlidingBoardGraph.s
+
+# target to generate assembly for a file
+SRC/SlidingBoardGraph.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.s
+.PHONY : SRC/SlidingBoardGraph.cpp.s
+
+SRC/SlidingBoardsGen.obj: SRC/SlidingBoardsGen.cpp.obj
+.PHONY : SRC/SlidingBoardsGen.obj
+
+# target to build an object file
+SRC/SlidingBoardsGen.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/SlidingBoardsGen.cpp.obj
+.PHONY : SRC/SlidingBoardsGen.cpp.obj
+
+SRC/SlidingBoardsGen.i: SRC/SlidingBoardsGen.cpp.i
+.PHONY : SRC/SlidingBoardsGen.i
+
+# target to preprocess a source file
+SRC/SlidingBoardsGen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/SlidingBoardsGen.cpp.i
+.PHONY : SRC/SlidingBoardsGen.cpp.i
+
+SRC/SlidingBoardsGen.s: SRC/SlidingBoardsGen.cpp.s
+.PHONY : SRC/SlidingBoardsGen.s
+
+# target to generate assembly for a file
+SRC/SlidingBoardsGen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/SlidingBoardsGen.cpp.s
+.PHONY : SRC/SlidingBoardsGen.cpp.s
+
 SRC/main.obj: SRC/main.cpp.obj
 .PHONY : SRC/main.obj
 
@@ -215,6 +263,12 @@ help:
 	@echo ... SRC/IDA.obj
 	@echo ... SRC/IDA.i
 	@echo ... SRC/IDA.s
+	@echo ... SRC/SlidingBoardGraph.obj
+	@echo ... SRC/SlidingBoardGraph.i
+	@echo ... SRC/SlidingBoardGraph.s
+	@echo ... SRC/SlidingBoardsGen.obj
+	@echo ... SRC/SlidingBoardsGen.i
+	@echo ... SRC/SlidingBoardsGen.s
 	@echo ... SRC/main.obj
 	@echo ... SRC/main.i
 	@echo ... SRC/main.s
