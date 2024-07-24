@@ -9,6 +9,15 @@ CMake Deprecation Warning:
 
 
 -- Found SFML 2.5.1 in C:/Users/Owner/CLionProjects/Data_Structures/TileTango/cmake-build-debug/SFML-2.5.1/lib/cmake/SFML
--- Configuring done (0.5s)
--- Generating done (0.1s)
--- Build files have been written to: C:/Users/Owner/CLionProjects/Data_Structures/TileTango/cmake-build-debug
+-- Configuring done (0.8s)
+CMake Error at CMakeLists.txt:11 (add_executable):
+  Cannot find source file:
+
+    main.cpp
+
+
+CMake Error at CMakeLists.txt:11 (add_executable):
+  No SOURCES given to target: TileTango
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
