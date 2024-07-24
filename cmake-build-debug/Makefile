@@ -128,101 +128,77 @@ TileTango/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/build
 .PHONY : TileTango/fast
 
-BFS.obj: BFS.cpp.obj
-.PHONY : BFS.obj
+SRC/BFS.obj: SRC/BFS.cpp.obj
+.PHONY : SRC/BFS.obj
 
 # target to build an object file
-BFS.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/BFS.cpp.obj
-.PHONY : BFS.cpp.obj
+SRC/BFS.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj
+.PHONY : SRC/BFS.cpp.obj
 
-BFS.i: BFS.cpp.i
-.PHONY : BFS.i
+SRC/BFS.i: SRC/BFS.cpp.i
+.PHONY : SRC/BFS.i
 
 # target to preprocess a source file
-BFS.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/BFS.cpp.i
-.PHONY : BFS.cpp.i
+SRC/BFS.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/BFS.cpp.i
+.PHONY : SRC/BFS.cpp.i
 
-BFS.s: BFS.cpp.s
-.PHONY : BFS.s
+SRC/BFS.s: SRC/BFS.cpp.s
+.PHONY : SRC/BFS.s
 
 # target to generate assembly for a file
-BFS.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/BFS.cpp.s
-.PHONY : BFS.cpp.s
+SRC/BFS.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/BFS.cpp.s
+.PHONY : SRC/BFS.cpp.s
 
-IDA.obj: IDA.cpp.obj
-.PHONY : IDA.obj
+SRC/IDA.obj: SRC/IDA.cpp.obj
+.PHONY : SRC/IDA.obj
 
 # target to build an object file
-IDA.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/IDA.cpp.obj
-.PHONY : IDA.cpp.obj
+SRC/IDA.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj
+.PHONY : SRC/IDA.cpp.obj
 
-IDA.i: IDA.cpp.i
-.PHONY : IDA.i
+SRC/IDA.i: SRC/IDA.cpp.i
+.PHONY : SRC/IDA.i
 
 # target to preprocess a source file
-IDA.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/IDA.cpp.i
-.PHONY : IDA.cpp.i
+SRC/IDA.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/IDA.cpp.i
+.PHONY : SRC/IDA.cpp.i
 
-IDA.s: IDA.cpp.s
-.PHONY : IDA.s
+SRC/IDA.s: SRC/IDA.cpp.s
+.PHONY : SRC/IDA.s
 
 # target to generate assembly for a file
-IDA.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/IDA.cpp.s
-.PHONY : IDA.cpp.s
+SRC/IDA.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/IDA.cpp.s
+.PHONY : SRC/IDA.cpp.s
 
-SlidingBoards.obj: SlidingBoards.cpp.obj
-.PHONY : SlidingBoards.obj
+SRC/main.obj: SRC/main.cpp.obj
+.PHONY : SRC/main.obj
 
 # target to build an object file
-SlidingBoards.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj
-.PHONY : SlidingBoards.cpp.obj
+SRC/main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/main.cpp.obj
+.PHONY : SRC/main.cpp.obj
 
-SlidingBoards.i: SlidingBoards.cpp.i
-.PHONY : SlidingBoards.i
-
-# target to preprocess a source file
-SlidingBoards.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SlidingBoards.cpp.i
-.PHONY : SlidingBoards.cpp.i
-
-SlidingBoards.s: SlidingBoards.cpp.s
-.PHONY : SlidingBoards.s
-
-# target to generate assembly for a file
-SlidingBoards.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SlidingBoards.cpp.s
-.PHONY : SlidingBoards.cpp.s
-
-main.obj: main.cpp.obj
-.PHONY : main.obj
-
-# target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/main.cpp.obj
-.PHONY : main.cpp.obj
-
-main.i: main.cpp.i
-.PHONY : main.i
+SRC/main.i: SRC/main.cpp.i
+.PHONY : SRC/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/main.cpp.i
-.PHONY : main.cpp.i
+SRC/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/main.cpp.i
+.PHONY : SRC/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+SRC/main.s: SRC/main.cpp.s
+.PHONY : SRC/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/main.cpp.s
-.PHONY : main.cpp.s
+SRC/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/main.cpp.s
+.PHONY : SRC/main.cpp.s
 
 # Help Target
 help:
@@ -233,18 +209,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... TileTango
-	@echo ... BFS.obj
-	@echo ... BFS.i
-	@echo ... BFS.s
-	@echo ... IDA.obj
-	@echo ... IDA.i
-	@echo ... IDA.s
-	@echo ... SlidingBoards.obj
-	@echo ... SlidingBoards.i
-	@echo ... SlidingBoards.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... SRC/BFS.obj
+	@echo ... SRC/BFS.i
+	@echo ... SRC/BFS.s
+	@echo ... SRC/IDA.obj
+	@echo ... SRC/IDA.i
+	@echo ... SRC/IDA.s
+	@echo ... SRC/main.obj
+	@echo ... SRC/main.i
+	@echo ... SRC/main.s
 .PHONY : help
 
 

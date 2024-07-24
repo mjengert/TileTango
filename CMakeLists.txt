@@ -9,11 +9,10 @@ set(SFML_DIR "C:/Users/Owner/CLionProjects/TileTango/SFML-2.5.1/lib/cmake/SFML")
 
 find_package(SFML 2.5.1 COMPONENTS system window graphics audio REQUIRED)
 add_executable(TileTango
-        main.cpp
-        SlidingBoards.h
-        IDA.h
-        BFS.h
-        SlidingBoards.cpp
-        IDA.cpp
-        BFS.cpp)
+        SRC/main.cpp
+        SRC/SlidingBoards.h
+        SRC/IDA.h
+        SRC/BFS.h
+        SRC/IDA.cpp
+        SRC/BFS.cpp)
 target_link_libraries(TileTango sfml-system sfml-window sfml-graphics sfml-audio)

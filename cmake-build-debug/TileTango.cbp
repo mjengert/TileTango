@@ -90,25 +90,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/BFS.cpp">
+		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/BFS.cpp">
 			<Option target="TileTango"/>
 		</Unit>
-		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/BFS.h">
+		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/BFS.h">
 			<Option target="TileTango"/>
 		</Unit>
-		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/IDA.cpp">
+		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/IDA.cpp">
 			<Option target="TileTango"/>
 		</Unit>
-		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/IDA.h">
+		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/IDA.h">
 			<Option target="TileTango"/>
 		</Unit>
-		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SlidingBoards.cpp">
+		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoards.h">
 			<Option target="TileTango"/>
 		</Unit>
-		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SlidingBoards.h">
-			<Option target="TileTango"/>
-		</Unit>
-		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/main.cpp">
+		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/main.cpp">
 			<Option target="TileTango"/>
 		</Unit>
 		<Unit filename="C:/Users/Owner/CLionProjects/Data_Structures/TileTango/CMakeLists.txt">

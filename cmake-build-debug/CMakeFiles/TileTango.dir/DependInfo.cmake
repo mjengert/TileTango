@@ -8,10 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/BFS.cpp" "CMakeFiles/TileTango.dir/BFS.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/BFS.cpp.obj.d"
-  "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/IDA.cpp" "CMakeFiles/TileTango.dir/IDA.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/IDA.cpp.obj.d"
-  "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SlidingBoards.cpp" "CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj.d"
-  "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/main.cpp" "CMakeFiles/TileTango.dir/main.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/main.cpp.obj.d"
+  "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/BFS.cpp" "CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj.d"
+  "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/IDA.cpp" "CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj.d"
+  "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/main.cpp" "CMakeFiles/TileTango.dir/SRC/main.cpp.obj" "gcc" "CMakeFiles/TileTango.dir/SRC/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

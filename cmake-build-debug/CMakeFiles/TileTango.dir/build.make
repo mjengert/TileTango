@@ -68,80 +68,63 @@ include CMakeFiles/TileTango.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/TileTango.dir/flags.make
 
-CMakeFiles/TileTango.dir/main.cpp.obj: CMakeFiles/TileTango.dir/flags.make
-CMakeFiles/TileTango.dir/main.cpp.obj: CMakeFiles/TileTango.dir/includes_CXX.rsp
-CMakeFiles/TileTango.dir/main.cpp.obj: C:/Users/Owner/CLionProjects/Data_Structures/TileTango/main.cpp
-CMakeFiles/TileTango.dir/main.cpp.obj: CMakeFiles/TileTango.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Owner\CLionProjects\Data_Structures\TileTango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TileTango.dir/main.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TileTango.dir/main.cpp.obj -MF CMakeFiles\TileTango.dir\main.cpp.obj.d -o CMakeFiles\TileTango.dir\main.cpp.obj -c C:\Users\Owner\CLionProjects\Data_Structures\TileTango\main.cpp
+CMakeFiles/TileTango.dir/SRC/main.cpp.obj: CMakeFiles/TileTango.dir/flags.make
+CMakeFiles/TileTango.dir/SRC/main.cpp.obj: CMakeFiles/TileTango.dir/includes_CXX.rsp
+CMakeFiles/TileTango.dir/SRC/main.cpp.obj: C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/main.cpp
+CMakeFiles/TileTango.dir/SRC/main.cpp.obj: CMakeFiles/TileTango.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Owner\CLionProjects\Data_Structures\TileTango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TileTango.dir/SRC/main.cpp.obj"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TileTango.dir/SRC/main.cpp.obj -MF CMakeFiles\TileTango.dir\SRC\main.cpp.obj.d -o CMakeFiles\TileTango.dir\SRC\main.cpp.obj -c C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\main.cpp
 
-CMakeFiles/TileTango.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TileTango.dir/main.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Owner\CLionProjects\Data_Structures\TileTango\main.cpp > CMakeFiles\TileTango.dir\main.cpp.i
+CMakeFiles/TileTango.dir/SRC/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TileTango.dir/SRC/main.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\main.cpp > CMakeFiles\TileTango.dir\SRC\main.cpp.i
 
-CMakeFiles/TileTango.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TileTango.dir/main.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Owner\CLionProjects\Data_Structures\TileTango\main.cpp -o CMakeFiles\TileTango.dir\main.cpp.s
+CMakeFiles/TileTango.dir/SRC/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TileTango.dir/SRC/main.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\main.cpp -o CMakeFiles\TileTango.dir\SRC\main.cpp.s
 
-CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj: CMakeFiles/TileTango.dir/flags.make
-CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj: CMakeFiles/TileTango.dir/includes_CXX.rsp
-CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj: C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SlidingBoards.cpp
-CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj: CMakeFiles/TileTango.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Owner\CLionProjects\Data_Structures\TileTango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj -MF CMakeFiles\TileTango.dir\SlidingBoards.cpp.obj.d -o CMakeFiles\TileTango.dir\SlidingBoards.cpp.obj -c C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SlidingBoards.cpp
+CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj: CMakeFiles/TileTango.dir/flags.make
+CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj: CMakeFiles/TileTango.dir/includes_CXX.rsp
+CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj: C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/IDA.cpp
+CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj: CMakeFiles/TileTango.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Owner\CLionProjects\Data_Structures\TileTango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj -MF CMakeFiles\TileTango.dir\SRC\IDA.cpp.obj.d -o CMakeFiles\TileTango.dir\SRC\IDA.cpp.obj -c C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\IDA.cpp
 
-CMakeFiles/TileTango.dir/SlidingBoards.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TileTango.dir/SlidingBoards.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SlidingBoards.cpp > CMakeFiles\TileTango.dir\SlidingBoards.cpp.i
+CMakeFiles/TileTango.dir/SRC/IDA.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TileTango.dir/SRC/IDA.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\IDA.cpp > CMakeFiles\TileTango.dir\SRC\IDA.cpp.i
 
-CMakeFiles/TileTango.dir/SlidingBoards.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TileTango.dir/SlidingBoards.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SlidingBoards.cpp -o CMakeFiles\TileTango.dir\SlidingBoards.cpp.s
+CMakeFiles/TileTango.dir/SRC/IDA.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TileTango.dir/SRC/IDA.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\IDA.cpp -o CMakeFiles\TileTango.dir\SRC\IDA.cpp.s
 
-CMakeFiles/TileTango.dir/IDA.cpp.obj: CMakeFiles/TileTango.dir/flags.make
-CMakeFiles/TileTango.dir/IDA.cpp.obj: CMakeFiles/TileTango.dir/includes_CXX.rsp
-CMakeFiles/TileTango.dir/IDA.cpp.obj: C:/Users/Owner/CLionProjects/Data_Structures/TileTango/IDA.cpp
-CMakeFiles/TileTango.dir/IDA.cpp.obj: CMakeFiles/TileTango.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Owner\CLionProjects\Data_Structures\TileTango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TileTango.dir/IDA.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TileTango.dir/IDA.cpp.obj -MF CMakeFiles\TileTango.dir\IDA.cpp.obj.d -o CMakeFiles\TileTango.dir\IDA.cpp.obj -c C:\Users\Owner\CLionProjects\Data_Structures\TileTango\IDA.cpp
+CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj: CMakeFiles/TileTango.dir/flags.make
+CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj: CMakeFiles/TileTango.dir/includes_CXX.rsp
+CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj: C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/BFS.cpp
+CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj: CMakeFiles/TileTango.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Owner\CLionProjects\Data_Structures\TileTango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj -MF CMakeFiles\TileTango.dir\SRC\BFS.cpp.obj.d -o CMakeFiles\TileTango.dir\SRC\BFS.cpp.obj -c C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\BFS.cpp
 
-CMakeFiles/TileTango.dir/IDA.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TileTango.dir/IDA.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Owner\CLionProjects\Data_Structures\TileTango\IDA.cpp > CMakeFiles\TileTango.dir\IDA.cpp.i
+CMakeFiles/TileTango.dir/SRC/BFS.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TileTango.dir/SRC/BFS.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\BFS.cpp > CMakeFiles\TileTango.dir\SRC\BFS.cpp.i
 
-CMakeFiles/TileTango.dir/IDA.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TileTango.dir/IDA.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Owner\CLionProjects\Data_Structures\TileTango\IDA.cpp -o CMakeFiles\TileTango.dir\IDA.cpp.s
-
-CMakeFiles/TileTango.dir/BFS.cpp.obj: CMakeFiles/TileTango.dir/flags.make
-CMakeFiles/TileTango.dir/BFS.cpp.obj: CMakeFiles/TileTango.dir/includes_CXX.rsp
-CMakeFiles/TileTango.dir/BFS.cpp.obj: C:/Users/Owner/CLionProjects/Data_Structures/TileTango/BFS.cpp
-CMakeFiles/TileTango.dir/BFS.cpp.obj: CMakeFiles/TileTango.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Owner\CLionProjects\Data_Structures\TileTango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/TileTango.dir/BFS.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TileTango.dir/BFS.cpp.obj -MF CMakeFiles\TileTango.dir\BFS.cpp.obj.d -o CMakeFiles\TileTango.dir\BFS.cpp.obj -c C:\Users\Owner\CLionProjects\Data_Structures\TileTango\BFS.cpp
-
-CMakeFiles/TileTango.dir/BFS.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TileTango.dir/BFS.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Owner\CLionProjects\Data_Structures\TileTango\BFS.cpp > CMakeFiles\TileTango.dir\BFS.cpp.i
-
-CMakeFiles/TileTango.dir/BFS.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TileTango.dir/BFS.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Owner\CLionProjects\Data_Structures\TileTango\BFS.cpp -o CMakeFiles\TileTango.dir\BFS.cpp.s
+CMakeFiles/TileTango.dir/SRC/BFS.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TileTango.dir/SRC/BFS.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\BFS.cpp -o CMakeFiles\TileTango.dir\SRC\BFS.cpp.s
 
 # Object files for target TileTango
 TileTango_OBJECTS = \
-"CMakeFiles/TileTango.dir/main.cpp.obj" \
-"CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj" \
-"CMakeFiles/TileTango.dir/IDA.cpp.obj" \
-"CMakeFiles/TileTango.dir/BFS.cpp.obj"
+"CMakeFiles/TileTango.dir/SRC/main.cpp.obj" \
+"CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj" \
+"CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj"
 
 # External object files for target TileTango
 TileTango_EXTERNAL_OBJECTS =
 
-TileTango.exe: CMakeFiles/TileTango.dir/main.cpp.obj
-TileTango.exe: CMakeFiles/TileTango.dir/SlidingBoards.cpp.obj
-TileTango.exe: CMakeFiles/TileTango.dir/IDA.cpp.obj
-TileTango.exe: CMakeFiles/TileTango.dir/BFS.cpp.obj
+TileTango.exe: CMakeFiles/TileTango.dir/SRC/main.cpp.obj
+TileTango.exe: CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj
+TileTango.exe: CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj
 TileTango.exe: CMakeFiles/TileTango.dir/build.make
 TileTango.exe: SFML-2.5.1/lib/libsfml-graphics-d.a
 TileTango.exe: SFML-2.5.1/lib/libsfml-audio-d.a
@@ -150,7 +133,7 @@ TileTango.exe: SFML-2.5.1/lib/libsfml-system-d.a
 TileTango.exe: CMakeFiles/TileTango.dir/linkLibs.rsp
 TileTango.exe: CMakeFiles/TileTango.dir/objects1.rsp
 TileTango.exe: CMakeFiles/TileTango.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Owner\CLionProjects\Data_Structures\TileTango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable TileTango.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Owner\CLionProjects\Data_Structures\TileTango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable TileTango.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\TileTango.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
