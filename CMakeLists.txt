@@ -4,10 +4,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(TileTango)
 
+if (APPLE)
+    set(SFML_DIR "/SFML-2.6.1-Mac/lib/cmake/SFML")
+elseif (WIN32)
+    set(SFML_DIR "/SFML-2.6.1-Windows/lib/cmake/SFML")
+endif ()
 
-set(SFML_DIR "C:/Users/Owner/CLionProjects/TileTango/SFML-2.5.1/lib/cmake/SFML")
-
-find_package(SFML 2.5.1 COMPONENTS system window graphics audio REQUIRED)
+find_package(SFML 2.6.1 COMPONENTS system window graphics audio REQUIRED)
 add_executable(TileTango
         SRC/main.cpp
         SRC/SlidingBoards.h

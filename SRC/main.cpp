@@ -10,6 +10,7 @@ using namespace sf;
 
 // Generate lots of boards; used for creating the AllBoards.txt file
 // Currently not in use as the file has already been created
+
 void GenerateLotsOfBoards() {
     SlidingBoardsGen Board;
     // Generate lots of boards
