@@ -7,7 +7,7 @@ project(TileTango)
 if (APPLE)
     set(SFML_DIR "/SFML-2.6.1-Mac/lib/cmake/SFML")
 elseif (WIN32)
-    set(SFML_DIR "/SFML-2.6.1-Windows/lib/cmake/SFML")
+    set(SFML_DIR "SFML-2.6.1-Windows/lib/cmake/SFML")
 endif ()
 
 find_package(SFML 2.6.1 COMPONENTS system window graphics audio REQUIRED)
