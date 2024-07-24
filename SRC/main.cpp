@@ -1,5 +1,6 @@
 #include <iostream>
-#include "SlidingBoards.h"
+#include "SlidingBoardsGen.h"
+#include "SlidingBoardGraph.h"
 #include <SFML/Graphics.hpp>
 using namespace std;
 using namespace sf;
@@ -8,20 +9,16 @@ using namespace sf;
 // Partners: Maralynn Engert, Natalie Poche, Andre Stennett
 
 // Generate lots of boards; used for creating the AllBoards.txt file
+// Currently not in use as the file has already been created
 void GenerateLotsOfBoards() {
-    SlidingBoards Board;
+    SlidingBoardsGen Board;
     // Generate lots of boards
     Board.GenerateLotsOfBoards();
 }
 
 // Main function
 int main() {
-    // the current state of the main function is only used for generating lots of boards
-    // will be commented out when the boards are generated and solvable, then will be changed to window creation
-    // after they are correctly generated we will pull from the AllBoards.txt file
-    // i do not recommend running the program with this uncommented if you have a slow computer cause it will take a while
-    // - Maralynn
-
-    GenerateLotsOfBoards();
+    SlidingBoardGraph Graph;
+    Graph.GetBoardFromFile("AllBoards.txt");
     return 0;
 }

@@ -10,10 +10,10 @@
 using namespace std;
 using namespace sf;
 
-// File for board class and functions; 100,000 random boards to be generated
+// File for board class and functions
 // Will also hold functions for checking if a board is solvable
 
-class SlidingBoards {
+class SlidingBoardsGen {
 public:
     // operations for generating boards
     void GenerateLotsOfBoards();
@@ -21,10 +21,7 @@ public:
     bool isSolvable();
     // operations for manipulating boards
     vector<int> GetAdjacent(int vertex);
-    // operations for drawing boards; TBC
-
 private:
-    // data structures for boards
     unordered_map<int, vector<pair<int, double>>> BoardList;
     map<int, vector<pair<int, double>>> SolutionList = {
             {1,  {{2,  1}, {5,  1}}},
@@ -43,10 +40,6 @@ private:
             {14, {{10, 1}, {13, 1}, {15, 1}}},
             {15, {{11, 1}, {14, 1}, {16, 0}}},
             {16, {{12, 1}, {15, 1}}}
-    };
-    // Coordinates of the boards (puzzle and solution) for drawing
-    unordered_map<int, vector<pair<int, int>>> BoardCoordList;
-    map<int, vector<pair<int, int>>> SolutionCoordList = {
     };
 };
 

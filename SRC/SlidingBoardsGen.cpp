@@ -1,11 +1,10 @@
 #include <iostream>
-#include "SlidingBoards.h"
-#include "BFS.h"
-#include "IDA.h"
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include <vector>
+#include <utility>
+#include <algorithm>
+#include <map>
 #include <fstream>
-using namespace sf;
+#include "SlidingBoardsGen.h"
 using namespace std;
 
 // File for implementing the sliding block puzzle class
@@ -19,7 +18,7 @@ using namespace std;
 // When referenced in the code below, saying "position 1" means the POSITION of the tile
 // with the number 1, in other words, the top left corner of the board
 
-void SlidingBoards::GenerateLotsOfBoards() {
+void SlidingBoardsGen::GenerateLotsOfBoards() {
     // Open the file to write the boards to
     ofstream BoardFile("../DATA/AllBoards.txt");
     if (!BoardFile) {
@@ -53,7 +52,7 @@ void SlidingBoards::GenerateLotsOfBoards() {
 }
 
 // Generates a board randomly
-void SlidingBoards::GenerateBoard() {
+void SlidingBoardsGen::GenerateBoard() {
     // Clear the board list
     BoardList.clear();
     // Generate a random board
@@ -237,7 +236,7 @@ void SlidingBoards::GenerateBoard() {
 }
 
 // From Maralynn Engert PageRank.cpp file aka Project 2
-vector<int> SlidingBoards::GetAdjacent(int vertex) {
+vector<int> SlidingBoardsGen::GetAdjacent(int vertex) {
     vector<int> adjTiles = {};
     for (int i = 0; i < BoardList[vertex].size(); i++) {
         adjTiles.push_back(BoardList[vertex][i].first);
@@ -246,9 +245,10 @@ vector<int> SlidingBoards::GetAdjacent(int vertex) {
     return adjTiles;
 }
 
+
 // Checks if the board is solvable using the inversion method
 // Used https://www.geeksforgeeks.org/check-instance-15-puzzle-solvable/# for reference
-bool SlidingBoards::isSolvable() {
+bool SlidingBoardsGen::isSolvable() {
     // Initialize vector to hold the board and count the number of inversions
     int inversions = 0;
     vector <int> board;
