@@ -92,7 +92,8 @@ struct welcomeWindow{
         FloatRect  textRect = text.getLocalBounds();
         RectangleShape titleBox(Vector2f(textRect.width + 2 * padding, textRect.height + 2 * padding));
         titleBox.setFillColor(Color::Green);
-        titleBox.setOutlineColor(Color::White);
+        titleBox.setOutlineThickness(5);
+        titleBox.setOutlineColor(Color::Black);
 
         titleBox.setOrigin(titleBox.getSize().x/2.0f, titleBox.getSize().y/2.0f);
         titleBox.setPosition(window.getSize().x/2.0f, (window.getSize().y/2.0f)-150);
@@ -112,7 +113,8 @@ struct welcomeWindow{
         FloatRect  textRect = text.getLocalBounds();
         RectangleShape newButton(Vector2f(textRect.width + 2 * padding, textRect.height + 2 * padding));
         newButton.setFillColor(Color::Green);
-        newButton.setOutlineColor(Color::White);
+        newButton.setOutlineThickness(5);
+        newButton.setOutlineColor(Color::Black);
 
         newButton.setOrigin(newButton.getSize().x/2.0f, newButton.getSize().y/2.0f);
         newButton.setPosition(text.getPosition().x,text.getPosition().y);
@@ -149,7 +151,7 @@ struct welcomeWindow{
     }
 
     void welcomeDipslay(){
-        window.clear(Color::Black);
+        window.clear(Color(26, 26, 119));
         window.draw(titleBox);
         window.draw(titleMessage);
         window.draw(welcomeMessage);
