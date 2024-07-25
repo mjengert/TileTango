@@ -2,6 +2,7 @@
 #include "SlidingBoardsGen.h"
 #include "SlidingBoardGraph.h"
 #include "SlidingBoards.h"
+#include "WelcomeWindow.h"
 using namespace std;
 using namespace sf;
 

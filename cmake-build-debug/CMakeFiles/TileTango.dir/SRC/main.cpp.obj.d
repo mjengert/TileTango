@@ -247,4 +247,5 @@ CMakeFiles/TileTango.dir/SRC/main.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/fstream.tcc \
- C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\SlidingBoards.h
+ C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\SlidingBoards.h \
+ C:\Users\Owner\CLionProjects\Data_Structures\TileTango\SRC\WelcomeWindow.h

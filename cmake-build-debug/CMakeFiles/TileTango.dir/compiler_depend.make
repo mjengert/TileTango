@@ -1111,7 +1111,8 @@ CMakeFiles/TileTango.dir/SRC/main.cpp.obj: C:/Users/Owner/CLionProjects/Data_Str
   C:/mingw64/x86_64-w64-mingw32/include/wctype.h \
   C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoardGraph.h \
   C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoards.h \
-  C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoardsGen.h
+  C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/SlidingBoardsGen.h \
+  C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/WelcomeWindow.h
 
 
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_map.h:
@@ -1119,6 +1120,8 @@ C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_map.h:
 C:/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/bits/stl_iterator_base_funcs.h:
 
 C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SFML-2.6.1-Windows/include/SFML/Graphics/Vertex.hpp:
+
+C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SRC/WelcomeWindow.h:
 
 C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SFML-2.6.1-Windows/include/SFML/Graphics/RectangleShape.hpp:
 
