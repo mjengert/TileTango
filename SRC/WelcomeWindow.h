@@ -151,7 +151,7 @@ struct welcomeWindow{
     }
 
     void welcomeDipslay(){
-        window.clear(Color(26, 26, 119));
+        window.clear(Color(63, 63, 131));
         window.draw(titleBox);
         window.draw(titleMessage);
         window.draw(welcomeMessage);
