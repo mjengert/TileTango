@@ -1,8 +1,15 @@
 # ninja log v6
-7	446	1721856542731632602	CMakeFiles/TileTango.dir/SRC/SlidingBoardsGen.cpp.o	94d6c56356fed9be
-7	287	1721856542732155947	CMakeFiles/TileTango.dir/SRC/BFS.cpp.o	845bfbf40b00cb18
-7	307	1721856542731789135	CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.o	a282a5fa6945cf80
-7	288	1721856542731916419	CMakeFiles/TileTango.dir/SRC/IDA.cpp.o	9964decf36eed779
-457	499	1721856543182079139	TileTango	22aef8fc3188cd6
-6	457	1721856542731324744	CMakeFiles/TileTango.dir/SRC/main.cpp.o	ce3d5fc1cce81790
-0	35	1721856662417622106	build.ninja	b7fcc1078a66e771
+1	424	1721947901084072844	CMakeFiles/TileTango.dir/SRC/SlidingBoardsGen.cpp.o	94d6c56356fed9be
+1	268	1721947901084683998	CMakeFiles/TileTango.dir/SRC/BFS.cpp.o	845bfbf40b00cb18
+1	292	1721947901084240674	CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.o	a282a5fa6945cf80
+1	275	1721947901084402587	CMakeFiles/TileTango.dir/SRC/IDA.cpp.o	9964decf36eed779
+415	456	1721948656200215175	TileTango	22aef8fc3188cd6
+3	415	1721948655787736622	CMakeFiles/TileTango.dir/SRC/main.cpp.o	ce3d5fc1cce81790
+1	54	1721948714386917782	build.ninja	b7fcc1078a66e771
+1	42	1721948714386917782	build.ninja	b7fcc1078a66e771
+3	268	1721948714396858735	CMakeFiles/TileTango.dir/SRC/BFS.cpp.o	845bfbf40b00cb18
+3	269	1721948714396727358	CMakeFiles/TileTango.dir/SRC/IDA.cpp.o	9964decf36eed779
+3	292	1721948714396588941	CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.o	a282a5fa6945cf80
+3	432	1721948714396440106	CMakeFiles/TileTango.dir/SRC/SlidingBoardsGen.cpp.o	94d6c56356fed9be
+3	413	1721948770402402911	CMakeFiles/TileTango.dir/SRC/main.cpp.o	ce3d5fc1cce81790
+413	454	1721948770812550320	TileTango	22aef8fc3188cd6

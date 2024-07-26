@@ -1,14 +1,5 @@
-"C:\Program Files\JetBrains\CLion 2023.3.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=C:/mingw64/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" -S C:\Users\Owner\CLionProjects\Data_Structures\TileTango -B C:\Users\Owner\CLionProjects\Data_Structures\TileTango\cmake-build-debug
-CMake Deprecation Warning:
-  Support for "Extra Generators" like
-
-    CodeBlocks
-
-  is deprecated and will be removed from a future version of CMake.  IDEs may
-  use the cmake-file-api(7) to view CMake-generated project build trees.
-
-
--- Found SFML 2.6.1 in C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SFML-2.6.1-Windows/lib/cmake/SFML
--- Configuring done (0.5s)
--- Generating done (0.1s)
--- Build files have been written to: C:/Users/Owner/CLionProjects/Data_Structures/TileTango/cmake-build-debug
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S /Users/mj-home/CLionProjects/TileTango -B /Users/mj-home/CLionProjects/TileTango/cmake-build-debug
+-- Found SFML 2.6.1 in /opt/homebrew/lib/cmake/SFML
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/mj-home/CLionProjects/TileTango/cmake-build-debug
