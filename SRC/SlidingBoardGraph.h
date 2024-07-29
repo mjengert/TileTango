@@ -11,27 +11,47 @@ using namespace std;
 struct SlidingBoard {
     int Board[4][4];
     int heuristic;
-    int difficulty;
+    int blankRow;
+    int blankCol;
     SlidingBoard* parent;
-    // constructor for the board
+    // constructor for the board from file
     SlidingBoard(vector<int> board) {
         int index = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
+                if (board[index] == 16) {
+                    blankRow = i;
+                    blankCol = j;
+                }
                 Board[i][j] = board[index];
                 index++;
             }
         }
         this->heuristic = 0;
-        this->difficulty = 0;
+        this->parent = nullptr;
+    }
+    // constructor for the board from move
+    SlidingBoard(int board[4][4]) {
+        int index = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (board[i][j] == 16) {
+                    blankRow = i;
+                    blankCol = j;
+                }
+                Board[i][j] = board[i][j];
+                index++;
+            }
+        }
+        this->heuristic = 0;
         this->parent = nullptr;
     }
 };
 
-// class to create the graph (verticies are boards, edges are moves)
+// Class to create the graph (verticies are boards, edges are moves)
 class SlidingBoardGraph {
 public:
-    // constructor and destructor
+    // Constructor and destructor
     SlidingBoardGraph() {
         root = nullptr;
     }
@@ -40,20 +60,20 @@ public:
             DeleteGraph(root);
         }
     }
-    // operations on the graph
+    // Operations on the graph
     void GetBoardFromFile(string filename);
     void InsertBoard(SlidingBoard* board);
-    void GetMoves(SlidingBoard* board);
+    void GetAllMoves(SlidingBoard* board);
+    bool IsSolution(SlidingBoard* board);
+    void CreateMove(SlidingBoard* board, int row, int col);
     int GetHeuristic(SlidingBoard* board);
-    int GetDifficulty(SlidingBoard* board);
     void PrintBoard();
     void DeleteGraph(SlidingBoard* board);
 
 private:
-    // private variables
+    // Private variables
     SlidingBoard* root;
-    int blankRow;
-    int blankCol;
+    vector<SlidingBoard*> usedBoards = {};
     int Solution[4][4] = {{1, 2, 3, 4},
                           {5, 6, 7, 8},
                           {9, 10, 11, 12},

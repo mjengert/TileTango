@@ -1,7 +1,6 @@
 #include <iostream>
 #include "SlidingBoardsGen.h"
 #include "SlidingBoardGraph.h"
-#include "SlidingBoards.h"
 #include "WelcomeWindow.h"
 using namespace std;
 using namespace sf;
@@ -20,10 +19,12 @@ void GenerateLotsOfBoards() {
 
 // Main function
 int main() {
+    /*
     int width = 800;
     int height = 800;
     welcomeWindow welcome(width,height);
+     */
     SlidingBoardGraph Graph;
-    Graph.GetBoardFromFile("AllBoards.txt");
+    Graph.GetBoardFromFile("../DATA/AllBoards.txt");
     return 0;
 }

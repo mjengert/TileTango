@@ -13,7 +13,6 @@ endif ()
 find_package(SFML 2.6.1 COMPONENTS system window graphics audio REQUIRED)
 add_executable(TileTango
         SRC/main.cpp
-        SRC/SlidingBoards.h
         SRC/SlidingBoardsGen.h
         SRC/SlidingBoardsGen.cpp
         SRC/SlidingBoardGraph.h
