@@ -9,13 +9,14 @@
 using namespace std;
 
 struct SlidingBoard {
-    int Board[4][4];
+    int Board[4][4] = {};
     int heuristic;
     int blankRow;
     int blankCol;
     SlidingBoard* parent;
+    vector<SlidingBoard*> children;
     // constructor for the board from file
-    SlidingBoard(vector<int> board) {
+    explicit SlidingBoard(vector<int> board) {
         int index = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -29,9 +30,10 @@ struct SlidingBoard {
         }
         this->heuristic = 0;
         this->parent = nullptr;
+        this->children = {};
     }
     // constructor for the board from move
-    SlidingBoard(int board[4][4]) {
+    explicit SlidingBoard(int board[4][4]) {
         int index = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -45,6 +47,7 @@ struct SlidingBoard {
         }
         this->heuristic = 0;
         this->parent = nullptr;
+        this->children = {};
     }
 };
 

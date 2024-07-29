@@ -51,32 +51,74 @@ void SlidingBoardGraph::InsertBoard(SlidingBoard* board) {
 
 // Get the possible moves for a board; will be called recursively to get all possible moves till the solution is found
 void SlidingBoardGraph::GetAllMoves(SlidingBoard* board) {
-    // Get the row and column of the blank tile
-    int row = board->blankRow;
-    int col = board->blankCol;
-    // Check if a tile can move down into the blank space
-    if (row > 0) {
-        CreateMove(board, row + 1, col);
+    // Check if the blank tile is in the top right corner of the board
+    if (board->blankRow == 0 && board->blankCol == 0) {
+        CreateMove(board, board->blankRow + 1, board->blankCol);
     }
-    // Check if a tile can move up into blank space
-    if (row < 3) {
-        CreateMove(board, row - 1, col);
+    // Check if the blank tile is in the top left corner of the board
+    else if (board->blankRow == 0 && board->blankCol == 3) {
+        CreateMove(board, board->blankRow, board->blankCol - 1);
     }
-    // Check if a tile can move right into blank space
-    if (col > 0) {
-        CreateMove(board, row, col - 1);
+    // Check if the blank tile is in the bottom right corner of the board
+    else if (board->blankRow == 3 && board->blankCol == 0) {
+        CreateMove(board, board->blankRow - 1, board->blankCol);
     }
-    // Check if a tile can move left into blank space
-    if (col < 3) {
-        CreateMove(board, row, col + 1);
+    // Check if the blank tile is in the bottom left corner of the board
+    else if (board->blankRow == 3 && board->blankCol == 3) {
+        CreateMove(board, board->blankRow, board->blankCol + 1);
+    }
+    // Check if the blank tile is in the top row of the board
+    else if (board->blankRow == 0) {
+        CreateMove(board, board->blankRow, board->blankCol - 1);
+        CreateMove(board, board->blankRow, board->blankCol + 1);
+        CreateMove(board, board->blankRow + 1, board->blankCol);
+    }
+    // Check if the blank tile is in the bottom row of the board
+    else if (board->blankRow == 3) {
+        CreateMove(board, board->blankRow, board->blankCol - 1);
+        CreateMove(board, board->blankRow, board->blankCol + 1);
+        CreateMove(board, board->blankRow - 1, board->blankCol);
+    }
+    // Check if the blank tile is in the left column of the board
+    else if (board->blankCol == 0) {
+        CreateMove(board, board->blankRow - 1, board->blankCol);
+        CreateMove(board, board->blankRow + 1, board->blankCol);
+        CreateMove(board, board->blankRow, board->blankCol + 1);
+    }
+    // Check if the blank tile is in the right column of the board
+    else if (board->blankCol == 3) {
+        CreateMove(board, board->blankRow - 1, board->blankCol);
+        CreateMove(board, board->blankRow + 1, board->blankCol);
+        CreateMove(board, board->blankRow, board->blankCol - 1);
+    }
+    // If the blank tile is in the middle of the board
+    else {
+        CreateMove(board, board->blankRow - 1, board->blankCol);
+        CreateMove(board, board->blankRow + 1, board->blankCol);
+        CreateMove(board, board->blankRow, board->blankCol - 1);
+        CreateMove(board, board->blankRow, board->blankCol + 1);
+    }
+    bool SolutionFound = false;
+    // Check if the solution has been found
+    for (int i = 0; i < board->children.size(); i++) {
+        if (IsSolution(board->children[i])) {
+            SolutionFound = true;
+            break;
+        }
+    }
+    // If the solution has not been found, recursively call GetAllMoves on the children
+    if (!SolutionFound) {
+        for (int i = 0; i < board->children.size(); i++) {
+            GetAllMoves(board->children[i]);
+        }
+    }
+    else{
+        cout << "Solution found" << endl;
     }
 }
 
 // Create a move for a board
 void SlidingBoardGraph::CreateMove(SlidingBoard* board, int row, int col) {
-    if (board == nullptr) {
-        return;
-    }
     // Create a new board with the move
     int newBoard[4][4];
     // Copy the board into the new board
@@ -86,20 +128,27 @@ void SlidingBoardGraph::CreateMove(SlidingBoard* board, int row, int col) {
         }
     }
     // Swap the blank tile with the tile to be moved
-    newBoard[board->blankRow][board->blankCol] = newBoard[row][col];
-    newBoard[row][col] = 16;
+    swap(newBoard[board->blankRow][board->blankCol], newBoard[row][col]);
+    // Check if the new board is the same as the parent board
+    if (board->parent != nullptr) {
+        bool same = true;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (newBoard[i][j] != board->parent->Board[i][j]) {
+                    same = false;
+                    break;
+                }
+            }
+        }
+        if (same) {
+            return;
+        }
+    }
     // Create a new board
-    SlidingBoard* newBoardObj = new SlidingBoard(newBoard);
-    // Set the parent of the new board to the current board
+    auto* newBoardObj = new SlidingBoard(newBoard);
+    // Set the parent of the new board to the current board and update children of the current board
     newBoardObj->parent = board;
-    bool solution = IsSolution(newBoardObj);
-    // If the new board is the solution, stop the search
-    if (solution) {
-        cout << "Solution found" << endl;
-    }
-    else {
-        GetAllMoves(newBoardObj);
-    }
+    board->children.push_back(newBoardObj);
 }
 
 // Get the heuristic for a board
@@ -122,9 +171,15 @@ void SlidingBoardGraph::PrintBoard() {
 
 // Delete the graph
 void SlidingBoardGraph::DeleteGraph(SlidingBoard *board) {
-
+    // Recursively delete the children of the board
+    for (int i = 0; i < board->children.size(); i++) {
+        DeleteGraph(board->children[i]);
+    }
+    // Delete the board
+    delete board;
 }
 
+// Check if a board is the solution
 bool SlidingBoardGraph::IsSolution(SlidingBoard *board) {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
