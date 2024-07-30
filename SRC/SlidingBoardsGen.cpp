@@ -10,10 +10,9 @@ using namespace std;
 // File for implementing the sliding block puzzle class
 
 // For understanding of the positioning of the tiles, refer to the following:
-// 1  2  3  4
-// 5  6  7  8
-// 9  10 11 12
-// 13 14 15 16
+// 1  2  3
+// 4  5  6
+// 7  8  9
 // The blank tile is represented by 16 in the above diagram
 // When referenced in the code below, saying "position 1" means the POSITION of the tile
 // with the number 1, in other words, the top left corner of the board
@@ -56,9 +55,9 @@ void SlidingBoardsGen::GenerateBoard() {
     // Clear the board list
     BoardList.clear();
     // Generate a random board
-    int tiles = 16;
+    int tiles = 9;
     while (tiles > 0) {
-        int tile = rand() % 16 + 1;
+        int tile = rand() % 9 + 1;
         if (BoardList.find(tile) == BoardList.end()) {
             BoardList[tile] = {};
             tiles--;
@@ -67,170 +66,93 @@ void SlidingBoardsGen::GenerateBoard() {
     // Determine adjacent tiles for each tile
     int position = 1;
     auto prevIt1 = BoardList.begin();
-    auto prevIt4 = BoardList.begin();
+    auto prevIt3 = BoardList.begin();
     for (auto it = BoardList.begin(); it != BoardList.end(); it++) {
         // Position 1
         if (position == 1) {
             auto it2 = next(it, 1);
-            auto it5 = next(it, 4);
+            auto it4 = next(it, 3);
             BoardList[it->first].push_back(make_pair(it2->first, 1));
-            BoardList[it->first].push_back(make_pair(it5->first, 1));
+            BoardList[it->first].push_back(make_pair(it4->first, 1));
             position++;
         }
         // Position 2
         else if (position == 2) {
             auto it3 = next(it, 1);
-            auto it6 = next(it, 4);
+            auto it5 = next(it, 3);
             BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
             BoardList[it->first].push_back(make_pair(it3->first, 1));
-            BoardList[it->first].push_back(make_pair(it6->first, 1));
+            BoardList[it->first].push_back(make_pair(it5->first, 1));
             position++;
             prevIt1++;
         }
         // Position 3
         else if (position == 3) {
-            auto it4 = next(it, 1);
-            auto it7 = next(it, 4);
+            auto it6 = next(it, 3);
             BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
-            BoardList[it->first].push_back(make_pair(it4->first, 1));
-            BoardList[it->first].push_back(make_pair(it7->first, 1));
+            BoardList[it->first].push_back(make_pair(it6->first, 1));
             position++;
             prevIt1++;
         }
         // Position 4
         else if (position == 4) {
-            auto it8 = next(it, 4);
-            BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
-            BoardList[it->first].push_back(make_pair(it8->first, 1));
+            auto it5 = next(it, 1);
+            auto it7 = next(it, 3);
+            BoardList[it->first].push_back(make_pair(prevIt3->first, 1));
+            BoardList[it->first].push_back(make_pair(it5->first, 1));
+            BoardList[it->first].push_back(make_pair(it7->first, 1));
             position++;
             prevIt1++;
+            prevIt3++;
         }
         // Position 5
         else if (position == 5) {
             auto it6 = next(it, 1);
-            auto it9 = next(it, 4);
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
+            auto it8 = next(it, 3);
+            BoardList[it->first].push_back(make_pair(prevIt3->first, 1));
+            BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
             BoardList[it->first].push_back(make_pair(it6->first, 1));
-            BoardList[it->first].push_back(make_pair(it9->first, 1));
+            BoardList[it->first].push_back(make_pair(it8->first, 1));
             position++;
             prevIt1++;
-            prevIt4++;
+            prevIt3++;
         }
         // Position 6
         else if (position == 6) {
-            auto it7 = next(it, 1);
-            auto it10 = next(it, 4);
+            auto it9 = next(it, 3);
+            BoardList[it->first].push_back(make_pair(prevIt3->first, 1));
             BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
-            BoardList[it->first].push_back(make_pair(it7->first, 1));
-            BoardList[it->first].push_back(make_pair(it10->first, 1));
+            BoardList[it->first].push_back(make_pair(it9->first, 1));
             position++;
             prevIt1++;
-            prevIt4++;
+            prevIt3++;
         }
         // Position 7
         else if (position == 7) {
             auto it8 = next(it, 1);
-            auto it11 = next(it, 4);
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
-            BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
+            BoardList[it->first].push_back(make_pair(prevIt3->first, 1));
             BoardList[it->first].push_back(make_pair(it8->first, 1));
-            BoardList[it->first].push_back(make_pair(it11->first, 1));
             position++;
             prevIt1++;
-            prevIt4++;
+            prevIt3++;
         }
         // Position 8
         else if (position == 8) {
-            auto it12 = next(it, 4);
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
+            auto it9 = next(it, 1);
+            BoardList[it->first].push_back(make_pair(prevIt3->first, 1));
             BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
-            BoardList[it->first].push_back(make_pair(it12->first, 1));
+            BoardList[it->first].push_back(make_pair(it9->first, 1));
             position++;
             prevIt1++;
-            prevIt4++;
+            prevIt3++;
         }
         // Position 9
         else if (position == 9) {
-            auto it10 = next(it, 1);
-            auto it13 = next(it, 4);
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
-            BoardList[it->first].push_back(make_pair(it10->first, 1));
-            BoardList[it->first].push_back(make_pair(it13->first, 1));
-            position++;
-            prevIt1++;
-            prevIt4++;
-        }
-        // Position 10
-        else if (position == 10) {
-            auto it11 = next(it, 1);
-            auto it14 = next(it, 4);
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
-            BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
-            BoardList[it->first].push_back(make_pair(it11->first, 1));
-            BoardList[it->first].push_back(make_pair(it14->first, 1));
-            position++;
-            prevIt1++;
-            prevIt4++;
-        }
-        // Position 11
-        else if (position == 11) {
-            auto it12 = next(it, 1);
-            auto it15 = next(it, 4);
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
-            BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
-            BoardList[it->first].push_back(make_pair(it12->first, 1));
-            BoardList[it->first].push_back(make_pair(it15->first, 1));
-            position++;
-            prevIt1++;
-            prevIt4++;
-        }
-        // Position 12
-        else if (position == 12) {
-            auto it16 = next(it, 4);
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
-            BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
-            BoardList[it->first].push_back(make_pair(it16->first, 1));
-            position++;
-            prevIt1++;
-            prevIt4++;
-        }
-        // Position 13
-        else if (position == 13) {
-            auto it14 = next(it, 1);
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
-            BoardList[it->first].push_back(make_pair(it14->first, 1));
-            position++;
-            prevIt1++;
-            prevIt4++;
-        }
-        // Position 14
-        else if (position == 14) {
-            auto it15 = next(it, 1);
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
-            BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
-            BoardList[it->first].push_back(make_pair(it15->first, 1));
-            position++;
-            prevIt1++;
-            prevIt4++;
-        }
-        // Position 15
-        else if (position == 15) {
-            auto it16 = next(it, 1);
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
-            BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
-            BoardList[it->first].push_back(make_pair(it16->first, 1));
-            position++;
-            prevIt1++;
-            prevIt4++;
-        }
-        // Position 16
-        else if (position == 16) {
-            BoardList[it->first].push_back(make_pair(prevIt4->first, 1));
+            BoardList[it->first].push_back(make_pair(prevIt3->first, 1));
             BoardList[it->first].push_back(make_pair(prevIt1->first, 1));
             position++;
             prevIt1++;
-            prevIt4++;
+            prevIt3++;
         }
     }
 }
@@ -258,20 +180,13 @@ bool SlidingBoardsGen::isSolvable() {
     // Count the number of inversions
     for (int i = 0; i < board.size(); i++) {
         for (int j = i + 1; j < board.size(); j++) {
-            if (board[i] > board[j] && board[i] != 16 && board[j] != 16) {
+            if (board[i] > board[j] && board[i] != 9 && board[j] != 9) {
                 inversions++;
             }
         }
     }
-    // Find the position of the blank tile
-    int blankTile = 0;
-    for (int i = 0; i < board.size(); i++) {
-        if (board[i] == 16) {
-            blankTile = i;
-        }
-    }
     // Check if the board is solvable
-    if ((blankTile % 2 == 0 && inversions % 2 == 1) || (blankTile % 2 == 1 && inversions % 2 == 0)) {
+    if (inversions % 2 == 0) {
         return true;
     }
     // If the board is not solvable, return false

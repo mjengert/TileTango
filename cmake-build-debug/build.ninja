@@ -70,20 +70,6 @@ build CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.o: CXX_COMPILER__TileTa
   OBJECT_DIR = CMakeFiles/TileTango.dir
   OBJECT_FILE_DIR = CMakeFiles/TileTango.dir/SRC
 
-build CMakeFiles/TileTango.dir/SRC/IDA.cpp.o: CXX_COMPILER__TileTango_unscanned_Debug /Users/mj-home/CLionProjects/TileTango/SRC/IDA.cpp || cmake_object_order_depends_target_TileTango
-  DEP_FILE = CMakeFiles/TileTango.dir/SRC/IDA.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
-  INCLUDES = -isystem /opt/homebrew/include
-  OBJECT_DIR = CMakeFiles/TileTango.dir
-  OBJECT_FILE_DIR = CMakeFiles/TileTango.dir/SRC
-
-build CMakeFiles/TileTango.dir/SRC/BFS.cpp.o: CXX_COMPILER__TileTango_unscanned_Debug /Users/mj-home/CLionProjects/TileTango/SRC/BFS.cpp || cmake_object_order_depends_target_TileTango
-  DEP_FILE = CMakeFiles/TileTango.dir/SRC/BFS.cpp.o.d
-  FLAGS = -g -std=gnu++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
-  INCLUDES = -isystem /opt/homebrew/include
-  OBJECT_DIR = CMakeFiles/TileTango.dir
-  OBJECT_FILE_DIR = CMakeFiles/TileTango.dir/SRC
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target TileTango
@@ -92,7 +78,7 @@ build CMakeFiles/TileTango.dir/SRC/BFS.cpp.o: CXX_COMPILER__TileTango_unscanned_
 #############################################
 # Link the executable TileTango
 
-build TileTango: CXX_EXECUTABLE_LINKER__TileTango_Debug CMakeFiles/TileTango.dir/SRC/main.cpp.o CMakeFiles/TileTango.dir/SRC/SlidingBoardsGen.cpp.o CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.o CMakeFiles/TileTango.dir/SRC/IDA.cpp.o CMakeFiles/TileTango.dir/SRC/BFS.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.1.dylib /opt/homebrew/lib/libsfml-audio.2.6.1.dylib /opt/homebrew/lib/libsfml-window.2.6.1.dylib /opt/homebrew/lib/libsfml-system.2.6.1.dylib
+build TileTango: CXX_EXECUTABLE_LINKER__TileTango_Debug CMakeFiles/TileTango.dir/SRC/main.cpp.o CMakeFiles/TileTango.dir/SRC/SlidingBoardsGen.cpp.o CMakeFiles/TileTango.dir/SRC/SlidingBoardGraph.cpp.o | /opt/homebrew/lib/libsfml-graphics.2.6.1.dylib /opt/homebrew/lib/libsfml-audio.2.6.1.dylib /opt/homebrew/lib/libsfml-window.2.6.1.dylib /opt/homebrew/lib/libsfml-system.2.6.1.dylib
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/lib  /opt/homebrew/lib/libsfml-graphics.2.6.1.dylib  /opt/homebrew/lib/libsfml-audio.2.6.1.dylib  /opt/homebrew/lib/libsfml-window.2.6.1.dylib  /opt/homebrew/lib/libsfml-system.2.6.1.dylib
   OBJECT_DIR = CMakeFiles/TileTango.dir

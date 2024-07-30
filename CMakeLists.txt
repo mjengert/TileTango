@@ -17,8 +17,5 @@ add_executable(TileTango
         SRC/SlidingBoardsGen.cpp
         SRC/SlidingBoardGraph.h
         SRC/SlidingBoardGraph.cpp
-        SRC/IDA.h
-        SRC/BFS.h
-        SRC/IDA.cpp
-        SRC/BFS.cpp)
+)
 target_link_libraries(TileTango sfml-system sfml-window sfml-graphics sfml-audio)
