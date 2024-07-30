@@ -25,7 +25,6 @@ struct GameWindow{
         window.clear(Color(63, 63, 131));
         window.draw(images.BFSSprite);
         window.draw(images.IDASprite);
-        window.draw(images.InfoSprite);
         window.draw(images.MainMenuSprite);
         window.draw(images.ScrambleSprite);
         window.draw(images.FastestAlgorithmSprite);

@@ -18,18 +18,13 @@ struct WelcomeWindow{
                     window.close();
                 }
                 if(event.type == Event::MouseButtonPressed){
-                    if(images.EasySprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        cout << "Easy" << endl;
+                    if(images.StartSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
+                        cout << "Start" << endl;
                         window.close();
                         GameWindow gameWindow(width, height, images);
                     }
-                    else if(images.MediumSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
+                    else if(images.InfoSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         cout << "Medium" << endl;
-                        window.close();
-                        GameWindow gameWindow(width, height, images);
-                    }
-                    else if(images.HardSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        cout << "Hard" << endl;
                         window.close();
                         GameWindow gameWindow(width, height, images);
                     }
@@ -43,9 +38,8 @@ struct WelcomeWindow{
     void welcomeDipslay(RenderWindow &window, Images &images){
         window.clear(Color(63, 63, 131));
         window.draw(images.TitleSprite);
-        window.draw(images.EasySprite);
-        window.draw(images.MediumSprite);
-        window.draw(images.HardSprite);
+        window.draw(images.StartSprite);
+        window.draw(images.InfoSprite);
         window.display();
     }
 };

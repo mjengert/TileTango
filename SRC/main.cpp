@@ -17,11 +17,11 @@ void GenerateLotsOfBoards() {
 // Main function
 int main() {
 
-//    int width = 1000;
-//    int height = 900;
-//    WelcomeWindow welcome(width,height);
+    int width = 1000;
+    int height = 900;
+    WelcomeWindow welcome(width,height);
 
-    SlidingBoardGraph Graph;
-    Graph.GetBoardFromFile("../DATA/AllBoards.txt");
+//    SlidingBoardGraph Graph;
+//    Graph.GetBoardFromFile("../DATA/AllBoards.txt");
     return 0;
 }
