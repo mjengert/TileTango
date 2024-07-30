@@ -15,6 +15,9 @@ struct GameWindow{
                 if(event.type == Event::Closed){
                     window.close();
                 }
+                if(event.type == Event::MouseButtonPressed){
+
+                }
             }
 
             GameDisplay();

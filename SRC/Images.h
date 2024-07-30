@@ -73,20 +73,20 @@ struct Images{
 
 
         TitleSprite.setPosition(width / 2.0f, height / 8.0f);
-        StartSprite.setPosition(width / 2.0f, (height / 8.0f) * 3);
-        InfoSprite.setPosition(width / 2.0f, (height / 8.0f) * 5);
+        StartSprite.setPosition(width / 3.0f, (height / 8.0f) * 5);
+        InfoSprite.setPosition((width / 3.0f) * 2, (height / 8.0f) * 5);
 
-        BFSSprite.setPosition((width / 6.0f) * 2, (height / 8.0f) * 2);
-        IDASprite.setPosition((width / 6.0f) * 4, (height / 8.0f) * 2);
+        BFSSprite.setPosition((width / 7.0f) * 2 - 70, (height / 8.0f) * 2);
+        IDASprite.setPosition((width / 7.0f) * 5 + 70, (height / 8.0f) * 2);
         FastestAlgorithmSprite.setPosition(width / 2.0f, height / 8.0f);
 
         current = 140;
         totalSpace = width - (current * 2);
 
         MainMenuSprite.setPosition(current, (height / 8.0f) * 7);
-        current += totalSpace / 3.0f;
+        current += totalSpace / 2.0f;
         ScrambleSprite.setPosition(current, (height / 8.0f) * 7);
-        current += totalSpace / 3.0f;
+        current += totalSpace / 2.0f;
         SolveSprite.setPosition(current, (height / 8.0f) * 7);
 
     }

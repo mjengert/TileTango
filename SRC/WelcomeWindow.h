@@ -25,7 +25,6 @@ struct WelcomeWindow{
                     }
                     else if(images.InfoSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         cout << "Medium" << endl;
-                        window.close();
                         GameWindow gameWindow(width, height, images);
                     }
                 }
