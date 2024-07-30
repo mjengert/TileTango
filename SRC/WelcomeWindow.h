@@ -1,166 +1,127 @@
-#include <iostream>
-#include <fstream>
-#include <SFML/Graphics.hpp>
+#include "GameBoardWindow.h"
 using namespace std;
 using namespace sf;
 
-struct welcomeWindow{
-    RenderWindow window;
-    Font font;
-    Text titleMessage;
-    Text welcomeMessage;
-    RectangleShape titleBox;
-    RectangleShape easyBox;
-    RectangleShape mediumBox;
-    RectangleShape hardBox;
-    Mouse mouse;
-    vector<RectangleShape*> buttons;
-    Text easy;
-    Text medium;
-    Text hard;
-    vector<Text*> buttonTexts;
-    Event event;
-    float totalButtonTextWidth;
-    float totalButtonSpacing;
-    float spacingBetweenButtons;
-    int width;
-    int height;
+struct Images{
+    Texture TitleTexture;
+    Texture EasyTexture;
+    Texture MediumTexture;
+    Texture HardTexture;
+    Texture BFSTexture;
+    Texture FastestAlgorithmTexture;
+    Texture IDATexture;
+    Texture InfoTexture;
+    Texture MainMenuTexture;
+    Texture ScrambleTexture;
+    Texture SolveTexture;
 
-    welcomeWindow(int &width, int &height){
-        this->width = width;
-        this->height = height;
+    Sprite TitleSprite;
+    Sprite EasySprite;
+    Sprite MediumSprite;
+    Sprite HardSprite;
+    Sprite BFSSprite;
+    Sprite FastestAlgorithmSprite;
+    Sprite IDASprite;
+    Sprite InfoSprite;
+    Sprite MainMenuSprite;
+    Sprite ScrambleSprite;
+    Sprite SolveSprite;
 
-        // Creates window
-        window.create(VideoMode(width, height), "Tile Tango");
+    vector<string> Text = {"Title", "Easy", "Medium", "Hard", "BFS", "Fastest Algorithm",
+                           "IDA", "Info", "Main Menu", "Scramble","Solve"};
+    vector<Texture*> TextTextures = {&TitleTexture, &EasyTexture, &MediumTexture, &HardTexture,
+                                     &BFSTexture, &FastestAlgorithmTexture, &IDATexture, &InfoTexture, &MainMenuTexture,
+                                     &ScrambleTexture, &SolveTexture};
+    vector<Sprite*> TextSprites = {&TitleSprite, &EasySprite, &MediumSprite, &HardSprite,
+                                   &BFSSprite, &FastestAlgorithmSprite, &IDASprite, &InfoSprite,
+                                   &MainMenuSprite, &ScrambleSprite, &SolveSprite};
+    string loadFile;
 
-        // Creates the font
-        if(!font.loadFromFile("files/OleoScript-Regular.ttf")){
-            cout << "failed to load font." << endl;
+    Images(){
+        loadImages();
+    }
+
+    void loadTextures(){
+        for(int i = 0; i < Text.size(); i++){
+            loadFile = "../IMAGES/TileTango Text/" + Text[i] + ".png";
+
+            if(!TextTextures[i]->loadFromFile(loadFile)){
+                cout << "Error loading " + loadFile << endl;
+            }
+        }
+    }
+
+    void loadImages(){
+        loadTextures();
+        for(int i = 0; i < Text.size(); i++){
+            TextSprites[i]->setTexture(*TextTextures[i]);
         }
 
-        createTitleMessage();
-        titleBox = createTitleBox(titleMessage, 10.0f);
-        createWelcomeMessage();
-        createButtonText();
-        createRectangleButton(easy, easyBox);
-        createRectangleButton(medium, mediumBox);
-        createRectangleButton(hard, hardBox);
+    }
+
+    void setPositions(int &width, int &height){
+        for(int i = 0; i < Text.size(); i++){
+            TextSprites[i]->setOrigin(TextSprites[i]->getGlobalBounds().width / 2.0f, TextSprites[i]->getGlobalBounds().height / 2.0f);
+        }
+
+        float current = 140;
+        float totalSpace = width - (current * 2);
+
+
+        TitleSprite.setPosition(width / 2.0f,height / 2.0f);
+        EasySprite.setPosition(current, (height / 3.0f) * 2);
+        current += totalSpace / 2.0f;
+        MediumSprite.setPosition(current, (height / 3.0f) * 2);
+        current += totalSpace / 2.0f;
+        HardSprite.setPosition(current, (height / 3.0f) * 2);
+    }
+};
+
+struct WelcomeWindow{
+    RenderWindow window;
+    Event event;
+    Mouse mouse;
+    Font font;
+    Images images;
+
+    WelcomeWindow(int &width, int &height){
+        images.setPositions(width, height);
+        window.create(VideoMode(width, height), "Tile Tango");
 
         while(window.isOpen()){
-
             while(window.pollEvent(event)){
                 if(event.type == Event::Closed){
                     window.close();
                 }
-                else if(event.type == Event::MouseButtonPressed){
-                    if(easyBox.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        cout << "easy" << endl;
+                if(event.type == Event::MouseButtonPressed){
+                    if(images.EasySprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
+                        cout << "Easy" << endl;
+                        window.close();
+                        GameWindow gameWindow(width, height);
                     }
-                    else if(mediumBox.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        cout << "medium" << endl;
+                    else if(images.MediumSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
+                        cout << "Medium" << endl;
+                        window.close();
+                        GameWindow gameWindow(width, height);
                     }
-                    else if(hardBox.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        cout << "hard" << endl;
-                    }
-                    else if(welcomeMessage.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        cout << "suffer" << endl;
+                    else if(images.HardSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
+                        cout << "Hard" << endl;
+                        window.close();
+                        GameWindow gameWindow(width, height);
                     }
                 }
             }
 
-            welcomeDipslay();
+            welcomeDipslay(window, images);
         }
     }
 
-    void setTextFont(Text& text, Font &font, int size, Color color, string message){
-        text.setFont(font);
-        text.setString(message);
-        text.setCharacterSize(size);
-        text.setFillColor(color);
-    }
-
-    void createTitleMessage(){
-        setTextFont(titleMessage, font, 50, Color::White, "Tile Tango");
-
-        // Center text
-        FloatRect textRect = titleMessage.getLocalBounds();
-        titleMessage.setOrigin(textRect.left + textRect.width/2.0f, textRect.top+textRect.height/2.0f);
-        titleMessage.setPosition(window.getSize().x/2.0f, (window.getSize().y/2.0f)-150);
-    }
-
-    RectangleShape createTitleBox(Text &text, float padding = 10.0f){
-        FloatRect  textRect = text.getLocalBounds();
-        RectangleShape titleBox(Vector2f(textRect.width + 2 * padding, textRect.height + 2 * padding));
-        titleBox.setFillColor(Color::Green);
-        titleBox.setOutlineThickness(5);
-        titleBox.setOutlineColor(Color::Black);
-
-        titleBox.setOrigin(titleBox.getSize().x/2.0f, titleBox.getSize().y/2.0f);
-        titleBox.setPosition(window.getSize().x/2.0f, (window.getSize().y/2.0f)-150);
-        return titleBox;
-    }
-
-    void createWelcomeMessage(){
-        setTextFont(welcomeMessage, font, 20, Color::White, "Select how you want to suffer!");
-
-        // Center text
-        FloatRect textRect = welcomeMessage.getGlobalBounds();
-        welcomeMessage.setOrigin(textRect.left + textRect.width/2.0f, textRect.top + textRect.height/2.0f);
-        welcomeMessage.setPosition(window.getSize().x/2.0f, (window.getSize().y/2.0f)-75);
-    }
-
-    void createRectangleButton(Text &text, RectangleShape &button, float padding = 10.0f){
-        FloatRect  textRect = text.getLocalBounds();
-        RectangleShape newButton(Vector2f(textRect.width + 2 * padding, textRect.height + 2 * padding));
-        newButton.setFillColor(Color::Green);
-        newButton.setOutlineThickness(5);
-        newButton.setOutlineColor(Color::Black);
-
-        newButton.setOrigin(newButton.getSize().x/2.0f, newButton.getSize().y/2.0f);
-        newButton.setPosition(text.getPosition().x,text.getPosition().y);
-
-        button = newButton;
-    }
-
-    void createButtonText(){
-        totalButtonTextWidth = 0;
-        buttonTexts.push_back(&easy);
-        buttonTexts.push_back(&medium);
-        buttonTexts.push_back(&hard);
-
-        //------------------------------ SETTING UP TEXT ------------------------------//
-        for(auto &text : buttonTexts){
-            setTextFont(*text, font, 30, Color::White, "");
-        }
-
-        easy.setString("Easy");
-        medium.setString("Medium");
-        hard.setString("Hard");
-
-        //------------------------------ POSITIONING TEXT ------------------------------//
-        totalButtonSpacing = width - totalButtonTextWidth - easy.getLocalBounds().width;
-        spacingBetweenButtons = totalButtonSpacing / 3;
-        float currentX = easy.getLocalBounds().width;
-
-        for(auto &text : buttonTexts){
-            FloatRect textRect = text->getLocalBounds();
-            text->setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-            text->setPosition(currentX, height / 2);
-            currentX += textRect.width + spacingBetweenButtons;
-        }
-    }
-
-    void welcomeDipslay(){
+    void welcomeDipslay(RenderWindow &window, Images &images){
         window.clear(Color(63, 63, 131));
-        window.draw(titleBox);
-        window.draw(titleMessage);
-        window.draw(welcomeMessage);
-        window.draw(easyBox);
-        window.draw(mediumBox);
-        window.draw(hardBox);
-        window.draw(easy);
-        window.draw(medium);
-        window.draw(hard);
+        window.draw(images.TitleSprite);
+        window.draw(images.EasySprite);
+        window.draw(images.MediumSprite);
+        window.draw(images.HardSprite);
         window.display();
     }
 };
