@@ -9,18 +9,18 @@
 using namespace std;
 
 struct SlidingBoard {
-    int Board[4][4] = {};
+    int Board[3][3] = {};
     int heuristic;
     int blankRow;
     int blankCol;
-    SlidingBoard* parent;
-    vector<SlidingBoard*> children;
+    SlidingBoard* parent = nullptr;
+    vector<SlidingBoard*> children = {};
     // constructor for the board from file
     explicit SlidingBoard(vector<int> board) {
         int index = 0;
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (board[index] == 16) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[index] == 9) {
                     blankRow = i;
                     blankCol = j;
                 }
@@ -33,11 +33,11 @@ struct SlidingBoard {
         this->children = {};
     }
     // constructor for the board from move
-    explicit SlidingBoard(int board[4][4]) {
+    explicit SlidingBoard(int board[3][3]) {
         int index = 0;
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (board[i][j] == 16) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == 9) {
                     blankRow = i;
                     blankCol = j;
                 }
@@ -66,7 +66,7 @@ public:
     // Operations on the graph
     void GetBoardFromFile(string filename);
     void InsertBoard(SlidingBoard* board);
-    void GetAllMoves(SlidingBoard* board);
+    void GetAllMoves(SlidingBoard* board, int depth);
     bool IsSolution(SlidingBoard* board);
     void CreateMove(SlidingBoard* board, int row, int col);
     int GetHeuristic(SlidingBoard* board);
@@ -77,10 +77,10 @@ private:
     // Private variables
     SlidingBoard* root;
     vector<SlidingBoard*> usedBoards = {};
-    int Solution[4][4] = {{1, 2, 3, 4},
-                          {5, 6, 7, 8},
-                          {9, 10, 11, 12},
-                          {13, 14, 15, 0}};
+    vector<SlidingBoard*> gameStates = {};
+    int Solution[3][3] = {{1, 2, 3},
+                          {4, 5, 6},
+                          {7, 8, 9}};
 };
 
 #endif //TILETANGO_SLIDINGBOARDGRAPH_H
