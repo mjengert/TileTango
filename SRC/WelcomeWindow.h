@@ -1,6 +1,4 @@
 #include "GameBoardWindow.h"
-using namespace std;
-using namespace sf;
 
 struct WelcomeWindow{
     RenderWindow window;
@@ -24,7 +22,6 @@ struct WelcomeWindow{
                         GameWindow gameWindow(width, height, images);
                     }
                     else if(images.InfoSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        cout << "Medium" << endl;
                         GameWindow gameWindow(width, height, images);
                     }
                 }

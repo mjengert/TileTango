@@ -1,6 +1,6 @@
 #include "SlidingBoardsGen.h"
 #include "SlidingBoardGraph.h"
-#include "WelcomeWindow.h"
+#include  "WelcomeWindow.h"
 
 // Project 3 - TileTango
 // Partners: Maralynn Engert, Natalie Poche, Andre Stennett
@@ -21,7 +21,7 @@ int main() {
     int height = 900;
     WelcomeWindow welcome(width,height);
 
-//    SlidingBoardGraph Graph;
-//    Graph.GetBoardFromFile("../DATA/AllBoards.txt");
+    SlidingBoardGraph Graph;
+    Graph.GetBoardFromFile("../DATA/AllBoards.txt");
     return 0;
 }
