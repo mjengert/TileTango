@@ -5,6 +5,7 @@ using namespace std;
 using namespace sf;
 
 struct Images{
+    int width, height;
     Texture TitleTexture;
     Texture EasyTexture;
     Texture MediumTexture;
@@ -41,6 +42,11 @@ struct Images{
 
     Images(){
         loadImages();
+    };
+
+    Images(int &width, int &height){
+        loadImages();
+        setPositions(width, height);
     }
 
     void loadTextures(){
@@ -76,5 +82,21 @@ struct Images{
         MediumSprite.setPosition(current, (height / 3.0f) * 2);
         current += totalSpace / 2.0f;
         HardSprite.setPosition(current, (height / 3.0f) * 2);
+
+        BFSSprite.setPosition((width / 6.0f) * 2, (height / 8.0f) * 2);
+        IDASprite.setPosition((width / 6.0f) * 4, (height / 8.0f) * 2);
+        FastestAlgorithmSprite.setPosition(width / 2.0f, height / 8.0f);
+
+        current = 140;
+        totalSpace = width - (current * 2);
+
+        MainMenuSprite.setPosition(current, (height / 8.0f) * 7);
+        current += totalSpace / 3.0f;
+        InfoSprite.setPosition(current, (height / 8.0f) * 7);
+        current += totalSpace / 3.0f;
+        ScrambleSprite.setPosition(current, (height / 8.0f) * 7);
+        current += totalSpace / 3.0f;
+        SolveSprite.setPosition(current, (height / 8.0f) * 7);
+
     }
 };

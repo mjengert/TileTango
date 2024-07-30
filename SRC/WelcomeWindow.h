@@ -7,10 +7,9 @@ struct WelcomeWindow{
     Event event;
     Mouse mouse;
     Font font;
-    Images images;
 
     WelcomeWindow(int &width, int &height){
-        images.setPositions(width, height);
+        Images images(width, height);
         window.create(VideoMode(width, height), "Tile Tango");
 
         while(window.isOpen()){
