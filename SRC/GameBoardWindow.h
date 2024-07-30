@@ -1,15 +1,11 @@
-#include <iostream>
-#include <fstream>
-#include <SFML/Graphics.hpp>
-using namespace std;
-using namespace sf;
+#include "Images.h"
 
 struct GameWindow{
     RenderWindow window;
     Event event;
     Mouse mouse;
 
-    GameWindow(int &width, int &height){
+    GameWindow(int &width, int &height, Images &images){
         window.create(VideoMode(width, height), "Tile Tango");
 
         while(window.isOpen()){
