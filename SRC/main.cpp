@@ -1,9 +1,6 @@
-#include <iostream>
 #include "SlidingBoardsGen.h"
 #include "SlidingBoardGraph.h"
 #include "WelcomeWindow.h"
-using namespace std;
-using namespace sf;
 
 // Project 3 - TileTango
 // Partners: Maralynn Engert, Natalie Poche, Andre Stennett
@@ -19,11 +16,11 @@ void GenerateLotsOfBoards() {
 
 // Main function
 int main() {
-    /*
-    int width = 800;
-    int height = 800;
-    welcomeWindow welcome(width,height);
-     */
+
+//    int width = 1000;
+//    int height = 900;
+//    WelcomeWindow welcome(width,height);
+
     SlidingBoardGraph Graph;
     Graph.GetBoardFromFile("../DATA/AllBoards.txt");
     return 0;
