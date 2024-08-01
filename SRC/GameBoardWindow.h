@@ -18,7 +18,6 @@ struct GameWindow{
                 if(event.type == Event::MouseButtonPressed){
                     if(images.MainMenuSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         cout << "Start" << endl;
-                        window.close();
                     }
                     else if(images.ScrambleSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         cout << "Scramble" << endl;

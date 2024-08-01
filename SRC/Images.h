@@ -34,6 +34,47 @@ struct Images{
     vector<Sprite*> TextSprites = {&TitleSprite, &StartSprite, &BFSSprite, &FastestAlgorithmSprite,
                                    &IDASprite, &InfoSprite, &MainMenuSprite,
                                    &ScrambleSprite, &SolveSprite};
+
+    Texture OneTexture;
+    Texture TwoTexture;
+    Texture ThreeTexture;
+    Texture FourTexture;
+    Texture FiveTexture;
+    Texture SixTexture;
+    Texture SevenTexture;
+    Texture EightTexture;
+    Texture NineTexture;
+    Texture TenTexture;
+    Texture ElevenTexture;
+    Texture TwelveTexture;
+    Texture ThirteenTexture;
+    Texture FourteenTexture;
+    Texture FifteenTexture;
+
+    Sprite OneSprite;
+    Sprite TwoSprite;
+    Sprite ThreeSprite;
+    Sprite FourSprite;
+    Sprite FiveSprite;
+    Sprite SixSprite;
+    Sprite SevenSprite;
+    Sprite EightSprite;
+    Sprite NineSprite;
+    Sprite TenSprite;
+    Sprite ElevenSprite;
+    Sprite TwelveSprite;
+    Sprite ThirteenSprite;
+    Sprite FourteenSprite;
+    Sprite FifteenSprite;
+
+    vector<Texture*> NumberTextures = {&OneTexture, &TwoTexture, &ThreeTexture, &FourTexture, &FiveTexture, &SixTexture,
+                                       &SevenTexture, &EightTexture, &NineTexture, &TenTexture, &ElevenTexture, &TwelveTexture,
+                                       &ThirteenTexture, &FourteenTexture, &FifteenTexture};
+
+    vector<Sprite*> NumberSprites = {&OneSprite, &TwoSprite, &ThreeSprite, &FourSprite, &FiveSprite, &SixSprite,
+                                     &SevenSprite, &EightSprite, &NineSprite, &TenSprite, &ElevenSprite, &TwelveSprite,
+                                     &ThirteenSprite, &FourteenSprite, &FifteenSprite};
+
     string loadFile;
 
     Images(){
@@ -50,6 +91,13 @@ struct Images{
             loadFile = "../IMAGES/TileTango Text/" + Text[i] + ".png";
 
             if(!TextTextures[i]->loadFromFile(loadFile)){
+                cout << "Error loading " + loadFile << endl;
+            }
+        }
+
+        for(int i = 1; i < NumberSprites.size(); i++){
+            loadFile = "../IMAGES/TileTango Numbers/" + to_string(i) + ".png";
+            if(!NumberTextures[i]->loadFromFile(loadFile)){
                 cout << "Error loading " + loadFile << endl;
             }
         }
