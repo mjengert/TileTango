@@ -7,6 +7,8 @@ struct GameWindow{
     Images images;
     int width;
     int height;
+
+    // Fake generated boards to set up a tile drawing system
     int IDABoard[3][3] = {{1, 2, 3},
                           {4, 5, 6},
                           {7, 8, 9}};
@@ -15,17 +17,21 @@ struct GameWindow{
                           {4, 5, 6},
                           {7, 8, 9}};
 
+    // Game window set up
     GameWindow(int &width, int &height, Images &images){
         this->width = width;
         this->height = height;
         this->images = images;
-        window.create(VideoMode(width, height), "Tile Tango");
+        window.create(VideoMode(width, height), "Tile Tango: Game");
 
         while(window.isOpen()){
             while(window.pollEvent(event)){
+
                 if(event.type == Event::Closed){
                     window.close();
                 }
+
+                // Button Executions
                 if(event.type == Event::MouseButtonPressed){
                     if(images.MainMenuSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         cout << "Start" << endl;
@@ -39,14 +45,20 @@ struct GameWindow{
                 }
             }
 
+            // Prints out the game
             GameDisplay();
         }
     }
 
+    // Sets up the number tiles based on the board input
     void setNumberPositons(int board[3][3], float currentX, float currentY){
-        for(int i = 0; i < 3; i++){
+
+        for(int i = 0; i < 3; i++){ // Goes through every row
+
+            // resets X position to keep rows in line
             float changingX = currentX;
-            for(int j = 0; j < 3; j++){
+
+            for(int j = 0; j < 3; j++){ // Goes through every column
                 if(board[i][j] == 1){
                     images.OneSprite.setPosition(changingX, currentY);
                     window.draw(images.OneSprite);
@@ -83,8 +95,11 @@ struct GameWindow{
                     images.NineSprite.setPosition(changingX, currentY);
                     window.draw(images.NineSprite);
                 }
+
+                // Adjusts x position so each column is right next to the other
                 changingX += images.OneSprite.getGlobalBounds().getSize().x;
             }
+            // Adjusts y position so each row is on top of one another
             currentY += images.OneSprite.getGlobalBounds().getSize().y;
         }
     }
