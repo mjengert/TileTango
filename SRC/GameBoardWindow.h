@@ -19,7 +19,6 @@ struct GameWindow{
         this->width = width;
         this->height = height;
         this->images = images;
-        setNumberPositons();
         window.create(VideoMode(width, height), "Tile Tango");
 
         while(window.isOpen()){
@@ -37,7 +36,6 @@ struct GameWindow{
                     else if(images.SolveSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         cout << "Solve" << endl;
                     }
-                    setNumberPositons();
                 }
             }
 
@@ -45,41 +43,47 @@ struct GameWindow{
         }
     }
 
-    void setNumberPositons(){
-        int currentY = width / 3.0f;
-
+    void setNumberPositons(int board[3][3], float currentX, float currentY){
         for(int i = 0; i < 3; i++){
-            int currentX = 140;
+            float changingX = currentX;
             for(int j = 0; j < 3; j++){
-                if(IDABoard[i][j] == 1){
-                    images.OneSprite.setPosition(currentX, currentY);
+                if(board[i][j] == 1){
+                    images.OneSprite.setPosition(changingX, currentY);
+                    window.draw(images.OneSprite);
                 }
-                else if(IDABoard[i][j] == 2){
-                    images.TwoSprite.setPosition(currentX, currentY);
+                else if(board[i][j] == 2){
+                    images.TwoSprite.setPosition(changingX, currentY);
+                    window.draw(images.TwoSprite);
                 }
-                else if(IDABoard[i][j] == 3){
-                    images.ThreeSprite.setPosition(currentX, currentY);
+                else if(board[i][j] == 3){
+                    images.ThreeSprite.setPosition(changingX, currentY);
+                    window.draw(images.ThreeSprite);
                 }
-                else if(IDABoard[i][j] == 4){
-                    images.FourSprite.setPosition(currentX, currentY);
+                else if(board[i][j] == 4){
+                    images.FourSprite.setPosition(changingX, currentY);
+                    window.draw(images.FourSprite);
                 }
-                else if(IDABoard[i][j] == 5){
-                    images.FiveSprite.setPosition(currentX, currentY);
+                else if(board[i][j] == 5){
+                    images.FiveSprite.setPosition(changingX, currentY);
+                    window.draw(images.FiveSprite);
                 }
-                else if(IDABoard[i][j] == 6){
-                    images.SixSprite.setPosition(currentX, currentY);
+                else if(board[i][j] == 6){
+                    images.SixSprite.setPosition(changingX, currentY);
+                    window.draw(images.SixSprite);
                 }
-                else if(IDABoard[i][j] == 7){
-                    images.SevenSprite.setPosition(currentX, currentY);
+                else if(board[i][j] == 7){
+                    images.SevenSprite.setPosition(changingX, currentY);
+                    window.draw(images.SevenSprite);
                 }
-                else if(IDABoard[i][j] == 8){
-                    images.EightSprite.setPosition(currentX, currentY);
+                else if(board[i][j] == 8){
+                    images.EightSprite.setPosition(changingX, currentY);
+                    window.draw(images.EightSprite);
                 }
-                else if(IDABoard[i][j] == 9){
-                    images.NineSprite.setPosition(currentX, currentY);
+                else if(board[i][j] == 9){
+                    images.NineSprite.setPosition(changingX, currentY);
+                    window.draw(images.NineSprite);
                 }
-
-                currentX += images.OneSprite.getGlobalBounds().getSize().x;
+                changingX += images.OneSprite.getGlobalBounds().getSize().x;
             }
             currentY += images.OneSprite.getGlobalBounds().getSize().y;
         }
@@ -87,21 +91,14 @@ struct GameWindow{
 
     void GameDisplay(){
         window.clear(Color(63, 63, 131));
-        window.draw(images.OneSprite);
-        window.draw(images.TwoSprite);
-        window.draw(images.ThreeSprite);
-        window.draw(images.FourSprite);
-        window.draw(images.FiveSprite);
-        window.draw(images.SixSprite);
-        window.draw(images.SevenSprite);
-        window.draw(images.EightSprite);
-        window.draw(images.NineSprite);
         window.draw(images.IDASprite);
         window.draw(images.BFSSprite);
         window.draw(images.MainMenuSprite);
         window.draw(images.ScrambleSprite);
         window.draw(images.FastestAlgorithmSprite);
         window.draw(images.SolveSprite);
+        setNumberPositons(IDABoard, 140, height / 3.0f);
+        setNumberPositons(BFSBoard, width / 2.0f, height / 3.0f);
         window.display();
     }
 };
