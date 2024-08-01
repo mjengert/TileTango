@@ -12,6 +12,7 @@ struct InfoWindow{
         this->width = width;
         this->height = height;
 
+        // Creates information Window
         window.create(VideoMode(width, height), "Tile Tango: Information");
 
         while(window.isOpen()){

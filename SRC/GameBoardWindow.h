@@ -42,6 +42,8 @@ struct GameWindow{
                     else if(images.SolveSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         cout << "Solve" << endl;
                     }
+
+                    // Need to add button executions
                 }
             }
 
