@@ -6,6 +6,8 @@ using namespace sf;
 
 struct Images{
     int width, height;
+
+    //========================================= Title Text Variables =========================================//
     Texture TitleTexture;
     Texture StartTexture;
     Texture BFSTexture;
@@ -35,6 +37,7 @@ struct Images{
                                    &IDASprite, &InfoSprite, &MainMenuSprite,
                                    &ScrambleSprite, &SolveSprite};
 
+    //========================================= Number Variables =========================================//
     Texture OneTexture;
     Texture TwoTexture;
     Texture ThreeTexture;
@@ -86,7 +89,10 @@ struct Images{
         setPositions(width, height);
     }
 
+    // Loads Textures for Text and numbers
     void loadTextures(){
+
+        // Loads text textures
         for(int i = 0; i < Text.size(); i++){
             loadFile = "../IMAGES/TileTango Text/" + Text[i] + ".png";
 
@@ -95,6 +101,7 @@ struct Images{
             }
         }
 
+        // Loads number textures
         for(int i = 1; i < NumberSprites.size(); i++){
             loadFile = "../IMAGES/TileTango Numbers/" + to_string(i) + ".png";
             if(!NumberTextures[i]->loadFromFile(loadFile)){
@@ -103,19 +110,36 @@ struct Images{
         }
     }
 
+    // Loads text and number sprites
     void loadImages(){
         loadTextures();
+
+        // Loads Text Sprite
         for(int i = 0; i < Text.size(); i++){
             TextSprites[i]->setTexture(*TextTextures[i]);
         }
 
+        // Loads number sprites
+        for(int i = 0; i < NumberTextures.size(); i++){
+            NumberSprites[i]->setTexture(*NumberTextures[i]);
+        }
+
     }
 
+    // Sets sprite positions
     void setPositions(int &width, int &height){
+
+        // Sets origin of Texts to center
         for(int i = 0; i < Text.size(); i++){
             TextSprites[i]->setOrigin(TextSprites[i]->getGlobalBounds().width / 2.0f, TextSprites[i]->getGlobalBounds().height / 2.0f);
         }
 
+        // Sets origin of numbers to center
+        for(int i = 0; i < NumberSprites.size(); i++){
+            NumberSprites[i]->setOrigin(NumberSprites[i]->getGlobalBounds().width / 2.0f, NumberSprites[i]->getGlobalBounds().height / 2.0f);
+        }
+
+        //========================================= Sets position of Text Sprites =========================================//
         float current = 140;
         float totalSpace = width - (current * 2);
 
