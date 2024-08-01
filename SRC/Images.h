@@ -102,8 +102,8 @@ struct Images{
         }
 
         // Loads number textures
-        for(int i = 1; i < NumberSprites.size(); i++){
-            loadFile = "../IMAGES/TileTango Numbers/" + to_string(i) + ".png";
+        for(int i = 0; i < NumberSprites.size(); i++){
+            loadFile = "../IMAGES/TileTango Numbers/" + to_string(i+1) + ".png";
             if(!NumberTextures[i]->loadFromFile(loadFile)){
                 cout << "Error loading " + loadFile << endl;
             }
