@@ -46,11 +46,10 @@ struct GameWindow{
     }
 
     void setNumberPositons(){
-
-        int currentX = 140;
         int currentY = width / 3.0f;
 
         for(int i = 0; i < 3; i++){
+            int currentX = 140;
             for(int j = 0; j < 3; j++){
                 if(IDABoard[i][j] == 1){
                     images.OneSprite.setPosition(currentX, currentY);
@@ -80,7 +79,7 @@ struct GameWindow{
                     images.NineSprite.setPosition(currentX, currentY);
                 }
 
-                currentX += //;
+                currentX += images.OneSprite.getGlobalBounds().getSize().x;
             }
             currentY += images.OneSprite.getGlobalBounds().getSize().y;
         }
