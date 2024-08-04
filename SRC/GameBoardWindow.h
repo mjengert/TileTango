@@ -93,11 +93,6 @@ struct GameWindow{
                     images.EightSprite.setPosition(changingX, currentY);
                     window.draw(images.EightSprite);
                 }
-//                else if(board[i][j] == 9){
-//                    images.NineSprite.setPosition(changingX, currentY);
-//                    window.draw(images.NineSprite);
-//                }
-
                 // Adjusts x position so each column is right next to the other
                 changingX += images.OneSprite.getGlobalBounds().getSize().x;
             }
@@ -111,8 +106,8 @@ struct GameWindow{
         window.draw(images.IDASprite);
         window.draw(images.BFSSprite);
         window.draw(images.ScrambleSprite);
-        window.draw(images.FastestAlgorithmSprite);
         window.draw(images.SolveSprite);
+        window.draw(images.InfoBoxSprite);
         setNumberPositons(IDABoard, images.IDASprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
         setNumberPositons(BFSBoard, images.BFSSprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
         window.display();

@@ -8,16 +8,27 @@ struct Images{
     int width, height;
 
     //========================================= Title Text Variables =========================================//
-    Texture TitleTexture, StartTexture, BFSTexture, FastestAlgorithmTexture, IDATexture, ScrambleTexture, SolveTexture;
+    Texture TitleTexture;
+    Texture StartTexture;
+    Texture BFSTexture;
+    Texture IDATexture;
+    Texture InfoBoxTexture;
+    Texture ScrambleTexture;
+    Texture SolveTexture;
 
-    Sprite TitleSprite, StartSprite, BFSSprite, FastestAlgorithmSprite, IDASprite, ScrambleSprite, SolveSprite;
+    Sprite TitleSprite;
+    Sprite StartSprite;
+    Sprite BFSSprite;
+    Sprite IDASprite;
+    Sprite InfoBoxSprite;
+    Sprite ScrambleSprite;
+    Sprite SolveSprite;
 
-    vector<string> Text = {"Title", "Start", "BFS", "Fastest Algorithm",
-                           "IDA", "Scramble","Solve"};
-    vector<Texture*> TextTextures = {&TitleTexture, &StartTexture, &BFSTexture, &FastestAlgorithmTexture,
-                                     &IDATexture, &ScrambleTexture, &SolveTexture};
-    vector<Sprite*> TextSprites = {&TitleSprite, &StartSprite, &BFSSprite, &FastestAlgorithmSprite,
-                                   &IDASprite, &ScrambleSprite, &SolveSprite};
+    vector<string> Text = {"Title", "Start", "BFS", "IDA", "Info Box", "Scramble","Solve"};
+    vector<Texture*> TextTextures = {&TitleTexture, &StartTexture, &BFSTexture,
+                                     &IDATexture, &InfoBoxTexture, &ScrambleTexture, &SolveTexture};
+    vector<Sprite*> TextSprites = {&TitleSprite, &StartSprite, &BFSSprite,
+                                   &IDASprite, &InfoBoxSprite, &ScrambleSprite, &SolveSprite};
 
     //========================================= Number Variables =========================================//
     Texture OneTexture;
@@ -28,6 +39,7 @@ struct Images{
     Texture SixTexture;
     Texture SevenTexture;
     Texture EightTexture;
+    Texture NineTexture;
 
     Sprite OneSprite;
     Sprite TwoSprite;
@@ -37,12 +49,13 @@ struct Images{
     Sprite SixSprite;
     Sprite SevenSprite;
     Sprite EightSprite;
+    Sprite NineSprite;
 
     vector<Texture*> NumberTextures = {&OneTexture, &TwoTexture, &ThreeTexture, &FourTexture, &FiveTexture, &SixTexture,
-                                       &SevenTexture, &EightTexture};
+                                       &SevenTexture, &EightTexture, &NineTexture};
 
     vector<Sprite*> NumberSprites = {&OneSprite, &TwoSprite, &ThreeSprite, &FourSprite, &FiveSprite, &SixSprite,
-                                     &SevenSprite, &EightSprite};
+                                     &SevenSprite, &EightSprite, &NineSprite};
 
     RectangleShape backgroundBoard;
 
@@ -66,8 +79,9 @@ struct Images{
     Sprite FlyingSprite7;
     Sprite FlyingSprite8;
 
-    vector<Texture*> FlyingTextures = {&Flying1, &Flying2, &Flying3, &Flying4, &Flying5,
-                                       &Flying6, &Flying7, &Flying8};
+    vector<string> flyingText = {"1", "2", "3", "4", "5", "6", "7", "8"};
+
+    vector<Texture*> FlyingTextures = {&Flying1, &Flying2, &Flying3, &Flying4, &Flying5, &Flying6, &Flying7, &Flying8};
 
     vector<Sprite*> FlyingSprites = {&FlyingSprite1, &FlyingSprite2, &FlyingSprite3, &FlyingSprite4, &FlyingSprite5,
                                      &FlyingSprite6, &FlyingSprite7, &FlyingSprite8};
@@ -124,7 +138,6 @@ struct Images{
         // Loads number sprites
         for(int i = 0; i < NumberTextures.size(); i++){
             NumberSprites[i]->setTexture(*NumberTextures[i]);
-            //NumberSprites[i]->setScale(1.5f, 1.5f);
         }
 
         // loads flying sprites
@@ -132,10 +145,12 @@ struct Images{
             FlyingSprites[i]->setTexture(*FlyingTextures[i]);
         }
 
-        RectangleShape temp(Vector2f(OneSprite.getGlobalBounds().width * 4, OneSprite.getGlobalBounds().height * 4));
+        RectangleShape temp(Vector2f(OneSprite.getGlobalBounds().width * 3, OneSprite.getGlobalBounds().height * 3));
         backgroundBoard = temp;
         backgroundBoard.setOrigin(backgroundBoard.getGlobalBounds().width / 2.0f, backgroundBoard.getGlobalBounds().height / 2.0f);
-        backgroundBoard.setFillColor(Color(255, 114, 79));
+        backgroundBoard.setFillColor(Color(sf::Color::Transparent));
+        backgroundBoard.setOutlineColor(Color(255, 114, 79));
+        backgroundBoard.setOutlineThickness(35);
 
     }
 
@@ -167,7 +182,7 @@ struct Images{
 
         BFSSprite.setPosition((width / 7.0f) * 2 - 70, (height / 8.0f) * 2);
         IDASprite.setPosition((width / 7.0f) * 5 + 70, (height / 8.0f) * 2);
-        FastestAlgorithmSprite.setPosition(width / 2.0f, height / 8.0f);
+        InfoBoxSprite.setPosition(width / 2.0f, height/ 2.0f - 115);
 
         ScrambleSprite.setPosition((width / 7.0f) * 2 - 70, (height / 8.0f) * 7);
         SolveSprite.setPosition((width / 7.0f) * 5 + 70, (height / 8.0f) * 7);
