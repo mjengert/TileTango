@@ -8,20 +8,16 @@ struct Images{
     int width, height;
 
     //========================================= Title Text Variables =========================================//
-    Texture TitleTexture, StartTexture, BFSTexture, FastestAlgorithmTexture, IDATexture, InfoTexture, MainMenuTexture,
-    ScrambleTexture, SolveTexture;
+    Texture TitleTexture, StartTexture, BFSTexture, FastestAlgorithmTexture, IDATexture, ScrambleTexture, SolveTexture;
 
-    Sprite TitleSprite, StartSprite, BFSSprite, FastestAlgorithmSprite, IDASprite, InfoSprite, MainMenuSprite,
-    ScrambleSprite, SolveSprite;
+    Sprite TitleSprite, StartSprite, BFSSprite, FastestAlgorithmSprite, IDASprite, ScrambleSprite, SolveSprite;
 
     vector<string> Text = {"Title", "Start", "BFS", "Fastest Algorithm",
-                           "IDA", "Info", "Main Menu", "Scramble","Solve"};
+                           "IDA", "Scramble","Solve"};
     vector<Texture*> TextTextures = {&TitleTexture, &StartTexture, &BFSTexture, &FastestAlgorithmTexture,
-                                     &IDATexture, &InfoTexture, &MainMenuTexture,
-                                     &ScrambleTexture, &SolveTexture};
+                                     &IDATexture, &ScrambleTexture, &SolveTexture};
     vector<Sprite*> TextSprites = {&TitleSprite, &StartSprite, &BFSSprite, &FastestAlgorithmSprite,
-                                   &IDASprite, &InfoSprite, &MainMenuSprite,
-                                   &ScrambleSprite, &SolveSprite};
+                                   &IDASprite, &ScrambleSprite, &SolveSprite};
 
     //========================================= Number Variables =========================================//
     Texture OneTexture;
@@ -32,13 +28,6 @@ struct Images{
     Texture SixTexture;
     Texture SevenTexture;
     Texture EightTexture;
-    Texture NineTexture;
-    Texture TenTexture;
-    Texture ElevenTexture;
-    Texture TwelveTexture;
-    Texture ThirteenTexture;
-    Texture FourteenTexture;
-    Texture FifteenTexture;
 
     Sprite OneSprite;
     Sprite TwoSprite;
@@ -48,21 +37,12 @@ struct Images{
     Sprite SixSprite;
     Sprite SevenSprite;
     Sprite EightSprite;
-    Sprite NineSprite;
-    Sprite TenSprite;
-    Sprite ElevenSprite;
-    Sprite TwelveSprite;
-    Sprite ThirteenSprite;
-    Sprite FourteenSprite;
-    Sprite FifteenSprite;
 
     vector<Texture*> NumberTextures = {&OneTexture, &TwoTexture, &ThreeTexture, &FourTexture, &FiveTexture, &SixTexture,
-                                       &SevenTexture, &EightTexture, &NineTexture, &TenTexture, &ElevenTexture, &TwelveTexture,
-                                       &ThirteenTexture, &FourteenTexture, &FifteenTexture};
+                                       &SevenTexture, &EightTexture};
 
     vector<Sprite*> NumberSprites = {&OneSprite, &TwoSprite, &ThreeSprite, &FourSprite, &FiveSprite, &SixSprite,
-                                     &SevenSprite, &EightSprite, &NineSprite, &TenSprite, &ElevenSprite, &TwelveSprite,
-                                     &ThirteenSprite, &FourteenSprite, &FifteenSprite};
+                                     &SevenSprite, &EightSprite};
 
     RectangleShape backgroundBoard;
 
