@@ -47,10 +47,18 @@ void SlidingBoardGraph::GetBoardFromFile(string filename) {
 }
 
 // get the possible moves for a board; will be called recursively to get all possible moves till the solution is found
-void SlidingBoardGraph::GetAllMoves(SlidingBoard* board, int depth) {
+bool SlidingBoardGraph::GetAllMoves(SlidingBoard* board, int depth) {
     if (board == nullptr) {
-        return;
+        return false;
     }
+    bool solutionFound = false;
+    if (IsSolution(board)) {
+        solutionFound = true;
+        cout << "Solution found" << endl;
+        cout << "Depth: " << depth << endl;
+        return solutionFound;
+    }
+
     // check if the blank tile is in the top right corner of the board
     if (board->blankRow == 0 && board->blankCol == 0) {
         CreateMove(board, board->blankRow + 1, board->blankCol);
@@ -95,25 +103,14 @@ void SlidingBoardGraph::GetAllMoves(SlidingBoard* board, int depth) {
         CreateMove(board, board->blankRow - 1, board->blankCol);
         CreateMove(board, board->blankRow, board->blankCol - 1);
     }
-    bool SolutionFound = false;
-    // check if the solution has been found
+
     for (int i = 0; i < board->children.size(); i++) {
-        if (IsSolution(board->children[i])) {
-            SolutionFound = true;
+        if (GetAllMoves(board->children[i], depth + 1)) {
+            solutionFound = true;
             break;
         }
     }
-    // if the solution has not been found, recursively call GetAllMoves on the children
-    if (!SolutionFound) {
-        for (int i = 0; i < board->children.size(); i++) {
-            GetAllMoves(board->children[i], depth + 1);
-        }
-    }
-    else{
-        cout << "Solution found" << endl;
-        cout << "Depth: " << depth << endl;
-        return;
-    }
+    return solutionFound;
 }
 
 // create a move for a board

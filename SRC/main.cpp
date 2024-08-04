@@ -20,6 +20,9 @@ int main() {
     int width = 1000;
     int height = 700;
     SlidingBoardGraph Graph;
+    Graph.GetBoardFromFile("../DATA/AllBoards.txt");
+    SlidingBoard* root = Graph.GetRoot();
+    Graph.GetAllMoves(root, 0);
     WelcomeWindow welcome(width,height, Graph);
     return 0;
 }

@@ -68,7 +68,7 @@ public:
     // Operations on the graph
     void GetBoardFromFile(string filename);
     SlidingBoard* GetRoot() { return root; }
-    void GetAllMoves(SlidingBoard* board, int depth);
+    bool GetAllMoves(SlidingBoard* board, int depth);
     bool IsSolution(SlidingBoard* board);
     void CreateMove(SlidingBoard* board, int row, int col);
     void PrintBoard();
