@@ -112,14 +112,14 @@ void SlidingBoardGraph::GetAllMoves(SlidingBoard* board, int depth) {
     else{
         cout << "Solution found" << endl;
         cout << "Depth: " << depth << endl;
+        return;
     }
 }
 
 // create a move for a board
 void SlidingBoardGraph::CreateMove(SlidingBoard* board, int row, int col) {
-    // create a new board with the move
-    int newBoard[3][3];
     // copy the board into the new board
+    int newBoard[3][3];
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             newBoard[i][j] = board->Board[i][j];
@@ -127,7 +127,7 @@ void SlidingBoardGraph::CreateMove(SlidingBoard* board, int row, int col) {
     }
     // swap the blank tile with the tile to be moved
     swap(newBoard[board->blankRow][board->blankCol], newBoard[row][col]);
-    // check if the new board is the same as the parent board or if it is already in gameStates
+    // check if the new board is already in gameStates
     bool boardExists = false;
     for (int i = 0; i < gameStates.size(); i++) {
         bool sameBoard = true;
