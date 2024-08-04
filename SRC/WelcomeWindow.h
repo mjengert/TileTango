@@ -5,15 +5,15 @@ struct InfoWindow{
     Event event;
     Mouse mouse;
     Font font;
-    int width;
-    int height;
+    float width;
+    float height;
 
     InfoWindow(int &width, int &height){
-        this->width = width;
-        this->height = height;
+        this->width = width / 2.0f;
+        this->height = height / 2.0f;
 
         // Creates information Window
-        window.create(VideoMode(width, height), "Tile Tango: Information");
+        window.create(VideoMode(this->width, this->height), "Tile Tango: Information");
 
         while(window.isOpen()){
             while(window.pollEvent(event)){

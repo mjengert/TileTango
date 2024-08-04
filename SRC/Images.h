@@ -78,6 +78,36 @@ struct Images{
                                      &SevenSprite, &EightSprite, &NineSprite, &TenSprite, &ElevenSprite, &TwelveSprite,
                                      &ThirteenSprite, &FourteenSprite, &FifteenSprite};
 
+    //========================================= Flying Variables =========================================//
+
+    Texture Flying3;
+    Texture Flying5;
+    Texture Flying6;
+    Texture Flying7;
+    Texture Flying8;
+    Texture Flying9;
+    Texture Flying10;
+    Texture Flying12;
+    Texture Flying14;
+
+    Sprite FlyingSprite3;
+    Sprite FlyingSprite5;
+    Sprite FlyingSprite6;
+    Sprite FlyingSprite7;
+    Sprite FlyingSprite8;
+    Sprite FlyingSprite9;
+    Sprite FlyingSprite10;
+    Sprite FlyingSprite12;
+    Sprite FlyingSprite14;
+
+    vector<string> flyingText = {"3", "5", "6", "7", "8", "9", "10", "12", "14"};
+
+    vector<Texture*> FlyingTextures = {&Flying3, &Flying5, &Flying6, &Flying7, &Flying8,
+                                      &Flying9, &Flying10, &Flying12, &Flying14};
+
+    vector<Sprite*> FlyingSprites = {&FlyingSprite3, &FlyingSprite5, &FlyingSprite6, &FlyingSprite7, &FlyingSprite8,
+                                     &FlyingSprite9, &FlyingSprite10, &FlyingSprite12, &FlyingSprite14};
+
     string loadFile;
 
     Images(){
@@ -108,6 +138,14 @@ struct Images{
                 cout << "Error loading " + loadFile << endl;
             }
         }
+
+        // Loads flying textures
+        for(int i = 0; i < flyingText.size(); i++){
+            loadFile ="../IMAGES/Flying Objs/" + flyingText[i] + ".png";
+            if(!FlyingTextures[i]->loadFromFile(loadFile)){
+                cout << "Error loading " + loadFile << endl;
+            }
+        }
     }
 
     // Loads text and number sprites
@@ -125,6 +163,11 @@ struct Images{
             NumberSprites[i]->setScale(1.5f, 1.5f);
         }
 
+        // loads flying sprites
+        for(int i = 0; i < flyingText.size(); i++){
+            FlyingSprites[i]->setTexture(*FlyingTextures[i]);
+        }
+
     }
 
     // Sets sprite positions
@@ -138,6 +181,11 @@ struct Images{
         // Sets origin of numbers to center
         for(int i = 0; i < NumberSprites.size(); i++){
             NumberSprites[i]->setOrigin(NumberSprites[i]->getGlobalBounds().width / 2.0f, NumberSprites[i]->getGlobalBounds().height / 2.0f);
+        }
+
+        // Sets origin of flying numbers to center
+        for(int i = 0; i < flyingText.size(); i++){
+            FlyingSprites[i]->setOrigin(FlyingSprites[i]->getGlobalBounds().width / 2.0f, FlyingSprites[i]->getGlobalBounds().height / 2.0f);
         }
 
         //========================================= Sets position of Text Sprites =========================================//

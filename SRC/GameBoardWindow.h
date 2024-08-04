@@ -10,11 +10,11 @@ struct GameWindow{
 
     // Fake generated boards to set up a tile drawing system
     int IDABoard[3][3] = {{1, 2, 3},
-                          {4, 5, 6},
+                          {4, 2, 6},
                           {7, 8, 9}};
 
     int BFSBoard[3][3] = {{1, 2, 3},
-                          {4, 5, 6},
+                          {4, 2, 6},
                           {7, 8, 9}};
 
     // Game window set up
@@ -93,10 +93,10 @@ struct GameWindow{
                     images.EightSprite.setPosition(changingX, currentY);
                     window.draw(images.EightSprite);
                 }
-                else if(board[i][j] == 9){
-                    images.NineSprite.setPosition(changingX, currentY);
-                    window.draw(images.NineSprite);
-                }
+//                else if(board[i][j] == 9){
+//                    images.NineSprite.setPosition(changingX, currentY);
+//                    window.draw(images.NineSprite);
+//                }
 
                 // Adjusts x position so each column is right next to the other
                 changingX += images.OneSprite.getGlobalBounds().getSize().x;
@@ -114,8 +114,8 @@ struct GameWindow{
         window.draw(images.ScrambleSprite);
         window.draw(images.FastestAlgorithmSprite);
         window.draw(images.SolveSprite);
-        setNumberPositons(IDABoard, images.IDASprite.getGlobalBounds().left + 55, (images.MainMenuSprite.getGlobalBounds().top - images.IDASprite.getGlobalBounds().height) / 2.0f);
-        setNumberPositons(BFSBoard, images.BFSSprite.getGlobalBounds().left + 55, (images.MainMenuSprite.getGlobalBounds().top - images.IDASprite.getGlobalBounds().height) / 2.0f);
+        setNumberPositons(IDABoard, images.IDASprite.getGlobalBounds().left + 55, (images.MainMenuSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
+        setNumberPositons(BFSBoard, images.BFSSprite.getGlobalBounds().left + 55, (images.MainMenuSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
         window.display();
     }
 };
