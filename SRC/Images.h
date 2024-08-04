@@ -196,7 +196,8 @@ struct Images{
 
         for(int i = 0; i < FlyingSprites.size(); i++){
             // sets random position within window bounds
-            FlyingSprites[i]->setPosition(rand() % width, rand() % height);
+            int currentX = i * (width /  8.0f) + Flying1.getSize().x;
+            FlyingSprites[i]->setPosition(currentX, rand() % height);
 
             // sets random movement direction
             angle = (rand() % 360) * 3.14159265358979323846f / 180.0f;
@@ -211,15 +212,22 @@ struct Images{
         float deltaTime = clock.restart().asSeconds();
         for(int i = 0; i < FlyingSprites.size(); i++){
             Vector2f position = FlyingSprites[i]->getPosition();
-            position += directions[i] * deltaTime;
+            // position += directions[i] * deltaTime;
+            position.y += speed * deltaTime;
 
             // checks window bounds and reverse direction if needed
             if(position.x < 0 || position.x + FlyingSprites[i]->getGlobalBounds().getSize().x > window.getSize().x){
                 directions[i].x = -directions[i].x;
             }
-            if(position.y < 0 || position.y + FlyingSprites[i]->getGlobalBounds().getSize().y > window.getSize().y){
-                directions[i].y = -directions[i].y;
+
+            if(position.y > window.getSize().y || position.y < 0){
+               position.y = 0.0f;
             }
+
+//            if(position.y < 0 || position.y + FlyingSprites[i]->getGlobalBounds().getSize().y > window.getSize().y){
+//                // directions[i].y = -directions[i].y; // Makes object go in opposite direction
+//                directions[i].y = 0.0f;
+//            }
 
             FlyingSprites[i]->setPosition(position);
         }
