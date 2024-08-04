@@ -39,6 +39,9 @@ struct WelcomeWindow{
         window.clear(Color(63, 63, 131));
         window.draw(images.TitleSprite);
         window.draw(images.StartSprite);
+        for(int i = 0; i < images.FlyingSprites.size(); i++){
+            window.draw(*images.FlyingSprites[i]);
+        }
         window.display();
     }
 };

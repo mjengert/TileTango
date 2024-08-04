@@ -124,7 +124,7 @@ struct Images{
         }
 
         // Loads flying textures
-        for(int i = 0; i < FlyingTextures.size(); i++){
+        for(int i = 1; i < FlyingTextures.size(); i++){
             loadFile ="../IMAGES/Flying Objs/" + to_string(i) + ".png";
             if(!FlyingTextures[i]->loadFromFile(loadFile)){
                 cout << "Error loading " + loadFile << endl;
