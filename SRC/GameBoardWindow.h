@@ -113,12 +113,11 @@ struct GameWindow{
         window.clear(Color(63, 63, 131));
         window.draw(images.IDASprite);
         window.draw(images.BFSSprite);
-        window.draw(images.MainMenuSprite);
         window.draw(images.ScrambleSprite);
         window.draw(images.FastestAlgorithmSprite);
         window.draw(images.SolveSprite);
-        setNumberPositons(IDABoard, images.IDASprite.getGlobalBounds().left + 55, (images.MainMenuSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
-        setNumberPositons(BFSBoard, images.BFSSprite.getGlobalBounds().left + 55, (images.MainMenuSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
+        setNumberPositons(IDABoard, images.IDASprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
+        setNumberPositons(BFSBoard, images.BFSSprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
         window.display();
     }
 };

@@ -207,14 +207,8 @@ struct Images{
         IDASprite.setPosition((width / 7.0f) * 5 + 70, (height / 8.0f) * 2);
         FastestAlgorithmSprite.setPosition(width / 2.0f, height / 8.0f);
 
-        current = 140;
-        totalSpace = width - (current * 2);
-
-        MainMenuSprite.setPosition(current, (height / 8.0f) * 7);
-        current += totalSpace / 2.0f;
-        ScrambleSprite.setPosition(current, (height / 8.0f) * 7);
-        current += totalSpace / 2.0f;
-        SolveSprite.setPosition(current, (height / 8.0f) * 7);
+        ScrambleSprite.setPosition((width / 7.0f) * 2 - 70, (height / 8.0f) * 7);
+        SolveSprite.setPosition((width / 7.0f) * 5 + 70, (height / 8.0f) * 7);
 
     }
 };
