@@ -221,7 +221,7 @@ struct Images{
             }
 
             if(position.y > window.getSize().y || position.y < 0){
-               position.y = 0.0f;
+                position.y = 0.0f;
             }
 
 //            if(position.y < 0 || position.y + FlyingSprites[i]->getGlobalBounds().getSize().y > window.getSize().y){

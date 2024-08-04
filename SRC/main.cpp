@@ -21,7 +21,5 @@ int main() {
     int height = 900;
     WelcomeWindow welcome(width,height);
 
-    SlidingBoardGraph Graph;
-    Graph.GetBoardFromFile("../DATA/AllBoards.txt");
     return 0;
 }
