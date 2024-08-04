@@ -78,6 +78,8 @@ struct Images{
                                      &SevenSprite, &EightSprite, &NineSprite, &TenSprite, &ElevenSprite, &TwelveSprite,
                                      &ThirteenSprite, &FourteenSprite, &FifteenSprite};
 
+    RectangleShape backgroundBoard;
+
     //========================================= Flying Variables =========================================//
 
     Texture Flying3;
@@ -168,6 +170,11 @@ struct Images{
             FlyingSprites[i]->setTexture(*FlyingTextures[i]);
         }
 
+        RectangleShape temp(Vector2f(OneSprite.getGlobalBounds().width * 3, OneSprite.getGlobalBounds().height * 3));
+        backgroundBoard = temp;
+        backgroundBoard.setOrigin(backgroundBoard.getGlobalBounds().width / 2.0f, backgroundBoard.getGlobalBounds().height / 2.0f);
+        backgroundBoard.setFillColor(Color::Yellow);
+
     }
 
     // Sets sprite positions
@@ -194,8 +201,7 @@ struct Images{
 
 
         TitleSprite.setPosition(width / 2.0f, height / 8.0f);
-        StartSprite.setPosition(width / 3.0f, (height / 8.0f) * 5);
-        InfoSprite.setPosition((width / 3.0f) * 2, (height / 8.0f) * 5);
+        StartSprite.setPosition(width / 2.0f, (height / 8.0f) * 5);
 
         BFSSprite.setPosition((width / 7.0f) * 2 - 70, (height / 8.0f) * 2);
         IDASprite.setPosition((width / 7.0f) * 5 + 70, (height / 8.0f) * 2);

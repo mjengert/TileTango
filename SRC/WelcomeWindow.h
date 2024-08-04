@@ -1,33 +1,5 @@
 #include "GameBoardWindow.h"
 
-struct InfoWindow{
-    RenderWindow window;
-    Event event;
-    Mouse mouse;
-    Font font;
-    float width;
-    float height;
-
-    InfoWindow(int &width, int &height){
-        this->width = width / 2.0f;
-        this->height = height / 2.0f;
-
-        // Creates information Window
-        window.create(VideoMode(this->width, this->height), "Tile Tango: Information");
-
-        while(window.isOpen()){
-            while(window.pollEvent(event)){
-                if(event.type == Event::Closed){
-                    window.close();
-                }
-            }
-
-            window.clear(Color(63, 63, 131));
-            window.display();
-        }
-    }
-};
-
 struct WelcomeWindow{
     RenderWindow window;
     Event event;
@@ -56,9 +28,6 @@ struct WelcomeWindow{
                         window.close();
                         GameWindow gameWindow(width, height, images);
                     }
-                    else if(images.InfoSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        InfoWindow infoWindow(width, height);
-                    }
                 }
             }
 
@@ -70,7 +39,6 @@ struct WelcomeWindow{
         window.clear(Color(63, 63, 131));
         window.draw(images.TitleSprite);
         window.draw(images.StartSprite);
-        window.draw(images.InfoSprite);
         window.display();
     }
 };
