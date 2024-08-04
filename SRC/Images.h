@@ -187,12 +187,12 @@ struct Images{
         TitleSprite.setPosition(width / 2.0f, height / 8.0f);
         StartSprite.setPosition(width / 2.0f, (height / 8.0f) * 5);
 
-        BFSSprite.setPosition((width / 7.0f) * 2 - 70, (height / 8.0f) * 2);
-        IDASprite.setPosition((width / 7.0f) * 5 + 70, (height / 8.0f) * 2);
-        InfoBoxSprite.setPosition(width / 2.0f, height/ 2.0f - 115);
+        BFSSprite.setPosition((width / 4.0f) - 75, height / 8.0f * 2);
+        IDASprite.setPosition((width / 8.0f) * 6 + 75, (height / 8.0f) * 2);
+        InfoBoxSprite.setPosition(width / 2.0f, height/ 2.0f);
 
-        ScrambleSprite.setPosition((width / 7.0f) * 2 - 70, (height / 8.0f) * 7);
-        SolveSprite.setPosition((width / 7.0f) * 5 + 70, (height / 8.0f) * 7);
+        ScrambleSprite.setPosition((width / 4.0f) - 75, (height / 8.0f) * 7);
+        SolveSprite.setPosition((width / 8.0f) * 6 + 75, (height / 8.0f) * 7);
 
         for(int i = 0; i < FlyingSprites.size(); i++){
             // sets random position within window bounds

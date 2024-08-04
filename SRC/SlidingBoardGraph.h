@@ -10,12 +10,12 @@ using namespace std;
 
 struct SlidingBoard {
 
-    int Board[3][3] = {};
+    int Board[3][3];
     int heuristic;
     int blankRow;
     int blankCol;
-    SlidingBoard* parent = nullptr;
-    vector<SlidingBoard*> children = {};
+    SlidingBoard* parent;
+    vector<SlidingBoard*> children;
     // constructor for the board from file
     explicit SlidingBoard(vector<int> board) {
         int index = 0;
@@ -68,7 +68,6 @@ public:
     // Operations on the graph
     void GetBoardFromFile(string filename);
     SlidingBoard* GetRoot() { return root; }
-    void InsertBoard(SlidingBoard* board);
     void GetAllMoves(SlidingBoard* board, int depth);
     bool IsSolution(SlidingBoard* board);
     void CreateMove(SlidingBoard* board, int row, int col);
