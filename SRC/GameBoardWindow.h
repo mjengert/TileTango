@@ -19,7 +19,6 @@ struct GameWindow{
         this->height = height;
         this->images = images;
         window.create(VideoMode(width, height), "Tile Tango: Game");
-        Graph.GetBoardFromFile("../DATA/AllBoards.txt");
         root = Graph.GetRoot();
 
         while(window.isOpen()){
@@ -34,11 +33,11 @@ struct GameWindow{
                     if(images.ScrambleSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         Graph.GetBoardFromFile("../DATA/AllBoards.txt");
                         root = Graph.GetRoot();
+                        cout << "Scramble" << endl;
                     }
                     else if(images.SolveSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        Graph.GetAllMoves(root, 0);
+                        cout << "Solve" << endl;
                     }
-
                     // Need to add button executions
                 }
             }

@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "TileTango.exe"
-		},
-		{
-			"path" : "TileTango.pdb"
+			"path" : "TileTango"
 		}
 	],
 	"backtrace" : 1,
@@ -45,7 +42,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++11 -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics"
 				}
 			],
 			"includes" : 
@@ -53,7 +50,7 @@
 				{
 					"backtrace" : 2,
 					"isSystem" : true,
-					"path" : "C:/Users/Owner/CLionProjects/Data_Structures/TileTango/SFML-2.6.1-Windows/include"
+					"path" : "/opt/homebrew/include"
 				}
 			],
 			"language" : "CXX",
@@ -87,34 +84,34 @@
 				"role" : "flags"
 			},
 			{
-				"backtrace" : 2,
-				"fragment" : "C:\\Users\\Owner\\CLionProjects\\Data_Structures\\TileTango\\SFML-2.6.1-Windows\\lib\\libsfml-graphics-d.a",
+				"fragment" : "-Wl,-rpath,/opt/homebrew/lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\Owner\\CLionProjects\\Data_Structures\\TileTango\\SFML-2.6.1-Windows\\lib\\libsfml-audio-d.a",
+				"fragment" : "/opt/homebrew/lib/libsfml-graphics.2.6.1.dylib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\Owner\\CLionProjects\\Data_Structures\\TileTango\\SFML-2.6.1-Windows\\lib\\libsfml-window-d.a",
+				"fragment" : "/opt/homebrew/lib/libsfml-audio.2.6.1.dylib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "C:\\Users\\Owner\\CLionProjects\\Data_Structures\\TileTango\\SFML-2.6.1-Windows\\lib\\libsfml-system-d.a",
+				"fragment" : "/opt/homebrew/lib/libsfml-window.2.6.1.dylib",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"backtrace" : 2,
+				"fragment" : "/opt/homebrew/lib/libsfml-system.2.6.1.dylib",
 				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "TileTango",
-	"nameOnDisk" : "TileTango.exe",
+	"nameOnDisk" : "TileTango",
 	"paths" : 
 	{
 		"build" : ".",
