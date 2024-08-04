@@ -9,14 +9,12 @@ struct GameWindow{
     int width;
     int height;
 
-    // Fake generated boards to set up a tile drawing system
-    int IDABoard[3][3] = {{1, 2, 3},
-                          {4, 2, 6},
-                          {7, 8, 9}};
 
-    int BFSBoard[3][3] = {{1, 2, 3},
-                          {4, 2, 6},
-                          {7, 8, 9}};
+
+    // Fake generated boards to set up a tile drawing system
+    SlidingBoard* root;
+    int IDABoard[3][3];
+    int BFSBoard[3][3];
 
     // Game window set up
     GameWindow(int &width, int &height, Images &images, SlidingBoardGraph &Graph){
@@ -24,7 +22,8 @@ struct GameWindow{
         this->height = height;
         this->images = images;
         window.create(VideoMode(width, height), "Tile Tango: Game");
-        SlidingBoard* root = Graph.GetRoot();
+        Graph.GetBoardFromFile("../DATA/AllBoards.txt");
+        generatingGraph(Graph.GetRoot());
 
         while(window.isOpen()){
             while(window.pollEvent(event)){
@@ -37,11 +36,9 @@ struct GameWindow{
                 if(event.type == Event::MouseButtonPressed){
                     if(images.ScrambleSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         Graph.GetBoardFromFile("../DATA/AllBoards.txt");
-                        SlidingBoard* root = Graph.GetRoot();
-                        cout << "Scramble" << endl;
+                        generatingGraph(Graph.GetRoot());
                     }
                     else if(images.SolveSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        SlidingBoard *root = Graph.GetRoot();
                         Graph.GetAllMoves(root, 0);
                         cout << "Solve" << endl;
                     }
@@ -52,6 +49,16 @@ struct GameWindow{
 
             // Prints out the game
             GameDisplay();
+        }
+    }
+
+    void generatingGraph(SlidingBoard* root){
+        this->root = root;
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                IDABoard[i][j] = root->Board[i][j];
+                BFSBoard[i][j] = root->Board[i][j];
+            }
         }
     }
 
