@@ -10,13 +10,7 @@ struct GameWindow{
     int height;
 
     // Fake generated boards to set up a tile drawing system
-    int IDABoard[3][3] = {{1, 2, 3},
-                          {4, 2, 6},
-                          {7, 8, 9}};
-
-    int BFSBoard[3][3] = {{1, 2, 3},
-                          {4, 2, 6},
-                          {7, 8, 9}};
+    SlidingBoard* root;
 
     // Game window set up
     GameWindow(int &width, int &height, Images &images, SlidingBoardGraph &Graph){
@@ -25,7 +19,8 @@ struct GameWindow{
         this->images = images;
         window.create(VideoMode(width, height), "Tile Tango: Game");
         Graph.GetBoardFromFile("../DATA/AllBoards.txt");
-        SlidingBoard* root = Graph.GetRoot();
+        root = Graph.GetRoot();
+
         while(window.isOpen()){
             while(window.pollEvent(event)){
 
@@ -37,13 +32,10 @@ struct GameWindow{
                 if(event.type == Event::MouseButtonPressed){
                     if(images.ScrambleSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         Graph.GetBoardFromFile("../DATA/AllBoards.txt");
-                        SlidingBoard* root = Graph.GetRoot();
-                        cout << "Scramble" << endl;
+                        root = Graph.GetRoot();
                     }
                     else if(images.SolveSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        SlidingBoard* root = Graph.GetRoot();
                         Graph.GetAllMoves(root, 0);
-                        cout << "Solve" << endl;
                     }
 
                     // Need to add button executions
@@ -114,8 +106,8 @@ struct GameWindow{
         window.draw(images.ScrambleSprite);
         window.draw(images.SolveSprite);
         window.draw(images.InfoBoxSprite);
-        setNumberPositons(IDABoard, images.IDASprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
-        setNumberPositons(BFSBoard, images.BFSSprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
+        setNumberPositons(root->Board, images.IDASprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
+        setNumberPositons(root->Board, images.BFSSprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
         window.display();
     }
 };
