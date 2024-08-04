@@ -162,7 +162,7 @@ struct Images{
         // Loads number sprites
         for(int i = 0; i < NumberTextures.size(); i++){
             NumberSprites[i]->setTexture(*NumberTextures[i]);
-            NumberSprites[i]->setScale(1.5f, 1.5f);
+            //NumberSprites[i]->setScale(1.5f, 1.5f);
         }
 
         // loads flying sprites

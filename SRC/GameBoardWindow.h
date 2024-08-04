@@ -55,7 +55,7 @@ struct GameWindow{
     // Sets up the number tiles based on the board input
     void setNumberPositons(int board[3][3], float currentX, float currentY){
 
-        images.backgroundBoard.setPosition(currentX + (images.OneSprite.getGlobalBounds().width * (3/4.0f)), currentY + (images.OneSprite.getGlobalBounds().height * (3/4.0f)));
+        images.backgroundBoard.setPosition(currentX + (images.OneSprite.getGlobalBounds().getSize().x), currentY + (images.OneSprite.getGlobalBounds().getSize().y));
         window.draw(images.backgroundBoard);
 
         for(int i = 0; i < 3; i++){ // Goes through every row
