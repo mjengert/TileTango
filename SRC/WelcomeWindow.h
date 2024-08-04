@@ -40,11 +40,11 @@ struct WelcomeWindow{
 
     void welcomeDipslay(RenderWindow &window, Images &images){
         window.clear(Color(63, 63, 131));
-        window.draw(images.TitleSprite);
-        window.draw(images.StartSprite);
         for(int i = 0; i < images.FlyingSprites.size(); i++){
             window.draw(*images.FlyingSprites[i]);
         }
+        window.draw(images.TitleSprite);
+        window.draw(images.StartSprite);
         window.display();
     }
 };
