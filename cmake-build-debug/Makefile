@@ -128,54 +128,6 @@ TileTango/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/build
 .PHONY : TileTango/fast
 
-SRC/BFS.obj: SRC/BFS.cpp.obj
-.PHONY : SRC/BFS.obj
-
-# target to build an object file
-SRC/BFS.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/BFS.cpp.obj
-.PHONY : SRC/BFS.cpp.obj
-
-SRC/BFS.i: SRC/BFS.cpp.i
-.PHONY : SRC/BFS.i
-
-# target to preprocess a source file
-SRC/BFS.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/BFS.cpp.i
-.PHONY : SRC/BFS.cpp.i
-
-SRC/BFS.s: SRC/BFS.cpp.s
-.PHONY : SRC/BFS.s
-
-# target to generate assembly for a file
-SRC/BFS.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/BFS.cpp.s
-.PHONY : SRC/BFS.cpp.s
-
-SRC/IDA.obj: SRC/IDA.cpp.obj
-.PHONY : SRC/IDA.obj
-
-# target to build an object file
-SRC/IDA.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/IDA.cpp.obj
-.PHONY : SRC/IDA.cpp.obj
-
-SRC/IDA.i: SRC/IDA.cpp.i
-.PHONY : SRC/IDA.i
-
-# target to preprocess a source file
-SRC/IDA.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/IDA.cpp.i
-.PHONY : SRC/IDA.cpp.i
-
-SRC/IDA.s: SRC/IDA.cpp.s
-.PHONY : SRC/IDA.s
-
-# target to generate assembly for a file
-SRC/IDA.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TileTango.dir\build.make CMakeFiles/TileTango.dir/SRC/IDA.cpp.s
-.PHONY : SRC/IDA.cpp.s
-
 SRC/SlidingBoardGraph.obj: SRC/SlidingBoardGraph.cpp.obj
 .PHONY : SRC/SlidingBoardGraph.obj
 
@@ -257,12 +209,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... TileTango
-	@echo ... SRC/BFS.obj
-	@echo ... SRC/BFS.i
-	@echo ... SRC/BFS.s
-	@echo ... SRC/IDA.obj
-	@echo ... SRC/IDA.i
-	@echo ... SRC/IDA.s
 	@echo ... SRC/SlidingBoardGraph.obj
 	@echo ... SRC/SlidingBoardGraph.i
 	@echo ... SRC/SlidingBoardGraph.s
