@@ -8,25 +8,11 @@ struct Images{
     int width, height;
 
     //========================================= Title Text Variables =========================================//
-    Texture TitleTexture;
-    Texture StartTexture;
-    Texture BFSTexture;
-    Texture FastestAlgorithmTexture;
-    Texture IDATexture;
-    Texture InfoTexture;
-    Texture MainMenuTexture;
-    Texture ScrambleTexture;
-    Texture SolveTexture;
+    Texture TitleTexture, StartTexture, BFSTexture, FastestAlgorithmTexture, IDATexture, InfoTexture, MainMenuTexture,
+    ScrambleTexture, SolveTexture;
 
-    Sprite TitleSprite;
-    Sprite StartSprite;
-    Sprite BFSSprite;
-    Sprite FastestAlgorithmSprite;
-    Sprite IDASprite;
-    Sprite InfoSprite;
-    Sprite MainMenuSprite;
-    Sprite ScrambleSprite;
-    Sprite SolveSprite;
+    Sprite TitleSprite, StartSprite, BFSSprite, FastestAlgorithmSprite, IDASprite, InfoSprite, MainMenuSprite,
+    ScrambleSprite, SolveSprite;
 
     vector<string> Text = {"Title", "Start", "BFS", "Fastest Algorithm",
                            "IDA", "Info", "Main Menu", "Scramble","Solve"};
@@ -82,33 +68,29 @@ struct Images{
 
     //========================================= Flying Variables =========================================//
 
+    Texture Flying1;
+    Texture Flying2;
     Texture Flying3;
+    Texture Flying4;
     Texture Flying5;
     Texture Flying6;
     Texture Flying7;
     Texture Flying8;
-    Texture Flying9;
-    Texture Flying10;
-    Texture Flying12;
-    Texture Flying14;
 
+    Sprite FlyingSprite1;
+    Sprite FlyingSprite2;
     Sprite FlyingSprite3;
+    Sprite FlyingSprite4;
     Sprite FlyingSprite5;
     Sprite FlyingSprite6;
     Sprite FlyingSprite7;
     Sprite FlyingSprite8;
-    Sprite FlyingSprite9;
-    Sprite FlyingSprite10;
-    Sprite FlyingSprite12;
-    Sprite FlyingSprite14;
 
-    vector<string> flyingText = {"3", "5", "6", "7", "8", "9", "10", "12", "14"};
+    vector<Texture*> FlyingTextures = {&Flying1, &Flying2, &Flying3, &Flying4, &Flying5,
+                                       &Flying6, &Flying7, &Flying8};
 
-    vector<Texture*> FlyingTextures = {&Flying3, &Flying5, &Flying6, &Flying7, &Flying8,
-                                       &Flying9, &Flying10, &Flying12, &Flying14};
-
-    vector<Sprite*> FlyingSprites = {&FlyingSprite3, &FlyingSprite5, &FlyingSprite6, &FlyingSprite7, &FlyingSprite8,
-                                     &FlyingSprite9, &FlyingSprite10, &FlyingSprite12, &FlyingSprite14};
+    vector<Sprite*> FlyingSprites = {&FlyingSprite1, &FlyingSprite2, &FlyingSprite3, &FlyingSprite4, &FlyingSprite5,
+                                     &FlyingSprite6, &FlyingSprite7, &FlyingSprite8};
 
     string loadFile;
 
@@ -142,8 +124,8 @@ struct Images{
         }
 
         // Loads flying textures
-        for(int i = 0; i < flyingText.size(); i++){
-            loadFile ="../IMAGES/Flying Objs/" + flyingText[i] + ".png";
+        for(int i = 0; i < FlyingTextures.size(); i++){
+            loadFile ="../IMAGES/Flying Objs/" + to_string(i) + ".png";
             if(!FlyingTextures[i]->loadFromFile(loadFile)){
                 cout << "Error loading " + loadFile << endl;
             }
@@ -166,7 +148,7 @@ struct Images{
         }
 
         // loads flying sprites
-        for(int i = 0; i < flyingText.size(); i++){
+        for(int i = 0; i < FlyingTextures.size(); i++){
             FlyingSprites[i]->setTexture(*FlyingTextures[i]);
         }
 
@@ -191,7 +173,7 @@ struct Images{
         }
 
         // Sets origin of flying numbers to center
-        for(int i = 0; i < flyingText.size(); i++){
+        for(int i = 0; i < FlyingTextures.size(); i++){
             FlyingSprites[i]->setOrigin(FlyingSprites[i]->getGlobalBounds().width / 2.0f, FlyingSprites[i]->getGlobalBounds().height / 2.0f);
         }
 
