@@ -14,6 +14,9 @@ struct WelcomeWindow{
         window.create(VideoMode(width, height), "Tile Tango: Welcome");
 
         while(window.isOpen()){
+
+            images.setDirections();
+
             while(window.pollEvent(event)){
                 if(event.type == Event::Closed){
                     window.close();
@@ -40,7 +43,6 @@ struct WelcomeWindow{
         window.draw(images.TitleSprite);
         window.draw(images.StartSprite);
         for(int i = 0; i < images.FlyingSprites.size(); i++){
-            images.FlyingSprites[i]->setPosition(rand() % window.getSize().x,rand() % window.getSize().y);
             window.draw(*images.FlyingSprites[i]);
         }
         window.display();

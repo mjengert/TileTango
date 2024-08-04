@@ -1,11 +1,16 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
 #include <SFML/Graphics.hpp>
 using namespace std;
 using namespace sf;
 
 struct Images{
+    Clock clock;
     int width, height;
+    float angle, speed;
 
     //========================================= Title Text Variables =========================================//
     Texture TitleTexture;
@@ -86,6 +91,8 @@ struct Images{
     vector<Sprite*> FlyingSprites = {&FlyingSprite1, &FlyingSprite2, &FlyingSprite3, &FlyingSprite4, &FlyingSprite5,
                                      &FlyingSprite6, &FlyingSprite7, &FlyingSprite8};
 
+    vector<Vector2f> directions;
+
     string loadFile;
 
     Images(){
@@ -118,8 +125,8 @@ struct Images{
         }
 
         // Loads flying textures
-        for(int i = 1; i < FlyingTextures.size(); i++){
-            loadFile ="../IMAGES/Flying Objs/" + to_string(i) + ".png";
+        for(int i = 0; i < FlyingTextures.size(); i++){
+            loadFile ="../IMAGES/Flying Objs/" + to_string(i + 1) + ".png";
             if(!FlyingTextures[i]->loadFromFile(loadFile)){
                 cout << "Error loading " + loadFile << endl;
             }
@@ -154,6 +161,24 @@ struct Images{
 
     }
 
+    void setDirections(){
+        float deltaTime = clock.restart().asSeconds();
+        for(int i = 0; i < FlyingSprites.size(); i++){
+            Vector2f position = FlyingSprites[i]->getPosition();
+            position += directions[i] * deltaTime;
+
+            // checks window counds and reverse direction if needed
+            if(position.x < 0 || position.x + FlyingTextures[i]->getSize().x > width){
+                directions[i].x = -directions[i].x;
+            }
+            if(position.y < 0 || position.y + FlyingTextures[i]->getSize().y > height){
+                directions[i].y = -directions[i].y;
+            }
+
+            FlyingSprites[i]->setPosition(position);
+        }
+    }
+
     // Sets sprite positions
     void setPositions(int &width, int &height){
 
@@ -186,6 +211,18 @@ struct Images{
 
         ScrambleSprite.setPosition((width / 7.0f) * 2 - 70, (height / 8.0f) * 7);
         SolveSprite.setPosition((width / 7.0f) * 5 + 70, (height / 8.0f) * 7);
+
+        for(int i = 0; i < FlyingSprites.size(); i++){
+            // sets random position within window bounds
+            FlyingSprites[i]->setPosition(rand() % width, rand() % height);
+
+            // sets random movement direction
+            angle = (rand() % 360) * 3.14159265358979323846f / 180.0f;
+            speed = 100.0f;
+            Vector2f direction(cos(angle) * speed, sin(angle) * speed);
+
+            directions.push_back(direction);
+        }
 
     }
 };
