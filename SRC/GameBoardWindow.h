@@ -12,6 +12,7 @@ struct GameWindow{
     // Fake generated boards to set up a tile drawing system
     SlidingBoard* root;
 
+
     // Game window set up
     GameWindow(int &width, int &height, Images &images, SlidingBoardGraph &Graph){
         this->width = width;
