@@ -161,24 +161,6 @@ struct Images{
 
     }
 
-    void setDirections(){
-        float deltaTime = clock.restart().asSeconds();
-        for(int i = 0; i < FlyingSprites.size(); i++){
-            Vector2f position = FlyingSprites[i]->getPosition();
-            position += directions[i] * deltaTime;
-
-            // checks window counds and reverse direction if needed
-            if(position.x < 0 || position.x + FlyingTextures[i]->getSize().x > width){
-                directions[i].x = -directions[i].x;
-            }
-            if(position.y < 0 || position.y + FlyingTextures[i]->getSize().y > height){
-                directions[i].y = -directions[i].y;
-            }
-
-            FlyingSprites[i]->setPosition(position);
-        }
-    }
-
     // Sets sprite positions
     void setPositions(int &width, int &height){
 
@@ -223,6 +205,23 @@ struct Images{
 
             directions.push_back(direction);
         }
+    }
 
+    void setDirections(RenderWindow &window){
+        float deltaTime = clock.restart().asSeconds();
+        for(int i = 0; i < FlyingSprites.size(); i++){
+            Vector2f position = FlyingSprites[i]->getPosition();
+            position += directions[i] * deltaTime;
+
+            // checks window bounds and reverse direction if needed
+            if(position.x < 0 || position.x + FlyingSprites[i]->getGlobalBounds().getSize().x > window.getSize().x){
+                directions[i].x = -directions[i].x;
+            }
+            if(position.y < 0 || position.y + FlyingSprites[i]->getGlobalBounds().getSize().y > window.getSize().y){
+                directions[i].y = -directions[i].y;
+            }
+
+            FlyingSprites[i]->setPosition(position);
+        }
     }
 };

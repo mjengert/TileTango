@@ -15,7 +15,7 @@ struct WelcomeWindow{
 
         while(window.isOpen()){
 
-            images.setDirections();
+            images.setDirections(window);
 
             while(window.pollEvent(event)){
                 if(event.type == Event::Closed){
