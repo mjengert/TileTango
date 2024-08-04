@@ -18,8 +18,8 @@ void GenerateLotsOfBoards() {
 int main() {
 
     int width = 1000;
-    int height = 900;
-    WelcomeWindow welcome(width,height);
-
+    int height = 700;
+    SlidingBoardGraph Graph;
+    WelcomeWindow welcome(width,height, Graph);
     return 0;
 }

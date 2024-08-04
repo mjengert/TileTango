@@ -18,7 +18,7 @@ void SlidingBoardGraph::GetBoardFromFile(string filename) {
     string line;
     vector<int> board;
     // skip the boards that have already been used; each board occupies 9 lines
-    for (int i = 0; i < 1 * 10; i++) {
+    for (int i = 0; i < usedBoards.size() * 10; i++) {
         getline(dataFile, line);
     }
     // get the next board; each board occupies 16 lines
@@ -42,15 +42,8 @@ void SlidingBoardGraph::GetBoardFromFile(string filename) {
     if (root != nullptr) {
         DeleteGraph(root);
     }
-    InsertBoard(newBoard);
+    root = newBoard;
     usedBoards.push_back(newBoard);
-}
-
-// insert a board into the graph
-void SlidingBoardGraph::InsertBoard(SlidingBoard* board) {
-    // if the root is empty, insert the board as the root
-    root = board;
-    GetAllMoves(board, 0);
 }
 
 // get the possible moves for a board; will be called recursively to get all possible moves till the solution is found
@@ -236,10 +229,11 @@ void SlidingBoardGraph::PrintBoard() {
 
 // delete the graph
 void SlidingBoardGraph::DeleteGraph(SlidingBoard *board) {
-    // recursively delete the children of the board
-    for (auto & i : board->children) {
-        DeleteGraph(i);
+    if (board == nullptr) {
+        return;
     }
-    // delete the board
+    for (int i = 0; i < board->children.size(); i++) {
+        DeleteGraph(board->children[i]);
+    }
     delete board;
 }

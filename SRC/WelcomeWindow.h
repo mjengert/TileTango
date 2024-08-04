@@ -1,5 +1,6 @@
 #include "GameBoardWindow.h"
 
+
 struct WelcomeWindow{
     RenderWindow window;
     Event event;
@@ -7,7 +8,7 @@ struct WelcomeWindow{
     Font font;
 
     // Generates the welcome window
-    WelcomeWindow(int &width, int &height){
+    WelcomeWindow(int &width, int &height, SlidingBoardGraph &Graph){
 
         // Loads all the images
         Images images(width, height);
@@ -29,7 +30,7 @@ struct WelcomeWindow{
                     if(images.StartSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         cout << "Start" << endl;
                         window.close();
-                        GameWindow gameWindow(width, height, images);
+                        GameWindow gameWindow(width, height, images, Graph);
                     }
                 }
             }

@@ -1,4 +1,5 @@
 #include "Images.h"
+#include "SlidingBoardGraph.h"
 
 struct GameWindow{
     RenderWindow window;
@@ -18,11 +19,12 @@ struct GameWindow{
                           {7, 8, 9}};
 
     // Game window set up
-    GameWindow(int &width, int &height, Images &images){
+    GameWindow(int &width, int &height, Images &images, SlidingBoardGraph &Graph){
         this->width = width;
         this->height = height;
         this->images = images;
         window.create(VideoMode(width, height), "Tile Tango: Game");
+        SlidingBoard* root = Graph.GetRoot();
 
         while(window.isOpen()){
             while(window.pollEvent(event)){
@@ -34,9 +36,13 @@ struct GameWindow{
                 // Button Executions
                 if(event.type == Event::MouseButtonPressed){
                     if(images.ScrambleSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
+                        Graph.GetBoardFromFile("../DATA/AllBoards.txt");
+                        SlidingBoard* root = Graph.GetRoot();
                         cout << "Scramble" << endl;
                     }
                     else if(images.SolveSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
+                        SlidingBoard *root = Graph.GetRoot();
+                        Graph.GetAllMoves(root, 0);
                         cout << "Solve" << endl;
                     }
 
