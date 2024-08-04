@@ -170,10 +170,10 @@ struct Images{
             FlyingSprites[i]->setTexture(*FlyingTextures[i]);
         }
 
-        RectangleShape temp(Vector2f(OneSprite.getGlobalBounds().width * 3, OneSprite.getGlobalBounds().height * 3));
+        RectangleShape temp(Vector2f(OneSprite.getGlobalBounds().width * 4, OneSprite.getGlobalBounds().height * 4));
         backgroundBoard = temp;
         backgroundBoard.setOrigin(backgroundBoard.getGlobalBounds().width / 2.0f, backgroundBoard.getGlobalBounds().height / 2.0f);
-        backgroundBoard.setFillColor(Color::Yellow);
+        backgroundBoard.setFillColor(Color(255, 165, 0));
 
     }
 
