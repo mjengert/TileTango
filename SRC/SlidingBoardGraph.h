@@ -9,6 +9,7 @@
 using namespace std;
 
 struct SlidingBoard {
+
     int Board[3][3] = {};
     int heuristic;
     int blankRow;
@@ -28,7 +29,7 @@ struct SlidingBoard {
                 index++;
             }
         }
-        this->heuristic = 0;
+        this->heuristic = SetFScore(this);
         this->parent = nullptr;
         this->children = {};
     }
@@ -45,10 +46,11 @@ struct SlidingBoard {
                 index++;
             }
         }
-        this->heuristic = 0;
+        this->heuristic = SetFScore(this);
         this->parent = nullptr;
         this->children = {};
     }
+    int SetFScore(SlidingBoard* board);
 };
 
 // Class to create the graph (verticies are boards, edges are moves)
@@ -69,18 +71,24 @@ public:
     void GetAllMoves(SlidingBoard* board, int depth);
     bool IsSolution(SlidingBoard* board);
     void CreateMove(SlidingBoard* board, int row, int col);
-    int GetHeuristic(SlidingBoard* board);
     void PrintBoard();
+    double GetFastestPath();
+    void IDAStar(SlidingBoard* board);
+    void BFS(SlidingBoard* board);
     void DeleteGraph(SlidingBoard* board);
 
 private:
     // Private variables
     SlidingBoard* root;
+    double IDAStarTime = 0;
+    double BFSTime = 0;
     vector<SlidingBoard*> usedBoards = {};
     vector<SlidingBoard*> gameStates = {};
     int Solution[3][3] = {{1, 2, 3},
                           {4, 5, 6},
                           {7, 8, 9}};
 };
+
+
 
 #endif //TILETANGO_SLIDINGBOARDGRAPH_H

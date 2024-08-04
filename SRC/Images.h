@@ -105,7 +105,7 @@ struct Images{
     vector<string> flyingText = {"3", "5", "6", "7", "8", "9", "10", "12", "14"};
 
     vector<Texture*> FlyingTextures = {&Flying3, &Flying5, &Flying6, &Flying7, &Flying8,
-                                      &Flying9, &Flying10, &Flying12, &Flying14};
+                                       &Flying9, &Flying10, &Flying12, &Flying14};
 
     vector<Sprite*> FlyingSprites = {&FlyingSprite3, &FlyingSprite5, &FlyingSprite6, &FlyingSprite7, &FlyingSprite8,
                                      &FlyingSprite9, &FlyingSprite10, &FlyingSprite12, &FlyingSprite14};
@@ -173,7 +173,7 @@ struct Images{
         RectangleShape temp(Vector2f(OneSprite.getGlobalBounds().width * 4, OneSprite.getGlobalBounds().height * 4));
         backgroundBoard = temp;
         backgroundBoard.setOrigin(backgroundBoard.getGlobalBounds().width / 2.0f, backgroundBoard.getGlobalBounds().height / 2.0f);
-        backgroundBoard.setFillColor(Color(255, 165, 0));
+        backgroundBoard.setFillColor(Color(255, 114, 79));
 
     }
 
