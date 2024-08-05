@@ -28,7 +28,6 @@ struct WelcomeWindow{
 
                     // Button execution
                     if(images.StartSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        cout << "Start" << endl;
                         window.close();
                         GameWindow gameWindow(width, height, images, Graph);
                     }
