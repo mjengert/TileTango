@@ -1,5 +1,6 @@
 #include "Images.h"
 #include <chrono>
+#include <thread>
 #include "SlidingBoardGraph.h"
 
 struct GameWindow{
@@ -24,6 +25,11 @@ struct GameWindow{
         this->images = images;
         window.create(VideoMode(width, height), "Tile Tango: Game");
         root = Graph.GetRoot();
+        vector<vector<int>> BFSSol;
+        vector<vector<int>> IDASol;
+        bool solvingState = false;
+        bool scrambleState = false;
+        bool firstOpen = true;
 
         while(window.isOpen()){
             while(window.pollEvent(event)){
@@ -37,26 +43,88 @@ struct GameWindow{
                         Graph.GetBoardFromFile("../DATA/AllBoards.txt");
                         root = Graph.GetRoot();
                         cout << "Scramble" << endl;
+                        solvingState = false;
+                        scrambleState = true;
                     }
                     else if(images.SolveSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         // solve using IDA*
                         auto IDAStart = chrono::high_resolution_clock::now();
-                        // vector<vector<int>> IDASol = Graph.IDAStar(root, 0, 0);
+                        //IDASol = Graph.IDAStar(root, 0, 0);
                         auto IDAEnd = chrono::high_resolution_clock::now();
                         IDADuration = chrono::duration_cast<chrono::milliseconds>(IDAEnd - IDAStart).count();
 
                         // solve using BFS
                         auto BFSStart = chrono::high_resolution_clock::now();
-                        vector<vector<int>> BFSSol = Graph.BFS(root);
+                        BFSSol = Graph.BFS(root);
                         auto BFSEnd = chrono::high_resolution_clock::now();
                         BFSDuration = chrono::duration_cast<chrono::milliseconds>(BFSEnd - BFSStart).count();
+                        solvingState = true;
+                        scrambleState = false;
                     }
-                    // Need to add button executions
                 }
             }
+            // Once solve button is clicked iterate through solution paths of both algorithms once
+            if (solvingState){
+                //TEMP DELETE AFTER IDA IMPLEMENTATION
+                IDASol = {{1,2,3,4,5,6,7,8,9}};
+                cout << "solving" << endl;
 
-            // Prints out the game
-            GameDisplay();
+                // find largest grid vector
+                bool BFSIsLower = false;
+                int solvingLength = BFSSol.size();
+                if (BFSSol.size() < IDASol.size()) {
+                    solvingLength = IDASol.size();
+                    BFSIsLower = true;
+                }
+
+                int IDABoardState[3][3];
+                int BFSBoardState[3][3];
+                int lowerCount;
+                //start looping through each board sprite at 0.025 second intervals
+                for (int higherCount = 0; higherCount < solvingLength; higherCount++) {
+                    //maintain each index within bounds
+                    lowerCount = higherCount;
+                    if (BFSIsLower){
+                        if(lowerCount >= BFSSol.size()){
+                            lowerCount = BFSSol.size()-1;
+                        }
+                        if (lowerCount < 0){lowerCount = 0;}
+                        //update the board array states for each algorithm
+                        for (int i = 0; i < 3; i++){
+                            for (int j = 0; j < 3; j++){
+                                BFSBoardState[i][j] = BFSSol[lowerCount][i*3 + j];
+                                IDABoardState[i][j] = IDASol[higherCount][i*3 + j];
+                            }
+                        }
+                    }
+                    else{
+                        if(lowerCount >= IDASol.size()){
+                            lowerCount = IDASol.size()-1;
+                        }
+                        if (lowerCount < 0) {lowerCount = 0;}
+                        //update the board array states for each algorithm
+                        for (int i = 0; i < 3; i++){
+                            for (int j = 0; j < 3; j++){
+                                BFSBoardState[i][j] = BFSSol[higherCount][i*3 + j];
+                                IDABoardState[i][j] = IDASol[lowerCount][i*3 + j];
+                            }
+                        }
+                    }
+                    //Draw NEW board states
+                    GameDisplay(BFSBoardState, IDABoardState);
+
+                    //delay by 0.050 seconds
+                    std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                }
+                solvingState = false;
+            }
+
+            // Prints out the game when scramble button is pressed or window first openned
+            if(scrambleState or firstOpen) {
+                GameDisplay();
+                scrambleState = false;
+                firstOpen = false;
+            }
         }
     }
 
@@ -121,6 +189,19 @@ struct GameWindow{
         window.draw(images.InfoBoxSprite);
         setNumberPositons(root->Board, images.IDASprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
         setNumberPositons(root->Board, images.BFSSprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
+        window.display();
+    }
+
+    //game display for solving
+    void GameDisplay(int BFSboard[3][3], int IDAboard[3][3]){
+        window.clear(Color(63, 63, 131));
+        window.draw(images.IDASprite);
+        window.draw(images.BFSSprite);
+        window.draw(images.ScrambleSprite);
+        window.draw(images.SolveSprite);
+        window.draw(images.InfoBoxSprite);
+        setNumberPositons(IDAboard, images.IDASprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
+        setNumberPositons(BFSboard, images.BFSSprite.getGlobalBounds().left + 55, (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) / 2.0f);
         window.display();
     }
 };
