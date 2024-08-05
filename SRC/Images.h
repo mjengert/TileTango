@@ -202,10 +202,7 @@ struct Images{
 
             // sets random movement direction
             angle = (rand() % 360) * 3.14159265358979323846f / 180.0f;
-            speed = rand();
-            while(speed <= 0){
-                speed = rand() % 100; // sets speed to a random number between 0 and 100
-            }
+            speed = (rand() % 100) + 100;
             Vector2f direction(cos(angle) * speed, sin(angle) * speed);
 
             directions.push_back(direction);

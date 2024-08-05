@@ -9,9 +9,11 @@
 using namespace std;
 
 struct SlidingBoard {
-
     int Board[3][3];
-    int heuristic;
+    int Solution[3][3] = {{1, 2, 3},
+                          {4, 5, 6},
+                          {7, 8, 9}};
+    int HScore;
     int blankRow;
     int blankCol;
     SlidingBoard* parent;
@@ -29,7 +31,7 @@ struct SlidingBoard {
                 index++;
             }
         }
-        this->heuristic = SetFScore(this);
+        this->HScore = SetHScore(this);
         this->parent = nullptr;
         this->children = {};
     }
@@ -46,11 +48,11 @@ struct SlidingBoard {
                 index++;
             }
         }
-        this->heuristic = SetFScore(this);
+        this->HScore = SetHScore(this);
         this->parent = nullptr;
         this->children = {};
     }
-    int SetFScore(SlidingBoard* board);
+    int SetHScore(SlidingBoard* board);
 };
 
 // Class to create the graph (verticies are boards, edges are moves)
@@ -71,18 +73,13 @@ public:
     // bool GetAllMoves(SlidingBoard* board, int depth);
     // void CreateMove(SlidingBoard* board, int row, int col);
     bool IsSolution(SlidingBoard* board);
-    void PrintBoard();
-    double GetFastestPath();
-    vector<vector<int>> IDAStar(SlidingBoard* board, int g, int threshold);
+    vector<vector<int>> IDAStar(SlidingBoard* board, int GScore, int threshold);
     vector<vector<int>> BFS(SlidingBoard* board);
     void DeleteGraph(SlidingBoard* board);
 
 private:
     // Private variables
     SlidingBoard* root;
-    // Time variables are in milliseconds
-    double IDAStarTime = 0;
-    double BFSTime = 0;
     vector<SlidingBoard*> usedBoards = {};
     vector<SlidingBoard*> gameStates = {};
     int Solution[3][3] = {{1, 2, 3},

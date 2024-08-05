@@ -175,15 +175,32 @@ bool SlidingBoardGraph::IsSolution(SlidingBoard *board) {
 }
 
 // use the IDA* algorithm to solve the puzzle
-vector<vector<int>> SlidingBoardGraph::IDAStar(SlidingBoard* board, int g, int threshold) {
+vector<vector<int>> SlidingBoardGraph::IDAStar(SlidingBoard* board, int GScore, int threshold) {
+    // HScore is the heuristic score = number of blocks not in the correct position
+    // GScore is the number of moves made towards the solution
+    // FScore is the sum of GScore and HScore
+    int FScore = board->HScore + GScore;
+    int newThreshold = threshold;
 
 }
 
+// sets the heuristic for a board
+// if a block is not in the correct position, the heuristic is incremented by 1
+int SlidingBoard::SetHScore(SlidingBoard *board) {
+    int hScore = 0;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (board->Board[i][j] != Solution[i][j]) {
+                hScore++;
+            }
+        }
+    }
+    return hScore;
+}
 
 // use the BFS algorithm to solve the puzzle and returns a vector of grid lines representing the path taken
 // shortest path from s-t reference: https://www.geeksforgeeks.org/shortest-path-unweighted-graph/
 vector<vector<int>> SlidingBoardGraph::BFS(SlidingBoard *board) {
-    auto start = chrono::high_resolution_clock::now();
     vector<int> currGrid(9);
     vector<int> tempGrid(9);
     vector<int> solutionGrid = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -278,48 +295,7 @@ vector<vector<int>> SlidingBoardGraph::BFS(SlidingBoard *board) {
         BoardPath.insert(BoardPath.begin(), gridParent[currGrid]);
         currGrid = gridParent[currGrid];
     }
-    auto end = chrono::high_resolution_clock::now();
-    BFSTime = chrono::duration_cast<chrono::milliseconds>(end - start).count();
     return BoardPath;
-}
-
-// get the fastest time to the solution
-double SlidingBoardGraph::GetFastestPath() {
-    if (BFSTime < IDAStarTime) {
-        return BFSTime;
-    }
-    return IDAStarTime;
-}
-
-// sets the heuristic for a board; not sure if this is correct
-int SlidingBoard::SetFScore(SlidingBoard *board) {
-    // calculate the heuristic for the board
-    int totalCost = 0;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            int tile = board->Board[i][j];
-            if (tile == 9) {
-                continue;
-            }
-            int row = (tile - 1) / 3;
-            int col = (tile - 1) % 3;
-            int estimatedCost = abs(row - i) + abs(col - j);
-            totalCost += estimatedCost;
-        }
-    }
-    return totalCost;
-}
-
-// print the board; used for debugging
-void SlidingBoardGraph::PrintBoard() {
-    cout << "Printing board" << endl;
-    for (auto & i : root->Board) {
-        for (int j : i) {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
-    cout << endl;
 }
 
 // delete the graph

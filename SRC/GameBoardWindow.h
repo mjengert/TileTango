@@ -1,4 +1,5 @@
 #include "Images.h"
+#include <chrono>
 #include "SlidingBoardGraph.h"
 
 struct GameWindow{
@@ -12,6 +13,8 @@ struct GameWindow{
     // Fake generated boards to set up a tile drawing system
     SlidingBoardGraph Graph;
     SlidingBoard* root;
+    double IDADuration = 0;
+    double BFSDuration = 0;
 
 
     // Game window set up
@@ -36,9 +39,17 @@ struct GameWindow{
                         cout << "Scramble" << endl;
                     }
                     else if(images.SolveSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
+                        // solve using IDA*
+                        auto IDAStart = chrono::high_resolution_clock::now();
                         // vector<vector<int>> IDASol = Graph.IDAStar(root, 0, 0);
+                        auto IDAEnd = chrono::high_resolution_clock::now();
+                        IDADuration = chrono::duration_cast<chrono::milliseconds>(IDAEnd - IDAStart).count();
+
+                        // solve using BFS
+                        auto BFSStart = chrono::high_resolution_clock::now();
                         vector<vector<int>> BFSSol = Graph.BFS(root);
-                        cout << "Solve" << endl;
+                        auto BFSEnd = chrono::high_resolution_clock::now();
+                        BFSDuration = chrono::duration_cast<chrono::milliseconds>(BFSEnd - BFSStart).count();
                     }
                     // Need to add button executions
                 }
