@@ -13,6 +13,16 @@ struct Images{
     int width, height;
     float angle, speed;
 
+    Font font;
+    Text BFSNode;
+    Text IDANode;
+    Text BFSSolDepth;
+    Text IDASolDepth;
+    Text BFSTime;
+    Text IDATime;
+
+    vector<Text*> InfoText = { &BFSNode, &IDANode, &BFSSolDepth, &IDASolDepth, &BFSTime, &IDATime};
+
     //========================================= Title Text Variables =========================================//
     Texture TitleTexture;
     Texture StartTexture;
@@ -108,6 +118,15 @@ struct Images{
     // Loads Textures for Text and numbers
     void loadTextures(){
 
+        if(!font.loadFromFile("files/OleoScript-Regular.ttf")){
+            cout << "Error loading files/OleoScript-Regular.ttf" << endl;
+        }
+
+        for(int i = 0; i < InfoText.size(); i++){
+            InfoText[i]->setFont(font);
+            InfoText[i]->setFillColor(Color::Black);
+        }
+
         // Loads text textures
         for(int i = 0; i < Text.size(); i++){
             loadFile = "../IMAGES/TileTango Text/" + Text[i] + ".png";
@@ -191,6 +210,23 @@ struct Images{
         BFSSprite.setPosition((width / 4.0f) - 75, height / 8.0f * 2);
         IDASprite.setPosition((width / 8.0f) * 6 + 75, (height / 8.0f) * 2);
         InfoBoxSprite.setPosition(width / 2.0f, height/ 2.0f);
+
+        float currentX = InfoBoxSprite.getGlobalBounds().left + 110;
+        float currentY = InfoBoxSprite.getGlobalBounds().top  + 85;
+
+        BFSNode.setPosition(currentX, currentY);
+        currentY += 40;
+        IDANode.setPosition(currentX, currentY);
+        currentY += 198;
+
+        BFSSolDepth.setPosition(currentX, currentY);
+        currentY += 35;
+        IDASolDepth.setPosition(currentX, currentY);
+        currentY += 298;
+
+        BFSTime.setPosition(currentX, currentY);
+        currentY += 35;
+        IDATime.setPosition(currentX, currentY);
 
         ScrambleSprite.setPosition((width / 4.0f) - 75, (height / 8.0f) * 7);
         SolveSprite.setPosition((width / 8.0f) * 6 + 75, (height / 8.0f) * 7);
