@@ -215,17 +215,17 @@ struct Images{
         float currentY = InfoBoxSprite.getGlobalBounds().top  + 85;
 
         BFSNode.setPosition(currentX, currentY);
-        currentY += 40;
+        currentY += 45;
         IDANode.setPosition(currentX, currentY);
-        currentY += 198;
+        currentY += 170;
 
         BFSSolDepth.setPosition(currentX, currentY);
-        currentY += 35;
+        currentY += 45;
         IDASolDepth.setPosition(currentX, currentY);
-        currentY += 298;
+        currentY += 170;
 
         BFSTime.setPosition(currentX, currentY);
-        currentY += 35;
+        currentY += 45;
         IDATime.setPosition(currentX, currentY);
 
         ScrambleSprite.setPosition((width / 4.0f) - 75, (height / 8.0f) * 7);
