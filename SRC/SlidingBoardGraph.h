@@ -74,7 +74,7 @@ public:
     void PrintBoard();
     double GetFastestPath();
     void IDAStar(SlidingBoard* board);
-    void BFS(SlidingBoard* board);
+    vector<vector<int>> BFS(SlidingBoard* board);
     void DeleteGraph(SlidingBoard* board);
 
 private:

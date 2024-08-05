@@ -3,6 +3,8 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
+#include <queue>
+#include <set>
 using namespace std;
 
 // get a board from the file and insert it into the graph; will need to keep track of what board has already been used
@@ -180,9 +182,105 @@ void SlidingBoardGraph::IDAStar(SlidingBoard *board) {
 
 }
 
-// use the BFS algorithm to solve the puzzle
-void SlidingBoardGraph::BFS(SlidingBoard *board) {
-    // implement BFS algorithm
+// use the BFS algorithm to solve the puzzle and returns a vector of grid lines representing the path taken
+// shortest path from s-t reference: https://www.geeksforgeeks.org/shortest-path-unweighted-graph/
+vector<vector<int>> SlidingBoardGraph::BFS(SlidingBoard *board) {
+    vector<int> currGrid(9);
+    vector<int> tempGrid(9);
+    vector<int> solutionGrid = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    set<vector<int>> visitedBoards;
+    queue<vector<int>> boardQueue;
+    int blankRow;
+    int blankCol;
+
+
+    //Converting the board root inserted into a vector representing a 3x3 board
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            currGrid[i*3 + j] = board->Board[i][j];
+        }
+    }
+    boardQueue.push(currGrid);
+    //maps out as key: child grid, value: parent grid
+    map<vector<int>, vector<int>> gridParent;
+    gridParent[currGrid] = {};
+
+    //looping through each possible blank shift until solution state is reached
+    while(!boardQueue.empty()) {
+        //Adding the current grid to the set and the queue
+        currGrid = boardQueue.front();
+        visitedBoards.insert(currGrid);
+        boardQueue.pop();
+
+        //Once solution grid is found end loop and create path
+        if (currGrid == solutionGrid) {
+            break;
+        }
+
+        //Find the location of the blank in the grid line
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (currGrid[i * 3 + j] == 9) {
+                    blankRow = i;
+                    blankCol = j;
+                }
+            }
+        }
+
+        //insert all possible blank shifts and then places it into the queue
+        //only if it has not been visited
+        //swap up with blank
+        if (blankRow > 0){
+            tempGrid = currGrid;
+            swap(tempGrid[blankRow*3 + blankCol], tempGrid[(blankRow*3 - 3) + blankCol]);
+            if (!visitedBoards.count(tempGrid)){
+                gridParent.emplace(tempGrid, currGrid);
+                boardQueue.push(tempGrid);
+                visitedBoards.insert(tempGrid);
+            }
+        }
+        //swap down with blank
+        if (blankRow < 2){
+            tempGrid = currGrid;
+            swap(tempGrid[blankRow*3 + blankCol], tempGrid[(blankRow*3 + 3) + blankCol]);
+            if (!visitedBoards.count(tempGrid)){
+                gridParent.emplace(tempGrid, currGrid);
+                boardQueue.push(tempGrid);
+                visitedBoards.insert(tempGrid);
+            }
+        }
+        //swap left with blank
+        if (blankCol > 0){
+            tempGrid = currGrid;
+            swap(tempGrid[blankRow*3 + blankCol], tempGrid[blankRow*3 + (blankCol - 1)]);
+            if (!visitedBoards.count(tempGrid)){
+                gridParent.emplace(tempGrid, currGrid);
+                boardQueue.push(tempGrid);
+                visitedBoards.insert(tempGrid);
+            }
+        }
+        //swap right with blank
+        if (blankCol < 2){
+            tempGrid = currGrid;
+            swap(tempGrid[blankRow*3 + blankCol], tempGrid[blankRow*3 + (blankCol + 1)]);
+            if (!visitedBoards.count(tempGrid)){
+                gridParent.emplace(tempGrid, currGrid);
+                boardQueue.push(tempGrid);
+                visitedBoards.insert(tempGrid);
+            }
+        }
+    }
+
+    //Assembles path taken by BFS to get to the solution grid
+    vector<vector<int>> BoardPath;
+    //loops through until no parent is found
+    BoardPath.push_back(solutionGrid); //solution is always last child/step
+    while(!gridParent[currGrid].empty()){
+        BoardPath.insert(BoardPath.begin(), gridParent[currGrid]);
+        currGrid = gridParent[currGrid];
+    }
+
+    return BoardPath;
 }
 
 // get the fastest time to the solution
