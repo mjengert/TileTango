@@ -66,20 +66,21 @@ public:
         }
     }
     // Operations on the graph
-    void GetBoardFromFile(string filename);
+    void GetBoardFromFile(const string& filename);
     SlidingBoard* GetRoot() { return root; }
-    bool GetAllMoves(SlidingBoard* board, int depth);
+    // bool GetAllMoves(SlidingBoard* board, int depth);
+    // void CreateMove(SlidingBoard* board, int row, int col);
     bool IsSolution(SlidingBoard* board);
-    void CreateMove(SlidingBoard* board, int row, int col);
     void PrintBoard();
     double GetFastestPath();
-    void IDAStar(SlidingBoard* board);
+    vector<vector<int>> IDAStar(SlidingBoard* board, int g, int threshold);
     vector<vector<int>> BFS(SlidingBoard* board);
     void DeleteGraph(SlidingBoard* board);
 
 private:
     // Private variables
     SlidingBoard* root;
+    // Time variables are in milliseconds
     double IDAStarTime = 0;
     double BFSTime = 0;
     vector<SlidingBoard*> usedBoards = {};

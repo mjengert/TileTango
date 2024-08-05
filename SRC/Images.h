@@ -1,4 +1,5 @@
 #include <iostream>
+#include <random>
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
@@ -203,7 +204,7 @@ struct Images{
             angle = (rand() % 360) * 3.14159265358979323846f / 180.0f;
             speed = rand();
             while(speed <= 0){
-                speed = rand();
+                speed = rand() % 100; // sets speed to a random number between 0 and 100
             }
             Vector2f direction(cos(angle) * speed, sin(angle) * speed);
 
@@ -215,7 +216,6 @@ struct Images{
         float deltaTime = clock.restart().asSeconds();
         for(int i = 0; i < FlyingSprites.size(); i++){
             Vector2f position = FlyingSprites[i]->getPosition();
-            // position += directions[i] * deltaTime;
             position.y += speed * deltaTime;
 
             // checks window bounds and reverse direction if needed

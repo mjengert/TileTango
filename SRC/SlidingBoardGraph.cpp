@@ -7,8 +7,8 @@
 #include <set>
 using namespace std;
 
-// get a board from the file and insert it into the graph; will need to keep track of what board has already been used
-void SlidingBoardGraph::GetBoardFromFile(string filename) {
+// get a board from the file and insert it into the graph; need to keep track of what board has already been used
+void SlidingBoardGraph::GetBoardFromFile(const string& filename) {
     // open the file and check if it was opened successfully
     ifstream dataFile;
     dataFile.open(filename);
@@ -33,10 +33,10 @@ void SlidingBoardGraph::GetBoardFromFile(string filename) {
 
     }
     // create a new board and insert it into the graph; also add it to the usedBoards vector to keep track of it
-    SlidingBoard* newBoard = new SlidingBoard(board);
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            cout << newBoard->Board[i][j] << " ";
+    auto* newBoard = new SlidingBoard(board);
+    for (auto & i : newBoard->Board) {
+        for (int j : i) {
+            cout << j << " ";
         }
         cout << endl;
     }
@@ -48,7 +48,8 @@ void SlidingBoardGraph::GetBoardFromFile(string filename) {
     usedBoards.push_back(newBoard);
 }
 
-// get the possible moves for a board; will be called recursively to get all possible moves till the solution is found
+// get the possible moves for a board; called recursively to get all possible moves till the solution is found
+/*
 bool SlidingBoardGraph::GetAllMoves(SlidingBoard* board, int depth) {
     if (board == nullptr) {
         return false;
@@ -156,6 +157,7 @@ void SlidingBoardGraph::CreateMove(SlidingBoard* board, int row, int col) {
     newBoardObj->parent = board;
     board->children.push_back(newBoardObj);
 }
+ */
 // check if a board is the solution
 bool SlidingBoardGraph::IsSolution(SlidingBoard *board) {
     if (board == nullptr) {
@@ -173,18 +175,15 @@ bool SlidingBoardGraph::IsSolution(SlidingBoard *board) {
 }
 
 // use the IDA* algorithm to solve the puzzle
-void SlidingBoardGraph::IDAStar(SlidingBoard *board) {
-    // initialize the threshold to the heuristic of the board
-    SlidingBoard* current = board;
-    int threshold = current->heuristic;
-    // DFS with a threshold
-
+vector<vector<int>> SlidingBoardGraph::IDAStar(SlidingBoard* board, int g, int threshold) {
 
 }
+
 
 // use the BFS algorithm to solve the puzzle and returns a vector of grid lines representing the path taken
 // shortest path from s-t reference: https://www.geeksforgeeks.org/shortest-path-unweighted-graph/
 vector<vector<int>> SlidingBoardGraph::BFS(SlidingBoard *board) {
+    auto start = chrono::high_resolution_clock::now();
     vector<int> currGrid(9);
     vector<int> tempGrid(9);
     vector<int> solutionGrid = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -279,7 +278,8 @@ vector<vector<int>> SlidingBoardGraph::BFS(SlidingBoard *board) {
         BoardPath.insert(BoardPath.begin(), gridParent[currGrid]);
         currGrid = gridParent[currGrid];
     }
-
+    auto end = chrono::high_resolution_clock::now();
+    BFSTime = chrono::duration_cast<chrono::milliseconds>(end - start).count();
     return BoardPath;
 }
 
@@ -291,7 +291,7 @@ double SlidingBoardGraph::GetFastestPath() {
     return IDAStarTime;
 }
 
-// sets the heuristic for a board
+// sets the heuristic for a board; not sure if this is correct
 int SlidingBoard::SetFScore(SlidingBoard *board) {
     // calculate the heuristic for the board
     int totalCost = 0;
@@ -310,7 +310,7 @@ int SlidingBoard::SetFScore(SlidingBoard *board) {
     return totalCost;
 }
 
-// print the board; will be used for debugging
+// print the board; used for debugging
 void SlidingBoardGraph::PrintBoard() {
     cout << "Printing board" << endl;
     for (auto & i : root->Board) {

@@ -20,7 +20,6 @@ struct GameWindow{
         this->height = height;
         this->images = images;
         window.create(VideoMode(width, height), "Tile Tango: Game");
-        Graph.GetBoardFromFile("../DATA/AllBoards.txt");
         root = Graph.GetRoot();
 
         while(window.isOpen()){
@@ -29,7 +28,6 @@ struct GameWindow{
                 if(event.type == Event::Closed){
                     window.close();
                 }
-
                 // Button Executions
                 if(event.type == Event::MouseButtonPressed){
                     if(images.ScrambleSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
@@ -38,9 +36,11 @@ struct GameWindow{
                         cout << "Scramble" << endl;
                     }
                     else if(images.SolveSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
-                        Graph.GetAllMoves(root, 0);
+                        // vector<vector<int>> IDASol = Graph.IDAStar(root, 0, 0);
+                        vector<vector<int>> BFSSol = Graph.BFS(root);
                         cout << "Solve" << endl;
                     }
+                    // Need to add button executions
                 }
             }
 
