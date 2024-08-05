@@ -201,7 +201,10 @@ struct Images{
 
             // sets random movement direction
             angle = (rand() % 360) * 3.14159265358979323846f / 180.0f;
-            speed = 100.0f;
+            speed = rand();
+            while(speed <= 0){
+                speed = rand();
+            }
             Vector2f direction(cos(angle) * speed, sin(angle) * speed);
 
             directions.push_back(direction);
@@ -223,11 +226,6 @@ struct Images{
             if(position.y > window.getSize().y || position.y < 0){
                 position.y = 0.0f;
             }
-
-//            if(position.y < 0 || position.y + FlyingSprites[i]->getGlobalBounds().getSize().y > window.getSize().y){
-//                // directions[i].y = -directions[i].y; // Makes object go in opposite direction
-//                directions[i].y = 0.0f;
-//            }
 
             FlyingSprites[i]->setPosition(position);
         }
