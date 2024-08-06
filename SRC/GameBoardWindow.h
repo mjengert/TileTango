@@ -64,7 +64,6 @@ struct GameWindow{
                             BFSSol = Graph.BFS(root);
                             auto BFSEnd = chrono::high_resolution_clock::now();
                             BFSDuration = chrono::duration_cast<chrono::milliseconds>(BFSEnd - BFSStart).count();
-
                             solvingState = true;
                             scrambleState = false;
                             firstOpen = false;
