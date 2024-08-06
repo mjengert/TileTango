@@ -14,3 +14,19 @@ Data: 100,000 randomly generated puzzle boards ranging in difficulty. These boar
 Tools: Openframeworks for the GUI using SFML library and C++.
 
 Strategy: We will be implementing IDA* and BFS as our algorithms. Our boards will be individual graphs with points being puzzle board states and edges being valid moves for the blocks.
+
+
+## Running Instructions
+
+This project was initially coded in the CLion IDE. To compile the project download the entire zip folder of the project or clone it as all of the assets, including the data.txt file, SFML library, and images, are included within the repository. 
+Next, using Clion open the CMakeList.txt, press "open (folder name)" as project, let it compile using the file, and then run the project.
+If Clion is not being used for compiling, any method in general that allows you to operate with Cmake to build and install the CMakeList.txt file will work.
+
+Step by step:
+1. Install Cmake version 3.27+ for your respective OS, https://cmake.org/download/ 
+2. Once in your respective terminal, cd to the file "TileTango-main" or the files name. paste in these instructions into the cmake terminal.
+'''
+make -C build install
+cmake --build build --target install
+--install build
+'''
