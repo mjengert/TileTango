@@ -85,6 +85,9 @@ struct GameWindow{
                         int BFSBoardsCreated = BFSSol[BFSSol.size()-1][0];
                         cout << "Sizes(IDA,BFS): "<< IDABoardsCreated << " " << BFSBoardsCreated << endl;
 
+                        images.BFSNode.setString(to_string(BFSBoardsCreated));
+                        images.IDANode.setString(to_string(IDABoardsCreated));
+
                         images.BFSSolDepth.setString(to_string(BFSDepth));
                         images.IDASolDepth.setString(to_string(IDADepth));
 
