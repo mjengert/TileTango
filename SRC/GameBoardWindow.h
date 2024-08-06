@@ -23,6 +23,7 @@ struct GameWindow {
     int BFSBoardsCreated;
     SoundBuffer soundBuffer;
     Sound moveSound;
+    float volume = 500;
 
     // Game window set up
     GameWindow(int &width, int &height, Images &images, SlidingBoardGraph &Graph) {
@@ -34,7 +35,7 @@ struct GameWindow {
         vector<vector<int>> BFSSol;
         vector<vector<int>> IDASol;
 
-        if (!soundBuffer.loadFromFile("../IMAGES/woosh2.mp3")) {
+        if (!soundBuffer.loadFromFile("../IMAGES/block.mp3")) {
             cout << "Error loading sound" << endl;
         }
         moveSound.setBuffer(soundBuffer);
@@ -129,6 +130,7 @@ struct GameWindow {
                     //play sound
                     if (soundCount != 1) {
                         moveSound.play();
+                        moveSound.setVolume(volume);
                         soundCount--;
                     }
                     //Draw NEW board states

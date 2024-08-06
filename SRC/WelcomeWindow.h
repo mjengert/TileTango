@@ -7,6 +7,10 @@ struct WelcomeWindow{
     Mouse mouse;
     Font font;
 
+    SoundBuffer welcomeBuffer;
+    Sound welcomeSound;
+    float volume = 50;
+
     // Generates the welcome window
     WelcomeWindow(int &width, int &height, SlidingBoardGraph &Graph){
 
@@ -14,6 +18,14 @@ struct WelcomeWindow{
         Images images(width, height);
 
         window.create(VideoMode(width, height), "Tile Tango: Welcome");
+
+        if (!welcomeBuffer.loadFromFile("../IMAGES/tangointro.mp3")) {
+            cout << "Error loading sound" << endl;
+        }
+        welcomeSound.setBuffer(welcomeBuffer);
+        welcomeSound.play();
+        welcomeSound.setVolume(volume);
+        welcomeSound.setLoop(true);
 
         while(window.isOpen()){
 
@@ -30,6 +42,7 @@ struct WelcomeWindow{
 
                     // Button execution
                     if(images.StartSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
+                        welcomeSound.stop();
                         window.close();
                         GameWindow gameWindow(width, height, images, Graph);
                     }
