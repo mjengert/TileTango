@@ -71,14 +71,14 @@ struct GameWindow{
 
                         int IDADepth = 0;
                         for(int i = 0; i < IDASol.size(); i++){
-                            for(int j = 0; i < IDASol[j].size(); j++){
+                            for(int j = 0; j < IDASol[i].size(); j++){
                                 IDADepth++;
                             }
                         }
 
                         int BFSDepth = 0;
                         for(int i = 0; i < BFSSol.size(); i++){
-                            for(int j = 0; i < BFSSol[j].size(); j++){
+                            for(int j = 0; j < BFSSol[i].size(); j++){
                                 BFSDepth++;
                             }
                         }
