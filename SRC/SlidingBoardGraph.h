@@ -47,7 +47,7 @@ public:
     void GetBoardFromFile(const string& filename);
     SlidingBoard* GetRoot() { return root; }
     vector<vector<int>> IDAStar(SlidingBoard* board, int GScore);
-    int IDAStarHelper(vector<int>& board, int GScore, int threshold, vector<vector<int>>& IDAPath, set<vector<int>>& visitedBoards);
+    int IDAStarHelper(vector<int>& board, int GScore, int threshold, vector<vector<int>>& IDAPath, set<vector<int>>& visitedBoards, vector<int>& totalBoards);
     int SetHScore(vector<int>& board);
     vector<vector<int>> BFS(SlidingBoard* board);
 

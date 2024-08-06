@@ -52,6 +52,7 @@ vector<vector<int>> SlidingBoardGraph::IDAStar(SlidingBoard* board, int GScore) 
     // create a vector to store the path taken to solve the puzzle and change the board to a vector
     vector<vector<int>> IDAPath;
     vector<int> currGrid(9);
+    vector<int> totalBoards = {0};
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             currGrid[i * 3 + j] = board->Board[i][j];
@@ -62,10 +63,12 @@ vector<vector<int>> SlidingBoardGraph::IDAStar(SlidingBoard* board, int GScore) 
     while (true) {
         // call the helper function to solve the puzzle
         set<vector<int>> visitedBoards;
-        int temp = IDAStarHelper(currGrid, GScore, threshold, IDAPath, visitedBoards);
+        int temp = IDAStarHelper(currGrid, GScore, threshold, IDAPath, visitedBoards, totalBoards);
         // if the puzzle is solved, return the path taken to solve it
         if (temp == -1) {
             reverse(IDAPath.begin(), IDAPath.end());
+            totalBoards[0] += visitedBoards.size();
+            IDAPath.push_back(totalBoards);
             return IDAPath;
         }
         // if the puzzle cannot be solved, return an empty vector
@@ -78,7 +81,7 @@ vector<vector<int>> SlidingBoardGraph::IDAStar(SlidingBoard* board, int GScore) 
 }
 
 // helper function for the IDA* algorithm
-int SlidingBoardGraph::IDAStarHelper(vector<int>& board, int GScore, int threshold, vector<vector<int>>& IDAPath, set<vector<int>>& visitedBoards) {
+int SlidingBoardGraph::IDAStarHelper(vector<int>& board, int GScore, int threshold, vector<vector<int>>& IDAPath, set<vector<int>>& visitedBoards, vector<int>& totalBoards) {
     // calculate the heuristic score of the board and the F score
     int HScore = SetHScore(board);
     int FScore = GScore + HScore;
@@ -134,7 +137,7 @@ int SlidingBoardGraph::IDAStarHelper(vector<int>& board, int GScore, int thresho
     // loop through the successors and call the helper function recursively
     for (vector<int>& successor : successors) {
         if (visitedBoards.find(successor) == visitedBoards.end()) {
-            int temp = IDAStarHelper(successor, GScore + 1, threshold, IDAPath, visitedBoards);
+            int temp = IDAStarHelper(successor, GScore + 1, threshold, IDAPath, visitedBoards, totalBoards);
             // if the puzzle is solved, return -1
             if (temp == -1) {
                 IDAPath.push_back(board);
@@ -147,6 +150,7 @@ int SlidingBoardGraph::IDAStarHelper(vector<int>& board, int GScore, int thresho
         }
     }
     // remove the board from the set of visited boards and return the minimum F score
+    totalBoards[0] += visitedBoards.size();
     visitedBoards.erase(board);
     return min;
 }
@@ -267,5 +271,11 @@ vector<vector<int>> SlidingBoardGraph::BFS(SlidingBoard *board) {
         BoardPath.insert(BoardPath.begin(), gridParent[currGrid]);
         currGrid = gridParent[currGrid];
     }
+
+    //add the total grid lines created at the end of the board path
+    vector<int> totalGridLines = {0};
+    totalGridLines[0] = visitedBoards.size();
+    BoardPath.push_back(totalGridLines);
+
     return BoardPath;
 }

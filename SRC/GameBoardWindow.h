@@ -69,19 +69,12 @@ struct GameWindow{
                             firstOpen = false;
                         }
 
-                        int IDADepth = 0;
-                        for(int i = 0; i < IDASol.size(); i++){
-                            for(int j = 0; j < IDASol[i].size(); j++){
-                                IDADepth++;
-                            }
-                        }
+                        int IDADepth = IDASol.size()-1;
+                        int BFSDepth = BFSSol.size()-1;
 
-                        int BFSDepth = 0;
-                        for(int i = 0; i < BFSSol.size(); i++){
-                            for(int j = 0; j < BFSSol[i].size(); j++){
-                                BFSDepth++;
-                            }
-                        }
+                        int IDABoardsCreated = IDASol[IDASol.size()-1][0];
+                        int BFSBoardsCreated = BFSSol[BFSSol.size()-1][0];
+                        cout << "Sizes(IDA,BFS): "<< IDABoardsCreated << " " << BFSBoardsCreated << endl;
 
                         images.BFSSolDepth.setString(to_string(BFSDepth));
                         images.IDASolDepth.setString(to_string(IDADepth));
@@ -98,9 +91,9 @@ struct GameWindow{
 
                 //find largest grid vector
                 bool BFSIsLower = false;
-                int solvingLength = BFSSol.size();
-                if (BFSSol.size() < IDASol.size()) {
-                    solvingLength = IDASol.size();
+                int solvingLength = BFSSol.size()-1;
+                if (BFSSol.size()-1 < IDASol.size()-1) {
+                    solvingLength = IDASol.size()-1;
                     BFSIsLower = true;
                 }
 
@@ -112,8 +105,8 @@ struct GameWindow{
                     //maintain each index within bounds
                     lowerCount = higherCount;
                     if (BFSIsLower){
-                        if(lowerCount >= BFSSol.size()){
-                            lowerCount = BFSSol.size()-1;
+                        if(lowerCount >= BFSSol.size()-1){
+                            lowerCount = BFSSol.size()-2;
                         }
                         if (lowerCount < 0){lowerCount = 0;}
                         //update the board array states for each algorithm
@@ -125,8 +118,8 @@ struct GameWindow{
                         }
                     }
                     else{
-                        if(lowerCount >= IDASol.size()){
-                            lowerCount = IDASol.size()-1;
+                        if(lowerCount >= IDASol.size()-1){
+                            lowerCount = IDASol.size()-2;
                         }
                         if (lowerCount < 0) {lowerCount = 0;}
                         //update the board array states for each algorithm
