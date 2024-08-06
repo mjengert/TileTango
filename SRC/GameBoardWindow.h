@@ -12,7 +12,7 @@ struct GameWindow{
     int width;
     int height;
 
-    // Fake generated boards to set up a tile drawing system
+    // Board Generation information
     SlidingBoardGraph Graph;
     SlidingBoard* root;
     double IDADuration = 0;
@@ -50,6 +50,7 @@ struct GameWindow{
                 if(event.type == Event::Closed){
                     window.close();
                 }
+
                 // Button Executions
                 if(event.type == Event::MouseButtonPressed){
                     if(images.ScrambleSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
@@ -78,15 +79,15 @@ struct GameWindow{
                             firstOpen = false;
                         }
 
+                        // Adds Info Box information
                         int IDADepth = IDASol.size()-1;
                         int BFSDepth = BFSSol.size()-1;
 
                         int IDABoardsCreated = IDASol[IDASol.size()-1][0];
                         int BFSBoardsCreated = BFSSol[BFSSol.size()-1][0];
-                        cout << "Sizes(IDA,BFS): "<< IDABoardsCreated << " " << BFSBoardsCreated << endl;
 
-                        images.BFSNode.setString(to_string(BFSBoardsCreated));
-                        images.IDANode.setString(to_string(IDABoardsCreated));
+                        images.BFSMoveStates.setString(to_string(BFSBoardsCreated));
+                        images.IDAMoveStates.setString(to_string(IDABoardsCreated));
 
                         images.BFSSolDepth.setString(to_string(BFSDepth));
                         images.IDASolDepth.setString(to_string(IDADepth));
@@ -101,8 +102,6 @@ struct GameWindow{
             }
             // Once solve button is clicked iterate through solution paths of both algorithms once
             if (solvingState){
-                //TEMP DELETE AFTER IDA IMPLEMENTATION
-                cout << "solving" << endl;
 
                 //find largest grid vector
                 bool BFSIsLower = false;

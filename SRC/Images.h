@@ -13,59 +13,29 @@ struct Images{
     int width, height;
     float angle, speed;
 
+    //========================================= Info Box Text =========================================//
     Font font;
-    Text BFSNode;
-    Text IDANode;
-    Text BFSSolDepth;
-    Text IDASolDepth;
-    Text BFSTime;
-    Text IDATime;
+    Text BFSMoveStates, IDAMoveStates, BFSSolDepth, IDASolDepth, BFSTime, IDATime;
 
-    vector<Text*> InfoText = { &BFSNode, &IDANode, &BFSSolDepth, &IDASolDepth, &BFSTime, &IDATime};
+    vector<Text*> InfoText = {&BFSMoveStates, &IDAMoveStates, &BFSSolDepth, &IDASolDepth, &BFSTime, &IDATime};
 
     //========================================= Title Text Variables =========================================//
-    Texture TitleTexture;
-    Texture StartTexture;
-    Texture BFSTexture;
-    Texture IDATexture;
-    Texture InfoBoxTexture;
-    Texture ScrambleTexture;
-    Texture SolveTexture;
+    Texture TitleTexture, StartTexture, BFSTexture, IDATexture, InfoBoxTexture, ScrambleTexture, SolveTexture;
 
-    Sprite TitleSprite;
-    Sprite StartSprite;
-    Sprite BFSSprite;
-    Sprite IDASprite;
-    Sprite InfoBoxSprite;
-    Sprite ScrambleSprite;
-    Sprite SolveSprite;
+    Sprite TitleSprite, StartSprite, BFSSprite, IDASprite, InfoBoxSprite, ScrambleSprite, SolveSprite;
 
     vector<string> Text = {"Title", "Start", "BFS", "IDA", "Info Box", "Scramble","Solve"};
+
     vector<Texture*> TextTextures = {&TitleTexture, &StartTexture, &BFSTexture,
                                      &IDATexture, &InfoBoxTexture, &ScrambleTexture, &SolveTexture};
+
     vector<Sprite*> TextSprites = {&TitleSprite, &StartSprite, &BFSSprite,
                                    &IDASprite, &InfoBoxSprite, &ScrambleSprite, &SolveSprite};
 
-    //========================================= Number Variables =========================================//
-    Texture OneTexture;
-    Texture TwoTexture;
-    Texture ThreeTexture;
-    Texture FourTexture;
-    Texture FiveTexture;
-    Texture SixTexture;
-    Texture SevenTexture;
-    Texture EightTexture;
-    Texture NineTexture;
+    //========================================= Number Tile Variables =========================================//
+    Texture OneTexture, TwoTexture, ThreeTexture, FourTexture, FiveTexture, SixTexture, SevenTexture, EightTexture, NineTexture;
 
-    Sprite OneSprite;
-    Sprite TwoSprite;
-    Sprite ThreeSprite;
-    Sprite FourSprite;
-    Sprite FiveSprite;
-    Sprite SixSprite;
-    Sprite SevenSprite;
-    Sprite EightSprite;
-    Sprite NineSprite;
+    Sprite OneSprite, TwoSprite, ThreeSprite, FourSprite,FiveSprite, SixSprite, SevenSprite, EightSprite, NineSprite;
 
     vector<Texture*> NumberTextures = {&OneTexture, &TwoTexture, &ThreeTexture, &FourTexture, &FiveTexture, &SixTexture,
                                        &SevenTexture, &EightTexture, &NineTexture};
@@ -77,25 +47,9 @@ struct Images{
 
     //========================================= Flying Variables =========================================//
 
-    Texture Flying1;
-    Texture Flying2;
-    Texture Flying3;
-    Texture Flying4;
-    Texture Flying5;
-    Texture Flying6;
-    Texture Flying7;
-    Texture Flying8;
+    Texture Flying1, Flying2, Flying3,Flying4, Flying5, Flying6, Flying7, Flying8;
 
-    Sprite FlyingSprite1;
-    Sprite FlyingSprite2;
-    Sprite FlyingSprite3;
-    Sprite FlyingSprite4;
-    Sprite FlyingSprite5;
-    Sprite FlyingSprite6;
-    Sprite FlyingSprite7;
-    Sprite FlyingSprite8;
-
-    vector<string> flyingText = {"1", "2", "3", "4", "5", "6", "7", "8"};
+    Sprite FlyingSprite1, FlyingSprite2, FlyingSprite3, FlyingSprite4, FlyingSprite5, FlyingSprite6, FlyingSprite7, FlyingSprite8;
 
     vector<Texture*> FlyingTextures = {&Flying1, &Flying2, &Flying3, &Flying4, &Flying5, &Flying6, &Flying7, &Flying8};
 
@@ -118,17 +72,19 @@ struct Images{
     // Loads Textures for Text and numbers
     void loadTextures(){
 
+        // Loads font for information box
         if(!font.loadFromFile("files/OleoScript-Regular.ttf")){
             cout << "Error loading files/OleoScript-Regular.ttf" << endl;
         }
 
+        // Sets font, size, and color of information box text
         for(int i = 0; i < InfoText.size(); i++){
             InfoText[i]->setFont(font);
             InfoText[i]->setCharacterSize(24);
             InfoText[i]->setFillColor(Color::Black);
         }
 
-        // Loads text textures
+        // Loads text image textures
         for(int i = 0; i < Text.size(); i++){
             loadFile = "../IMAGES/TileTango Text/" + Text[i] + ".png";
 
@@ -156,6 +112,8 @@ struct Images{
 
     // Loads text and number sprites
     void loadImages(){
+
+        // loads textures for sprites
         loadTextures();
 
         // Loads Text Sprite
@@ -173,6 +131,7 @@ struct Images{
             FlyingSprites[i]->setTexture(*FlyingTextures[i]);
         }
 
+        // Sets background rectangle outline for IDA and BFS boards
         RectangleShape temp(Vector2f(OneSprite.getGlobalBounds().width * 3, OneSprite.getGlobalBounds().height * 3));
         backgroundBoard = temp;
         backgroundBoard.setOrigin(backgroundBoard.getGlobalBounds().width / 2.0f, backgroundBoard.getGlobalBounds().height / 2.0f);
@@ -200,34 +159,13 @@ struct Images{
             FlyingSprites[i]->setOrigin(FlyingSprites[i]->getGlobalBounds().width / 2.0f, FlyingSprites[i]->getGlobalBounds().height / 2.0f);
         }
 
-        //========================================= Sets position of Text Sprites =========================================//
-        float current = 140;
-        float totalSpace = width - (current * 2);
-
-
+        //========================================= Sets position of Text Image Sprites =========================================//
         TitleSprite.setPosition(width / 2.0f, height / 8.0f);
         StartSprite.setPosition(width / 2.0f, (height / 8.0f) * 5);
 
         BFSSprite.setPosition((width / 4.0f) - 75, height / 8.0f * 2);
         IDASprite.setPosition((width / 8.0f) * 6 + 75, (height / 8.0f) * 2);
         InfoBoxSprite.setPosition(width / 2.0f, height/ 2.0f);
-
-        float currentX = InfoBoxSprite.getGlobalBounds().left + 110;
-        float currentY = InfoBoxSprite.getGlobalBounds().top  + 85;
-
-        BFSNode.setPosition(currentX, currentY);
-        currentY += 45;
-        IDANode.setPosition(currentX, currentY);
-        currentY += 170;
-
-        BFSSolDepth.setPosition(currentX, currentY);
-        currentY += 45;
-        IDASolDepth.setPosition(currentX, currentY);
-        currentY += 170;
-
-        BFSTime.setPosition(currentX, currentY);
-        currentY += 45;
-        IDATime.setPosition(currentX, currentY);
 
         ScrambleSprite.setPosition((width / 4.0f) - 75, (height / 8.0f) * 7);
         SolveSprite.setPosition((width / 8.0f) * 6 + 75, (height / 8.0f) * 7);
@@ -244,8 +182,27 @@ struct Images{
 
             directions.push_back(direction);
         }
+
+        //========================================= Sets position of Info Box Text =========================================//
+        float currentX = InfoBoxSprite.getGlobalBounds().left + 110;
+        float currentY = InfoBoxSprite.getGlobalBounds().top  + 85;
+
+        BFSMoveStates.setPosition(currentX, currentY);
+        currentY += 45;
+        IDAMoveStates.setPosition(currentX, currentY);
+        currentY += 170;
+
+        BFSSolDepth.setPosition(currentX, currentY);
+        currentY += 45;
+        IDASolDepth.setPosition(currentX, currentY);
+        currentY += 170;
+
+        BFSTime.setPosition(currentX, currentY);
+        currentY += 45;
+        IDATime.setPosition(currentX, currentY);
     }
 
+    // Changes position of flying text on Welcome Window
     void setDirections(RenderWindow &window){
         float deltaTime = clock.restart().asSeconds();
         for(int i = 0; i < FlyingSprites.size(); i++){
@@ -257,6 +214,7 @@ struct Images{
                 directions[i].x = -directions[i].x;
             }
 
+            // Resets object to the top of the window once at the bottom or if random generated position is < 0
             if(position.y > window.getSize().y || position.y < 0){
                 position.y = 0.0f;
             }

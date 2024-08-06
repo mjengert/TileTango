@@ -12,10 +12,12 @@ struct WelcomeWindow{
 
         // Loads all the images
         Images images(width, height);
+
         window.create(VideoMode(width, height), "Tile Tango: Welcome");
 
         while(window.isOpen()){
 
+            // Changes flying image position
             images.setDirections(window);
 
             while(window.pollEvent(event)){
