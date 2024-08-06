@@ -94,7 +94,6 @@ struct GameWindow{
             // Once solve button is clicked iterate through solution paths of both algorithms once
             if (solvingState){
                 //TEMP DELETE AFTER IDA IMPLEMENTATION
-                IDASol = {{1,2,3,4,5,6,7,8,9}};
                 cout << "solving" << endl;
 
                 //find largest grid vector
