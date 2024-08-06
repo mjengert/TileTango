@@ -25,8 +25,8 @@ If Clion is not being used for compiling, any method in general that allows you 
 Step by step:
 1. Install Cmake version 3.27+ for your respective OS, https://cmake.org/download/ 
 2. Once in your respective terminal, cd to the file "TileTango-main" or the files name. paste in these instructions into the cmake terminal.
-'''
+```
 make -C build install
 cmake --build build --target install
 --install build
-'''
+```
