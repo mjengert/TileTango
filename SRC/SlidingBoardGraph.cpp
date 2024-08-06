@@ -263,7 +263,7 @@ vector<vector<int>> SlidingBoardGraph::BFS(SlidingBoard *board) {
         }
     }
 
-    //Assembles path taken by BFS to get to the solution grid
+    //assembles path taken by BFS to get to the solution grid
     vector<vector<int>> BoardPath;
     //loops through until no parent is found
     BoardPath.push_back(solutionGrid); //solution is always last child/step

@@ -33,30 +33,27 @@ struct SlidingBoard {
     }
 };
 
-// Class to create the graph (verticies are boards, edges are moves)
+// class to form the graph of the sliding board
 class SlidingBoardGraph {
 public:
-    // Constructor and destructor
+    // constructor and destructor
     SlidingBoardGraph() {
         root = nullptr;
     }
     ~SlidingBoardGraph() {
         delete root;
     }
-    // Operations on the graph
+    // operations on the graph
     void GetBoardFromFile(const string& filename);
     SlidingBoard* GetRoot() { return root; }
     vector<vector<int>> IDAStar(SlidingBoard* board, int GScore);
     int IDAStarHelper(vector<int>& board, int GScore, int threshold, vector<vector<int>>& IDAPath, set<vector<int>>& visitedBoards, vector<int>& totalBoards);
     int SetHScore(vector<int>& board);
     vector<vector<int>> BFS(SlidingBoard* board);
-
 private:
-    // Private variables
+    // private variables
     SlidingBoard* root;
     vector<SlidingBoard*> usedBoards = {};
 };
-
-
 
 #endif //TILETANGO_SLIDINGBOARDGRAPH_H

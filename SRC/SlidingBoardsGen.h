@@ -11,18 +11,15 @@
 using namespace std;
 using namespace sf;
 
-// File for board class and functions
-// Will also hold functions for checking if a board is solvable
-
+// file for board class and functions
 class SlidingBoardsGen {
 public:
-    // operations for generating boards
+    // operations
     void GenerateLotsOfBoards();
     void GenerateBoard();
     bool isSolvable();
-    // operations for manipulating boards
-    vector<int> GetAdjacent(int vertex);
 private:
+    // private variables
     unordered_map<int, vector<pair<int, double>>> BoardList;
     map<int, vector<pair<int, double>>> SolutionList = {
             {1,  {{2,  1}, {5,  1}}},
@@ -36,6 +33,5 @@ private:
             {9,  {{5,  1}, {10, 1}, {13, 1}}}
     };
 };
-
 
 #endif //TILETANGO_SLIDINGBOARDS_H
