@@ -2,6 +2,7 @@
 #include <chrono>
 #include <unistd.h>
 #include "SlidingBoardGraph.h"
+#include <SFML/Audio.hpp>
 
 struct GameWindow{
     RenderWindow window;
@@ -17,6 +18,9 @@ struct GameWindow{
     double IDADuration = 0;
     double BFSDuration = 0;
 
+    SoundBuffer soundBuffer;
+    Sound moveSound;
+
 
     // Game window set up
     GameWindow(int &width, int &height, Images &images, SlidingBoardGraph &Graph){
@@ -27,6 +31,11 @@ struct GameWindow{
         root = Graph.GetRoot();
         vector<vector<int>> BFSSol;
         vector<vector<int>> IDASol;
+
+        if (!soundBuffer.loadFromFile("../IMAGES/woosh2.mp3")){
+            cout << "Error loading sound" << endl;
+        }
+        moveSound.setBuffer(soundBuffer);
 
         //The game window can be in either of these three states at a time
         //Solving happens when button is pressed and ends when animation is done
@@ -103,7 +112,8 @@ struct GameWindow{
                 int IDABoardState[3][3];
                 int BFSBoardState[3][3];
                 int lowerCount;
-                //start looping through each board sprite at 0.05 second intervals
+                int soundCount = solvingLength;
+                //start looping through each board sprite at 0.5 second intervals
                 for (int higherCount = 0; higherCount < solvingLength; higherCount++) {
                     //maintain each index within bounds
                     lowerCount = higherCount;
@@ -133,11 +143,17 @@ struct GameWindow{
                             }
                         }
                     }
+                    //play sound
+                    if (soundCount != 1) {
+                        moveSound.play();
+                        soundCount--;
+                    }
+
                     //Draw NEW board states
                     GameDisplay(BFSBoardState, IDABoardState);
 
-                    //delay by 0.1 seconds
-                    usleep(100000);
+                    //delay by 0.5 seconds
+                    usleep(250000);
                 }
                 solvingState = false;
             }
