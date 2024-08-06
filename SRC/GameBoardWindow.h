@@ -63,13 +63,13 @@ struct GameWindow{
                     }
                     else if(images.SolveSprite.getGlobalBounds().contains(mouse.getPosition(window).x,mouse.getPosition(window).y)){
                         if (scrambleState or firstOpen) {
-                            // solve using IDA*
+                            // solve using IDA* and record time and path taken
                             auto IDAStart = chrono::high_resolution_clock::now();
                             IDASol = Graph.IDAStar(root, 0);
                             auto IDAEnd = chrono::high_resolution_clock::now();
                             IDADuration = chrono::duration_cast<chrono::milliseconds>(IDAEnd - IDAStart).count();
 
-                            // solve using BFS
+                            // solve using BFS and record time and path taken
                             auto BFSStart = chrono::high_resolution_clock::now();
                             BFSSol = Graph.BFS(root);
                             auto BFSEnd = chrono::high_resolution_clock::now();
@@ -79,7 +79,7 @@ struct GameWindow{
                             firstOpen = false;
                         }
 
-                        // Adds Info Box information
+                        // Adds Info Box information to be displayed later
                         int IDADepth = IDASol.size()-1;
                         int BFSDepth = BFSSol.size()-1;
 
@@ -102,8 +102,7 @@ struct GameWindow{
             }
             // Once solve button is clicked iterate through solution paths of both algorithms once
             if (solvingState){
-
-                //find largest grid vector
+                //find largest grid vector and record it as highest
                 bool BFSIsLower = false;
                 int solvingLength = BFSSol.size()-1;
                 if (BFSSol.size()-1 < IDASol.size()-1) {
@@ -115,7 +114,7 @@ struct GameWindow{
                 int BFSBoardState[3][3];
                 int lowerCount;
                 int soundCount = solvingLength;
-                //start looping through each board sprite at 0.5 second intervals
+                //start looping through each board sprite at 0.25 second intervals
                 for (int higherCount = 0; higherCount < solvingLength; higherCount++) {
                     //maintain each index within bounds
                     lowerCount = higherCount;
@@ -154,15 +153,15 @@ struct GameWindow{
                     //Draw NEW board states
                     GameDisplay(BFSBoardState, IDABoardState);
 
-                    //delay by 0.5 seconds
+                    //delay by 0.25 seconds
                     usleep(250000);
                 }
                 solvingState = false;
             }
 
-            // Prints out the game when scramble button is pressed or window first opened
+            // Displays the scrambled board when scramble button is pressed or window first opened
             if(scrambleState or firstOpen) {
-                GameDisplay();
+                GameDisplay(root->Board, root->Board);
             }
         }
     }
@@ -227,23 +226,7 @@ struct GameWindow{
         }
     }
 
-    void GameDisplay(){
-        window.clear(Color(63, 63, 131));
-        window.draw(images.IDASprite);
-        window.draw(images.BFSSprite);
-        window.draw(images.ScrambleSprite);
-        window.draw(images.SolveSprite);
-        window.draw(images.InfoBoxSprite);
-        setNumberPositions(root->Board, images.IDASprite.getGlobalBounds().left + 55,
-                           (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) /
-                           2.0f);
-        setNumberPositions(root->Board, images.BFSSprite.getGlobalBounds().left + 55,
-                           (images.SolveSprite.getGlobalBounds().top + images.IDASprite.getGlobalBounds().height) /
-                           2.0f);
-        window.display();
-    }
-
-    //game display for solving
+    //Refreshes the window of the game and updates the IDA and BFS based on board inputs
     void GameDisplay(int BFSBoard[3][3], int IDABoard[3][3]){
         window.clear(Color(63, 63, 131));
         window.draw(images.IDASprite);
