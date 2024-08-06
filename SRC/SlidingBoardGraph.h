@@ -5,54 +5,32 @@
 #include <utility>
 #include <algorithm>
 #include <map>
+#include <set>
 #include <fstream>
 using namespace std;
 
 struct SlidingBoard {
     int Board[3][3];
-    int Solution[3][3] = {{1, 2, 3},
-                          {4, 5, 6},
-                          {7, 8, 9}};
-    int HScore;
-    int blankRow;
-    int blankCol;
-    SlidingBoard* parent;
-    vector<SlidingBoard*> children;
     // constructor for the board from file
     explicit SlidingBoard(vector<int> board) {
         int index = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (board[index] == 9) {
-                    blankRow = i;
-                    blankCol = j;
-                }
                 Board[i][j] = board[index];
                 index++;
             }
         }
-        this->HScore = SetHScore(this);
-        this->parent = nullptr;
-        this->children = {};
     }
     // constructor for the board from move
     explicit SlidingBoard(int board[3][3]) {
         int index = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (board[i][j] == 9) {
-                    blankRow = i;
-                    blankCol = j;
-                }
                 Board[i][j] = board[i][j];
                 index++;
             }
         }
-        this->HScore = SetHScore(this);
-        this->parent = nullptr;
-        this->children = {};
     }
-    int SetHScore(SlidingBoard* board);
 };
 
 // Class to create the graph (verticies are boards, edges are moves)
@@ -63,28 +41,20 @@ public:
         root = nullptr;
     }
     ~SlidingBoardGraph() {
-        if (root != nullptr) {
-            DeleteGraph(root);
-        }
+        delete root;
     }
     // Operations on the graph
     void GetBoardFromFile(const string& filename);
     SlidingBoard* GetRoot() { return root; }
-    // bool GetAllMoves(SlidingBoard* board, int depth);
-    // void CreateMove(SlidingBoard* board, int row, int col);
-    bool IsSolution(SlidingBoard* board);
-    vector<vector<int>> IDAStar(SlidingBoard* board, int GScore, int threshold);
+    vector<vector<int>> IDAStar(SlidingBoard* board, int GScore);
+    int IDAStarHelper(vector<int>& board, int GScore, int threshold, vector<vector<int>>& IDAPath, set<vector<int>>& visitedBoards);
+    int SetHScore(vector<int>& board);
     vector<vector<int>> BFS(SlidingBoard* board);
-    void DeleteGraph(SlidingBoard* board);
 
 private:
     // Private variables
     SlidingBoard* root;
     vector<SlidingBoard*> usedBoards = {};
-    vector<SlidingBoard*> gameStates = {};
-    int Solution[3][3] = {{1, 2, 3},
-                          {4, 5, 6},
-                          {7, 8, 9}};
 };
 
 

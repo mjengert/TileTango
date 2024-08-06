@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <fstream>
 #include <queue>
+#include <map>
 #include <set>
 using namespace std;
 
@@ -40,161 +41,132 @@ void SlidingBoardGraph::GetBoardFromFile(const string& filename) {
         }
         cout << endl;
     }
-    // clear past board data
-    if (root != nullptr) {
-        DeleteGraph(root);
-    }
     root = newBoard;
     usedBoards.push_back(newBoard);
 }
 
-// get the possible moves for a board; called recursively to get all possible moves till the solution is found
-/*
-bool SlidingBoardGraph::GetAllMoves(SlidingBoard* board, int depth) {
-    if (board == nullptr) {
-        return false;
-    }
-    bool solutionFound = false;
-    if (IsSolution(board)) {
-        solutionFound = true;
-        cout << "Solution found" << endl;
-        cout << "Depth: " << depth << endl;
-        return solutionFound;
-    }
-
-    // check if the blank tile is in the top right corner of the board
-    if (board->blankRow == 0 && board->blankCol == 0) {
-        CreateMove(board, board->blankRow + 1, board->blankCol);
-        CreateMove(board, board->blankRow, board->blankCol + 1);
-
-    }
-    else if (board->blankRow == 0 && board->blankCol == 1) {
-        CreateMove(board, board->blankRow + 1, board->blankCol);
-        CreateMove(board, board->blankRow, board->blankCol - 1);
-        CreateMove(board, board->blankRow, board->blankCol + 1);
-    }
-    else if (board->blankRow == 0 && board->blankCol == 2) {
-        CreateMove(board, board->blankRow + 1, board->blankCol);
-        CreateMove(board, board->blankRow, board->blankCol - 1);
-    }
-    else if (board->blankRow == 1 && board->blankCol == 0) {
-        CreateMove(board, board->blankRow + 1, board->blankCol);
-        CreateMove(board, board->blankRow - 1, board->blankCol);
-        CreateMove(board, board->blankRow, board->blankCol + 1);
-    }
-    else if (board->blankRow == 1 && board->blankCol == 1) {
-        CreateMove(board, board->blankRow + 1, board->blankCol);
-        CreateMove(board, board->blankRow - 1, board->blankCol);
-        CreateMove(board, board->blankRow, board->blankCol + 1);
-        CreateMove(board, board->blankRow, board->blankCol - 1);
-    }
-    else if (board->blankRow == 1 && board->blankCol == 2) {
-        CreateMove(board, board->blankRow + 1, board->blankCol);
-        CreateMove(board, board->blankRow - 1, board->blankCol);
-        CreateMove(board, board->blankRow, board->blankCol - 1);
-    }
-    else if (board->blankRow == 2 && board->blankCol == 0) {
-        CreateMove(board, board->blankRow - 1, board->blankCol);
-        CreateMove(board, board->blankRow, board->blankCol + 1);
-    }
-    else if (board->blankRow == 2 && board->blankCol == 1) {
-        CreateMove(board, board->blankRow - 1, board->blankCol);
-        CreateMove(board, board->blankRow, board->blankCol + 1);
-        CreateMove(board, board->blankRow, board->blankCol - 1);
-    }
-    else if (board->blankRow == 2 && board->blankCol == 2) {
-        CreateMove(board, board->blankRow - 1, board->blankCol);
-        CreateMove(board, board->blankRow, board->blankCol - 1);
-    }
-
-    for (int i = 0; i < board->children.size(); i++) {
-        if (GetAllMoves(board->children[i], depth + 1)) {
-            solutionFound = true;
-            break;
-        }
-    }
-    return solutionFound;
-}
-
-// create a move for a board
-void SlidingBoardGraph::CreateMove(SlidingBoard* board, int row, int col) {
-    // copy the board into the new board
-    int newBoard[3][3];
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            newBoard[i][j] = board->Board[i][j];
-        }
-    }
-    // swap the blank tile with the tile to be moved
-    swap(newBoard[board->blankRow][board->blankCol], newBoard[row][col]);
-    // check if the new board is already in gameStates
-    bool boardExists = false;
-    for (int i = 0; i < gameStates.size(); i++) {
-        bool sameBoard = true;
-        for (int j = 0; j < 3; j++) {
-            for (int k = 0; k < 3; k++) {
-                if (gameStates[i]->Board[j][k] != newBoard[j][k]) {
-                    sameBoard = false;
-                    break;
-                }
-            }
-            if (!sameBoard) {
-                break;
-            }
-        }
-        if (sameBoard) {
-            boardExists = true;
-            break;
-        }
-    }
-    if (boardExists) {
-        return;
-    }
-    // create a new board object and add it to the gameStates vector
-    auto* newBoardObj = new SlidingBoard(newBoard);
-    gameStates.push_back(newBoardObj);
-    // set the parent of the new board to the current board and update children of the current board
-    newBoardObj->parent = board;
-    board->children.push_back(newBoardObj);
-}
- */
-// check if a board is the solution
-bool SlidingBoardGraph::IsSolution(SlidingBoard *board) {
-    if (board == nullptr) {
-        cout << "IsSolution: Board is null" << endl;
-        return false;
-    }
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (board->Board[i][j] != Solution[i][j]) {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
 // use the IDA* algorithm to solve the puzzle
-vector<vector<int>> SlidingBoardGraph::IDAStar(SlidingBoard* board, int GScore, int threshold) {
-    // HScore is the heuristic score = number of blocks not in the correct position
-    // GScore is the number of moves made towards the solution
-    // FScore is the sum of GScore and HScore
-    int FScore = board->HScore + GScore;
-    int newThreshold = threshold;
-
-}
-
-// sets the heuristic for a board
-// if a block is not in the correct position, the heuristic is incremented by 1
-int SlidingBoard::SetHScore(SlidingBoard *board) {
-    int hScore = 0;
+// reference: https://www.geeksforgeeks.org/iterative-deepening-a-algorithm-ida-artificial-intelligence/#
+// reference: https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
+vector<vector<int>> SlidingBoardGraph::IDAStar(SlidingBoard* board, int GScore) {
+    // create a vector to store the path taken to solve the puzzle and change the board to a vector
+    vector<vector<int>> IDAPath;
+    vector<int> currGrid(9);
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            if (board->Board[i][j] != Solution[i][j]) {
-                hScore++;
+            currGrid[i * 3 + j] = board->Board[i][j];
+        }
+    }
+    // set the threshold to the heuristic score of the board and start the IDA* algorithm
+    int threshold = SetHScore(currGrid);
+    while (true) {
+        // call the helper function to solve the puzzle
+        set<vector<int>> visitedBoards;
+        int temp = IDAStarHelper(currGrid, GScore, threshold, IDAPath, visitedBoards);
+        // if the puzzle is solved, return the path taken to solve it
+        if (temp == -1) {
+            reverse(IDAPath.begin(), IDAPath.end());
+            return IDAPath;
+        }
+        // if the puzzle cannot be solved, return an empty vector
+        if (temp == INT_MAX) {
+            return {};
+        }
+        // update the threshold and continue the algorithm
+        threshold = temp;
+    }
+}
+
+// helper function for the IDA* algorithm
+int SlidingBoardGraph::IDAStarHelper(vector<int>& board, int GScore, int threshold, vector<vector<int>>& IDAPath, set<vector<int>>& visitedBoards) {
+    // calculate the heuristic score of the board and the F score
+    int HScore = SetHScore(board);
+    int FScore = GScore + HScore;
+    vector<int> solutionGrid = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    // if the F score is greater than the threshold, return the F score
+    if (FScore > threshold) {
+        return FScore;
+    }
+    // if the board is the solution, return -1
+    if (board == solutionGrid) {
+        IDAPath.push_back(board);
+        return -1;
+    }
+    // add the board to the set of visited boards and find the blank space
+    visitedBoards.insert(board);
+    int min = INT_MAX;
+    vector<vector<int>> successors;
+    vector<int> tempGrid;
+    int blankRow;
+    int blankCol;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (board[i * 3 + j] == 9) {
+                blankRow = i;
+                blankCol = j;
             }
         }
     }
+    //swap up with blank
+    if (blankRow > 0) {
+        tempGrid = board;
+        swap(tempGrid[blankRow * 3 + blankCol], tempGrid[(blankRow * 3 - 3) + blankCol]);
+        successors.push_back(tempGrid);
+    }
+    //swap down with blank
+    if (blankRow < 2) {
+        tempGrid = board;
+        swap(tempGrid[blankRow * 3 + blankCol], tempGrid[(blankRow * 3 + 3) + blankCol]);
+        successors.push_back(tempGrid);
+    }
+    //swap left with blank
+    if (blankCol > 0) {
+        tempGrid = board;
+        swap(tempGrid[blankRow * 3 + blankCol], tempGrid[blankRow * 3 + (blankCol - 1)]);
+        successors.push_back(tempGrid);
+    }
+    //swap right with blank
+    if (blankCol < 2) {
+        tempGrid = board;
+        swap(tempGrid[blankRow * 3 + blankCol], tempGrid[blankRow * 3 + (blankCol + 1)]);
+        successors.push_back(tempGrid);
+    }
+    // loop through the successors and call the helper function recursively
+    for (vector<int>& successor : successors) {
+        if (visitedBoards.find(successor) == visitedBoards.end()) {
+            int temp = IDAStarHelper(successor, GScore + 1, threshold, IDAPath, visitedBoards);
+            // if the puzzle is solved, return -1
+            if (temp == -1) {
+                IDAPath.push_back(board);
+                return -1;
+            }
+            // update the minimum F score
+            if (temp < min) {
+                min = temp;
+            }
+        }
+    }
+    // remove the board from the set of visited boards and return the minimum F score
+    visitedBoards.erase(board);
+    return min;
+}
+
+// for SlidingBoardGraph constructor, set the heuristic score for the board
+// uses the Manhattan distance to calculate the heuristic score
+// reference: https://www.geeksforgeeks.org/maximum-manhattan-distance-between-a-distinct-pair-from-n-coordinates/
+int SlidingBoardGraph::SetHScore(vector<int>& board) {
+    int hScore = 0;
+    // calculate the Manhattan distance for each tile on the board and add it to the heuristic score
+    for (int i = 0; i < 9; i++) {
+        if (board[i] != 9) {
+            int row = i / 3;
+            int col = i % 3;
+            int correctRow = (board[i] - 1) / 3;
+            int correctCol = (board[i] - 1) % 3;
+            hScore += abs(row - correctRow) + abs(col - correctCol);
+        }
+    }
+    // return the heuristic score
     return hScore;
 }
 
@@ -296,15 +268,4 @@ vector<vector<int>> SlidingBoardGraph::BFS(SlidingBoard *board) {
         currGrid = gridParent[currGrid];
     }
     return BoardPath;
-}
-
-// delete the graph
-void SlidingBoardGraph::DeleteGraph(SlidingBoard *board) {
-    if (board == nullptr) {
-        return;
-    }
-    for (int i = 0; i < board->children.size(); i++) {
-        DeleteGraph(board->children[i]);
-    }
-    delete board;
 }
