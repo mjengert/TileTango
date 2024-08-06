@@ -55,7 +55,7 @@ struct GameWindow{
                         if (scrambleState or firstOpen) {
                             // solve using IDA*
                             auto IDAStart = chrono::high_resolution_clock::now();
-                            //IDASol = Graph.IDAStar(root, 0, 0);
+                            IDASol = Graph.IDAStar(root, 0);
                             auto IDAEnd = chrono::high_resolution_clock::now();
                             IDADuration = chrono::duration_cast<chrono::milliseconds>(IDAEnd - IDAStart).count();
 
@@ -68,6 +68,23 @@ struct GameWindow{
                             scrambleState = false;
                             firstOpen = false;
                         }
+
+                        int IDADepth = 0;
+                        for(int i = 0; i < IDASol.size(); i++){
+                            for(int j = 0; i < IDASol[j].size(); j++){
+                                IDADepth++;
+                            }
+                        }
+
+                        int BFSDepth = 0;
+                        for(int i = 0; i < BFSSol.size(); i++){
+                            for(int j = 0; i < BFSSol[j].size(); j++){
+                                BFSDepth++;
+                            }
+                        }
+
+                        images.BFSSolDepth.setString(to_string(BFSDepth));
+                        images.IDASolDepth.setString(to_string(IDADepth));
 
                         images.BFSTime.setString(to_string(BFSDuration));
                         images.IDATime.setString(to_string(IDADuration));
