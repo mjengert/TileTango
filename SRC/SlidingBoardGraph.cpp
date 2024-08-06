@@ -35,12 +35,6 @@ void SlidingBoardGraph::GetBoardFromFile(const string& filename) {
     }
     // create a new board and insert it into the graph; also add it to the usedBoards vector to keep track of it
     auto* newBoard = new SlidingBoard(board);
-    for (auto & i : newBoard->Board) {
-        for (int j : i) {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
     root = newBoard;
     usedBoards.push_back(newBoard);
 }

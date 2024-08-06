@@ -7,7 +7,6 @@
 
 // generate lots of boards; used for creating the AllBoards.txt file
 // currently not in use as the file has already been created
-
 void GenerateLotsOfBoards() {
     SlidingBoardsGen Board;
     // generate lots of boards
