@@ -63,7 +63,7 @@ struct GameWindow{
                             auto BFSStart = chrono::high_resolution_clock::now();
                             BFSSol = Graph.BFS(root);
                             auto BFSEnd = chrono::high_resolution_clock::now();
-                            BFSDuration = chrono::duration_cast<chrono::milliseconds>(BFSEnd - BFSStart).count();
+                            BFSDuration = chrono::duration_cast<chrono::nanoseconds>(BFSEnd - BFSStart).count();
                             solvingState = true;
                             scrambleState = false;
                             firstOpen = false;
@@ -86,8 +86,11 @@ struct GameWindow{
                         images.BFSSolDepth.setString(to_string(BFSDepth));
                         images.IDASolDepth.setString(to_string(IDADepth));
 
-                        images.BFSTime.setString(to_string(BFSDuration));
-                        images.IDATime.setString(to_string(IDADuration));
+                        string IDATimer = DetermineTime(IDADuration);
+                        string BFSTimer = DetermineTime(BFSDuration);
+
+                        images.IDATime.setString(IDATimer);
+                        images.BFSTime.setString(BFSTimer);
                     }
                 }
             }
@@ -140,8 +143,8 @@ struct GameWindow{
                     //Draw NEW board states
                     GameDisplay(BFSBoardState, IDABoardState);
 
-                    //delay by 0.050 seconds
-                    usleep(50000);
+                    //delay by 0.1 seconds
+                    usleep(100000);
                 }
                 solvingState = false;
             }
@@ -151,6 +154,14 @@ struct GameWindow{
                 GameDisplay();
             }
         }
+    }
+
+    // given nanoseconds, return milliseconds if nanoseconds is greater than 1000000
+    string DetermineTime(double duration){
+        if (duration > 1000000){
+            return to_string(duration / 1000000) + " ms";
+        }
+        return to_string(duration) + " ns";
     }
 
     // Sets up the number tiles based on the board input

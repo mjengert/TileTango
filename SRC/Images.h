@@ -124,6 +124,7 @@ struct Images{
 
         for(int i = 0; i < InfoText.size(); i++){
             InfoText[i]->setFont(font);
+            InfoText[i]->setCharacterSize(24);
             InfoText[i]->setFillColor(Color::Black);
         }
 
