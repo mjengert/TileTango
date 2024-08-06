@@ -55,7 +55,7 @@ struct GameWindow{
                         if (scrambleState or firstOpen) {
                             // solve using IDA*
                             auto IDAStart = chrono::high_resolution_clock::now();
-                            //IDASol = Graph.IDAStar(root, 0, 0);
+                            IDASol = Graph.IDAStar(root, 0);
                             auto IDAEnd = chrono::high_resolution_clock::now();
                             IDADuration = chrono::duration_cast<chrono::milliseconds>(IDAEnd - IDAStart).count();
 
@@ -64,6 +64,7 @@ struct GameWindow{
                             BFSSol = Graph.BFS(root);
                             auto BFSEnd = chrono::high_resolution_clock::now();
                             BFSDuration = chrono::duration_cast<chrono::milliseconds>(BFSEnd - BFSStart).count();
+
                             solvingState = true;
                             scrambleState = false;
                             firstOpen = false;
@@ -77,7 +78,6 @@ struct GameWindow{
             // Once solve button is clicked iterate through solution paths of both algorithms once
             if (solvingState){
                 //TEMP DELETE AFTER IDA IMPLEMENTATION
-                IDASol = {{1,2,3,4,5,6,7,8,9}};
                 cout << "solving" << endl;
 
                 //find largest grid vector
